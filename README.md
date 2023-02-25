@@ -8,7 +8,7 @@
 
 ## Pegasus Tech
 
-## Integrantes: <a href="https://www.linkedin.com/in/victorbarq/">Goku Sayajin</a>, <a href="https://www.linkedin.com/in/victorbarq/">Saitama One</a>, <a href="https://www.linkedin.com/in/victorbarq/">Ikki de Fenix</a>, <a href="https://www.linkedin.com/in/victorbarq/">Yusuke Urameshi</a>, <a href="https://www.linkedin.com/in/victorbarq/">Roronoa Zoro</a>
+## Integrantes: <a href="https://www.linkedin.com/in/ever-felliphe-sousa-da-costa-16001617a">Ever Felliphe Sousa da Costa</a>, <a href="https://www.linkedin.com/in/victorbarq/">Luan Ramos de Mello</a>, <a href="https://www.linkedin.com/in/victorbarq/">João Paulo da Silva</a>, <a href="https://www.linkedin.com/in/victorbarq/">Marina Ladeira</a>, <a href="https://www.linkedin.com/in/victorbarq/">Eduarda Cardoso de Souza</a>, <a href="https://www.linkedin.com/in/victorbarq/">Pedro Faria Santos</a>
 
 ## Descrição
 
