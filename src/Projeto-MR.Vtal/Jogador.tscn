@@ -1,0 +1,53 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Sprite_cortado/Spriteup4-removebg-preview.png" type="Texture" id=1]
+[ext_resource path="res://Sprite_cortado/spriteright4-removebg-preview.png" type="Texture" id=2]
+[ext_resource path="res://Sprite_cortado/Spriteright1-removebg-preview.png" type="Texture" id=3]
+[ext_resource path="res://Sprite_cortado/Spriteup1-removebg-preview.png" type="Texture" id=4]
+[ext_resource path="res://scripts/player/Jogador.gd" type="Script" id=5]
+[ext_resource path="res://Sprite_cortado/Spriteright2-removebg-preview.png" type="Texture" id=6]
+[ext_resource path="res://Sprite_cortado/Spriteup2-removebg-preview.png" type="Texture" id=7]
+[ext_resource path="res://Sprite_cortado/spriteright3-removebg-preview.png" type="Texture" id=8]
+[ext_resource path="res://Sprite_cortado/Spriteup3-removebg-preview.png" type="Texture" id=9]
+[ext_resource path="res://Sprite_cortado/Spritedown1-removebg-preview.png" type="Texture" id=11]
+[ext_resource path="res://Sprite_cortado/Spritedown3-removebg-preview.png" type="Texture" id=12]
+[ext_resource path="res://Sprite_cortado/Spritedown4-removebg-preview.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "baixo",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "cima",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "direita",
+"speed": 6.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 29.0
+height = 32.0
+
+[node name="Personagem" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Colisao" type="Area2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Colisao"]
+position = Vector2( -1.19209e-07, 4.76837e-07 )
+scale = Vector2( 0.413265, 0.431033 )
+frames = SubResource( 1 )
+animation = "direita"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisao"]
+scale = Vector2( 0.525178, 0.469394 )
+shape = SubResource( 2 )
+
+[connection signal="hit" from="." to="." method="_on_Personagem_hit"]
