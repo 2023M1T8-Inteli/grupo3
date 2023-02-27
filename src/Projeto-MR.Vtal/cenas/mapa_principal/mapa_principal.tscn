@@ -14,3 +14,7 @@ texture = ExtResource( 1 )
 
 [node name="Personagem" parent="." instance=ExtResource( 2 )]
 scale = Vector2( 1.0537, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="Personagem"]
+position = Vector2( 512, 300 )
+current = true

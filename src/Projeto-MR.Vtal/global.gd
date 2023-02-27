@@ -15,7 +15,12 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 	}
 }
 
+var controle_tela = true
+
 var speed = 400
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func velocity():
+	controle_tela = false
