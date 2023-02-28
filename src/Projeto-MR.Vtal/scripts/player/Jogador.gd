@@ -12,7 +12,6 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size #Define o tamanho da tela
 	$Colisao.position.x = 500
 	$Colisao.position.y = 300
-	print('hey')
 
 func _process(delta:float) -> void: #Define os controles do jogo
 	if control == true:

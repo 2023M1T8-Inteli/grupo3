@@ -1,10 +1,10 @@
 extends Node2D
 
-var n = 0
+var n = 1
 var dialogo = Global.falas['fabricio'] # chama o dicionario global contendo os dialogos e armazena em uma variavel local
 #neste caso chama a seção do fabrício
 func _ready():
-	$texto.text = dialogo[n]
+	$texto.text = dialogo[0]
 #ao iniciar define o texto com base no indice do dicionario
 func _on_pular_pressed():
 	if n == 5:

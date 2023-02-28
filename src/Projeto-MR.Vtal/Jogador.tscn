@@ -47,7 +47,7 @@ frames = SubResource( 1 )
 animation = "direita"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colisao"]
+pause_mode = 1
+position = Vector2( 0, -2.84217e-14 )
 scale = Vector2( 0.525178, 0.469394 )
 shape = SubResource( 2 )
-
-[connection signal="hit" from="." to="." method="_on_Personagem_hit"]
