@@ -51,6 +51,7 @@ func _on_Diamante_body_entered(body):
 	control = false
 	$Animacao.stop()
 	Global.tela()
+	
 func _on_Situao1_body_entered(body):
 	control = false
 	$Animacao.stop()

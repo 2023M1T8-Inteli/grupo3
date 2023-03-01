@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Button_mute-removebg-preview (2).png-4c6eca3098482a0b59b984d57467c318.stex"
+path="res://.import/Button_mute-removebg-preview (2).png-bd1bd4cc2dc97ecbfe21bfcbd38a8061.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imagens/Button_mute-removebg-preview (2).png"
-dest_files=[ "res://.import/Button_mute-removebg-preview (2).png-4c6eca3098482a0b59b984d57467c318.stex" ]
+source_file="res://imagens/menu/Button_mute-removebg-preview (2).png"
+dest_files=[ "res://.import/Button_mute-removebg-preview (2).png-bd1bd4cc2dc97ecbfe21bfcbd38a8061.stex" ]
 
 [params]
 

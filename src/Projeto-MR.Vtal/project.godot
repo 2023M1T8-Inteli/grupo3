@@ -12,11 +12,11 @@ config_version=4
 
 config/name="JogoProjeto"
 run/main_scene="res://cenas/menu/Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://imagens/icon.png"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://scripts/global/global.gd"
 
 [global]
 
