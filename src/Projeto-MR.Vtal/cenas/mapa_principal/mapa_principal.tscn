@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://imagens/mapa_principal/mapa-vtal-version1-residencial_area.png" type="Texture" id=1]
+[ext_resource path="res://imagens/mapa_principal/mapa-vtal-2.0.png" type="Texture" id=1]
 [ext_resource path="res://Jogador.tscn" type="PackedScene" id=2]
 [ext_resource path="res://cenas/mapa_principal/mapa_principal.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]

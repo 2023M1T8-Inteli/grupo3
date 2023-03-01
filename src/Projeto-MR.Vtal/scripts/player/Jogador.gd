@@ -44,8 +44,6 @@ func _process(delta:float) -> void: #Define os controles do jogo
 		if controle_tela == true:
 			position.x = clamp(position.x, -500, screen_size.x - 500) #Define o limite horizontal da tela
 			position.y = clamp(position.y, -300, screen_size.y - 300) #Define o limite vertical da tela
-		
-
 
 func _on_diamond_area_entered(area):
 	speed = 0
