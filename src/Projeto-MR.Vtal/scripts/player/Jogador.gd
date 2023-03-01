@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 var speed = Global.speed
 
@@ -7,46 +7,58 @@ signal hit
 var screen_size #variável pra definir o tamanho da tela	
 var control = true
 var controle_tela = Global.controle_tela
+var vidas = 100
+var tesouro = 0 
+var interactDist = 80 
+var vel = Vector2.ZERO
+var facingDir = Vector2()
+onready var raycast = $RayCast2D
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size #Define o tamanho da tela
-	$Colisao.position.x = 500
-	$Colisao.position.y = 300
+#	$Colisao.position.x = 500
+#	$Colisao.position.y = 300
 
-func _process(delta:float) -> void: #Define os controles do jogo
+func _physics_process(delta): #Define os controles do jogo
 	if control == true:
 		var velocity = Vector2.ZERO  #define a velocidade como uma variável de vetor
-		if Input.is_action_pressed('ui_right'): #caso aperte o botão pra cima, soma 1 na velocidade horizontal
-			velocity.x += 1
-		if Input.is_action_pressed("ui_left"): #caso aperte o botão pra esquerda, subtrai 1 na velocidade horizontal
-			velocity.x -= 1 
-		if Input.is_action_pressed("ui_up"): #caso aperte o botão pra cima, subtrai 1 na velocidade vertical
-			velocity.y -= 1
-		if Input.is_action_pressed('ui_down'): #caso perte o botão pra baixo, soma 1 na velocidade vertical
-			velocity.y += 1
-		if velocity.length() > 0: #Aplica a animação do personagem ao andar
-			velocity = velocity.normalized() * speed
-			$Colisao/AnimatedSprite.play()
+		vel = Vector2.ZERO
+		if Input.is_action_pressed('ui_up'):
+			vel.y-= 1
+			facingDir = Vector2(0,-1)
+		if Input.is_action_pressed("ui_down"):
+			vel.y += 1
+			facingDir = Vector2(0,1)
+		if Input.is_action_pressed("ui_left"):
+			vel.x -= 1 
+			facingDir = Vector2(-1,0)
+		if Input.is_action_pressed("ui_right"):
+			vel.x += 1
+			facingDir = Vector2(1,0)
+		move_and_slide(vel * speed, Vector2.ZERO)
+		if vel.x != 0: 
+			$Animacao.play()
+			$Animacao.animation = 'direita'
+			$Animacao.flip_v = false
+			$Animacao.flip_h = vel.x < 0
+		elif vel.y != 0:
+			$Animacao.play()
+			if vel.y < 0: 	
+				$Animacao.animation = 'cima'
+			elif vel.y == 1:
+				$Animacao.animation = 'baixo'
 		else:
-			$Colisao/AnimatedSprite.stop()
-		#Configura as animações de acordo com a direção do personagem
-		if velocity.x != 0: 
-			$Colisao/AnimatedSprite.animation = 'direita'
-			$Colisao/AnimatedSprite.flip_v = false
-			$Colisao/AnimatedSprite.flip_h = velocity.x < 0
-		elif velocity.y != 0:
-			if velocity.y < 0: 	
-				$Colisao/AnimatedSprite.animation = 'cima'
-			elif velocity.y > 1:
-				$Colisao/AnimatedSprite.animation = 'baixo'
-				
-		position += velocity * delta #Atualiza a posição de acordo com a movimentação
-		if controle_tela == true:
-			position.x = clamp(position.x, -500, screen_size.x - 500) #Define o limite horizontal da tela
-			position.y = clamp(position.y, -300, screen_size.y - 300) #Define o limite vertical da tela
-
-func _on_diamond_area_entered(area):
+			$Animacao.stop()
+	if controle_tela == true:
+		position.x = clamp(position.x, 0, screen_size.x) #Define o limite horizontal da tela
+		position.y = clamp(position.y, 0, screen_size.y) #Define o limite vertical da tela
+		
+func _on_Diamante_body_entered(body):
 	speed = 0
 	control = false
-	emit_signal("hit")
-	$Colisao/AnimatedSprite.stop()
+	$Animacao.stop()
+	controle_tela == false
+
+func _on_Situao1_body_entered(body):
+	control = false
+	$Animacao.stop()

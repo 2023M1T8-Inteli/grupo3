@@ -7,11 +7,6 @@ func _ready():
 	$dialogo.hide()
 	$dialogo/diamante2.hide()
 
-func _on_diamond_area_entered(area):
-	$dialogo.show()
-	$dialogo/diamante2.show()
-	$dialogo/texto.text = falas_diamante[0]
-#ao entrar no colisionshape do diamante ele  mostra o dialogo com o diamante(tutorial)
 func _on_TextureButton_pressed():
 	if n == 3:				 #se o índice do dicionario for 3 ele muda de cena, pois não há este indice nele
 		get_tree().change_scene("res://cenas/DiálogoFabricio.tscn") 
@@ -19,3 +14,7 @@ func _on_TextureButton_pressed():
 		$dialogo/texto.text = falas_diamante[n]
 		n += 1
 	
+func _on_Diamante_body_entered(body):
+	$dialogo.show()
+	$dialogo/diamante2.show()
+	$dialogo/texto.text = falas_diamante[0]

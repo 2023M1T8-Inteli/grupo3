@@ -35,18 +35,17 @@ animations = [ {
 radius = 29.0
 height = 32.0
 
-[node name="Personagem" type="Node2D"]
+[node name="Personagem" type="KinematicBody2D"]
 script = ExtResource( 5 )
 
-[node name="Colisao" type="Area2D" parent="."]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Colisao"]
+[node name="Animacao" type="AnimatedSprite" parent="."]
 position = Vector2( -1.19209e-07, 4.76837e-07 )
 scale = Vector2( 0.413265, 0.431033 )
 frames = SubResource( 1 )
 animation = "direita"
+frame = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisao"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 pause_mode = 1
 position = Vector2( 0, -2.84217e-14 )
 scale = Vector2( 0.525178, 0.469394 )

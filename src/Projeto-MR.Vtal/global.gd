@@ -12,15 +12,18 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 		0: 'Use as setas no canto inferior esquerdo para se movimentar pelo mapa!',
 		1: 'Clique no botão “X” para abrir o minimapa. Ele irá mostrar sua localização na cidade e seu próximo destino',
 		2: 'No canto da tela, você pode clicar no botão “Y” para ligar ou desligar o som do jogo.'
+	},
+	'situacao1': {
+		0: "Boa tarde, meu nome é Robert e eu trabalho na Claro, vi que você trabalha na V.tal para qual empresa você está indo instalar a fibra?",
+		1: "Estou indo instalar da Tim",
+		2: "Eu te pago uma grana se você instalar essa fibra da minha empresa"
 	}
 }
 
 var controle_tela = true
 
-var speed = 400
+var speed = 300
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func velocity():
-	controle_tela = false
