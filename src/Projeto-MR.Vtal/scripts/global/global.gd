@@ -16,15 +16,24 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 	'situacao1': {
 		0: "Boa tarde, meu nome é Robert e eu trabalho na Claro, vi que você trabalha na V.tal para qual empresa você está indo instalar a fibra?",
 		1: "Estou indo instalar da Tim",
-		2: "Eu te pago uma grana se você instalar essa fibra da minha empresa"
+		2: "Eu te pago uma grana se você instalar essa fibra da minha empresa",
+		3: {
+			1: "Parabéns!! Você escolheu a opção mais ética",
+			2: "A família tem grande importância, mas devemos sempre ter um comportamento ético. A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno",
+			3: "A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno, portanto, aceitar o dinheiro seria totalmente contra o código de ética da empresa."
+		}
 	}
 }
 
+var pontuacao = 0 
 var controle_tela = true
 
 func tela():
 	controle_tela = false
 
+func atualizar_pontuacao(x):
+	pontuacao = x 
+	
 var speed = 300
 # Called when the node enters the scene tree for the first time.
 func _ready():

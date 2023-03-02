@@ -4,6 +4,7 @@ var speed = Global.speed
 
 signal hit
 
+var pontuacao = Global.pontuacao
 var screen_size #variável pra definir o tamanho da tela	
 var control = true
 var controle_tela = Global.controle_tela
@@ -26,6 +27,8 @@ func _physics_process(delta): #Define os controles do jogo
 			vel.x -= 1 
 		if Input.is_action_pressed("ui_right"):
 			vel.x += 1
+		if Input.is_action_pressed("ui_accept"):
+			print(pontuacao)
 		move_and_slide(vel * speed, Vector2.ZERO)
 		if vel.x != 0: 
 			$Animacao.play()

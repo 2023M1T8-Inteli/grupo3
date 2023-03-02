@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://imagens/icon.png" type="Texture" id=1]
 [ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
@@ -42,6 +42,14 @@ tracks/0/keys = {
 size = 25
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 15
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 4 )
+
 [node name="Situação1" type="Area2D"]
 script = ExtResource( 3 )
 
@@ -63,7 +71,6 @@ anims/Situacao1 = SubResource( 3 )
 [node name="Personagem" parent="." instance=ExtResource( 2 )]
 
 [node name="CaixaDialogo" type="ColorRect" parent="."]
-visible = false
 margin_left = 2.0
 margin_top = 459.0
 margin_right = 1023.0
@@ -71,12 +78,11 @@ margin_bottom = 597.0
 
 [node name="conversa" type="Label" parent="CaixaDialogo"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 2.0
+margin_left = 10.0
 margin_top = 1.0
 margin_right = 1019.0
 margin_bottom = 137.0
 custom_fonts/font = SubResource( 4 )
-text = "adsdasdaksdasopcascoasidj"
 autowrap = true
 
 [node name="Button" type="TextureButton" parent="CaixaDialogo"]
@@ -87,7 +93,61 @@ margin_bottom = 134.0
 texture_normal = ExtResource( 1 )
 expand = true
 
+[node name="Escolha1" type="LinkButton" parent="CaixaDialogo"]
+modulate = Color( 0.45098, 0.368627, 0.368627, 1 )
+margin_left = 8.0
+margin_right = 108.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 5 )
+text = "a) Recusar a oferta e informar o Compliance sobre o acontecimento"
+underline = 1
+
+[node name="Escolha2" type="LinkButton" parent="CaixaDialogo"]
+modulate = Color( 0.45098, 0.368627, 0.368627, 1 )
+margin_left = 6.0
+margin_top = 35.0
+margin_right = 109.0
+margin_bottom = 58.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "b) Recusar a oferta e instalar a fibra da Tim"
+underline = 1
+
+[node name="Escolha3" type="LinkButton" parent="CaixaDialogo"]
+modulate = Color( 0.45098, 0.368627, 0.368627, 1 )
+margin_left = 6.0
+margin_top = 70.0
+margin_right = 110.0
+margin_bottom = 96.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "c) Pegar o dinheiro, mas não instalar a fibra e usar para auxiliar na renda da sua família"
+underline = 1
+
+[node name="Escolha4" type="LinkButton" parent="CaixaDialogo"]
+modulate = Color( 0.45098, 0.368627, 0.368627, 1 )
+margin_left = 5.0
+margin_top = 103.0
+margin_right = 110.0
+margin_bottom = 126.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "d) Aceitar o dinheiro e instalar a fibra"
+underline = 1
+
+[node name="conversa2" type="Label" parent="CaixaDialogo"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 18.0
+margin_right = 934.0
+margin_bottom = 134.0
+custom_fonts/font = SubResource( 6 )
+autowrap = true
+
 [connection signal="body_entered" from="." to="." method="_on_Situao1_body_entered"]
 [connection signal="body_entered" from="." to="Personagem" method="_on_Situao1_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="CaixaDialogo/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CaixaDialogo/Escolha1" to="." method="_on_Escolha1_pressed"]
+[connection signal="pressed" from="CaixaDialogo/Escolha2" to="." method="_on_Escolha2_pressed"]
+[connection signal="pressed" from="CaixaDialogo/Escolha3" to="." method="_on_Escolha3_pressed"]
+[connection signal="pressed" from="CaixaDialogo/Escolha4" to="." method="_on_Escolha4_pressed"]
