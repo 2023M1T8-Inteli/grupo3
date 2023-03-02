@@ -1,15 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://imagens/mapa_principal/mapa-vtal-2.0.png" type="Texture" id=1]
 [ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/mapa_principal/mapa_principal.gd" type="Script" id=3]
 [ext_resource path="res://imagens/mapa_principal/postes_2.0.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 57.75, 86 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 15, 49 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 191.75, 78 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 46.5, 14.5 )
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 9.0
+height = 6.0
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 48, 16 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 48.5, 17.5 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -29,16 +39,220 @@ scale = Vector2( 1.0537, 1 )
 [node name="Camera2D" type="Camera2D" parent="Personagem"]
 current = true
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Mapa2" type="Sprite" parent="."]
 position = Vector2( 128, 34 )
 texture = ExtResource( 5 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Colisões" type="StaticBody2D" parent="Mapa2"]
+position = Vector2( -128, -34 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 25.25, 77 )
-shape = SubResource( 1 )
+[node name="PredioVtal" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -33, -154, -22, -166, 59, -166, 70, -154, 73, -82, 286, -79, 306, -71, 306, 123, 304, 129, 318, 131, 320, 170, 319, 190, 317, 195, 202, 194, 193, 183, 196, 147, 99, 148, 79, 166, -12, 165, -31, 146 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 413.25, 626 )
-shape = SubResource( 2 )
+[node name="Barreira4" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 432, 21 )
+shape = SubResource( 3 )
+
+[node name="Barreira3" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -145, 21 )
+shape = SubResource( 3 )
+
+[node name="Barreira2" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 143.5, -266.5 )
+shape = SubResource( 4 )
+
+[node name="Barreira" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -191, -190, -162, -190, -64, -288, -65, -313, -94, -313, -192, -213 )
+
+[node name="Poste" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 208, 339 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste2" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 336, 339 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste3" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 81, 348 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste4" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 81, 444 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste5" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 209, 444 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste6" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 81, 667 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste7" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 209, 668 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste8" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 208, 755 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste9" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 80, 883 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste10" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 208, 883 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste11" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -15, 891 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste12" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -271, 892 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste13" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -463, 892 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste14" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -592, 883 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste15" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -687, 732 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste18" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -847, 891 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste19" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -943, 988 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste16" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -527, 572 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste17" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -367, 413 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste20" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -176, 83 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Poste21" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 79, -302 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Casa" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( 221, 705, 224, 354, 384, 355, 384, 481, 607, 483, 607, 579, 609, 704 )
+
+[node name="Carro2" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -256, 642, -192, 642, -191, 604, -188, 605, -188, 600, -197, 592, -218, 591, -224, 591, -224, 579, -256, 578, -256, 598, -261, 598, -261, 604, -256, 604 )
+
+[node name="Carro" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -288, 675, -256, 675, -256, 738, -288, 738 )
+
+[node name="Casa2" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( 288, 899, 288, 900, 224, 897, 223.292, 1124.31, 223, 1218, 352, 1219, 352, 1188, 254, 1190, 254, 929, 288, 930, 289, 1153, 896, 1153, 895, 1185, 482, 1185, 481, 1218, 931, 1219, 931, 964, 897, 963, 897, 903 )
+
+[node name="Lago" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -473, 1001, -449, 1002, -434, 1006, -417, 1003, -399, 1006, -383, 1002, -370, 1008, -354, 1003, -337, 1007, -321, 1001, -294, 999, -296, 1027, -300, 1073, -297, 1096, -303, 1106, -294, 1121, -292, 1148, -475, 1148, -474, 1122, -467, 1108, -471.62, 1088.88, -468, 1076, -471, 1055, -466, 1042, -476, 1028 )
+
+[node name="Arbusto" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -33, 930, 34, 929, 33, 994, 65, 994, 65, 899, -33, 899 )
+
+[node name="Árvore" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+position = Vector2( 0, 1 )
+polygon = PoolVector2Array( -68, 1014, -62, 1023, -50, 1027, -35, 1022, -29, 1014, -36, 1006, -38, 1001, -61, 1002 )
+
+[node name="Banco" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -128, 1054, -127, 1033, -121, 1025, -100, 1026, -96, 1034, -95, 1055, -95, 1121, -102, 1123, -97, 1130, -96, 1153, -129, 1153, -128, 1130, -124, 1122, -124, 1067 )
+
+[node name="Árvore2" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -67, 1177, -56, 1181, -49, 1190, -42, 1182, -29, 1178, -37, 1167, -59, 1167 )
+
+[node name="Arbusto2" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -32, 1218, 65, 1218, 65, 1129, 57, 1121, 38, 1121, 30, 1131, 31, 1186, -26, 1186, -34, 1194 )
+
+[node name="Banco2" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -512, 929, -482, 930, -479, 926, -415, 927, -412, 930, -387, 930, -381, 926, -320, 926, -316, 931, -288, 930, -287, 906, -294, 897, -500, 897, -513, 904 )
+
+[node name="Arbusto3" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -577, 906, -576, 924, -568, 930, -548, 929, -544, 919, -544, 905, -552, 897, -568, 897 )
+
+[node name="Arbusto4" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+position = Vector2( -64, 65 )
+polygon = PoolVector2Array( -577, 906, -576, 924, -568, 930, -548, 929, -544, 919, -544, 905, -552, 897, -568, 897 )
+
+[node name="Arbusto5" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+position = Vector2( 0, 96 )
+polygon = PoolVector2Array( -577, 906, -576, 924, -568, 930, -548, 929, -544, 919, -544, 905, -552, 897, -568, 897 )
+
+[node name="Arbusto6" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+position = Vector2( -128, 129 )
+polygon = PoolVector2Array( -577, 906, -576, 924, -568, 930, -548, 929, -544, 919, -544, 905, -552, 897, -568, 897 )
+
+[node name="Arbusto7" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+position = Vector2( -192, 193 )
+polygon = PoolVector2Array( -577, 906, -576, 924, -568, 930, -548, 929, -544, 919, -544, 905, -552, 897, -568, 897 )
+
+[node name="Arbusto8" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+position = Vector2( -224, 258 )
+polygon = PoolVector2Array( -577, 906, -576, 924, -568, 930, -548, 929, -544, 919, -544, 905, -552, 897, -568, 897 )
+
+[node name="Arbusto9" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+position = Vector2( -288, 288 )
+polygon = PoolVector2Array( -577, 906, -576, 924, -568, 930, -548, 929, -544, 919, -544, 905, -552, 897, -568, 897 )
+
+[node name="Arbusto10" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+position = Vector2( -127, 258 )
+polygon = PoolVector2Array( -577, 906, -576, 924, -568, 930, -548, 929, -544, 919, -544, 905, -552, 897, -568, 897 )
+
+[node name="Banco3" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -576, 1026, -576, 1090, -548, 1090, -548, 1034, -570, 1034, -570, 1026 )
+
+[node name="Banco4" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -768, 1154, -767, 1182, -704, 1182, -704, 1154 )
+
+[node name="Árvore3" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -672, 1179, -662, 1178, -659, 1187, -653, 1187, -652, 1179, -643, 1181, -639, 1178, -647, 1167, -665, 1167, -672, 1173 )
+
+[node name="Barreira6" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( -1137, 1106 )
+shape = SubResource( 6 )
+
+[node name="Barreira5" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( 355, -286, 379, -286, 391, -271, 385, -255, 414, -253, 422, -236, 417, -223, 440, -221, 456, -204, 448, -190, 481, -189, 469, -218, 448, -226, 434, -252, 415, -259, 404, -282, 383, -291, 371, -316, 359, -309 )
+
+[node name="Barreira7" type="CollisionShape2D" parent="Mapa2/Colisões"]
+position = Vector2( 1456.5, 1105.5 )
+shape = SubResource( 7 )
+
+[node name="Carro3" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( 97, -126, 96, -107, 100, -103, 109, -103, 110, -97, 119, -94, 124, -102, 171, -102, 169, -96, 180, -94, 182, -102, 188, -103, 192, -106, 192, -129, 175, -147, 138, -148, 128, -136, 118, -136, 102, -131 )

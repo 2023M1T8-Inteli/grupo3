@@ -40,11 +40,11 @@ func _physics_process(delta): #Define os controles do jogo
 				$Animacao.animation = 'baixo'
 		else:
 			$Animacao.stop()
-		if controle_tela == false:
-			print('hey')
-		else:
-			position.x = clamp(position.x, 0, screen_size.x) #Define o limite horizontal da tela
-			position.y = clamp(position.y, 0, screen_size.y) #Define o limite vertical da tela
+#		if controle_tela == false:
+#			pass
+#		else:
+#			position.x = clamp(position.x, 0, screen_size.x) #Define o limite horizontal da tela
+#			position.y = clamp(position.y, 0, screen_size.y) #Define o limite vertical da tela
 		
 func _on_Diamante_body_entered(body):
 	speed = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Sprite_cortado/Spriteup4-removebg-preview.png" type="Texture" id=1]
 [ext_resource path="res://Sprite_cortado/spriteright4-removebg-preview.png" type="Texture" id=2]
@@ -31,10 +31,6 @@ animations = [ {
 "speed": 6.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 29.0
-height = 32.0
-
 [node name="Personagem" type="KinematicBody2D"]
 script = ExtResource( 5 )
 
@@ -45,8 +41,8 @@ frames = SubResource( 1 )
 animation = "direita"
 frame = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 pause_mode = 1
-position = Vector2( 0, -2.84217e-14 )
+position = Vector2( 0, 4 )
 scale = Vector2( 0.525178, 0.469394 )
-shape = SubResource( 2 )
+polygon = PoolVector2Array( -24.7535, -8.52162, -24.7535, -27.6953, -15.2329, -42.6081, 17.137, -42.6081, 22.8494, -36.2169, 22.8494, -27.6953, 22.8494, -6.39122, 9.52058, 2.13041, 13.3288, 6.39122, 13.3288, 36.2169, -15.2329, 36.2169, -15.2329, 6.39122, -11.4247, 2.13041 )

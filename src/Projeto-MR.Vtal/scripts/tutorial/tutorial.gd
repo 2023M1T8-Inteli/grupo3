@@ -9,7 +9,7 @@ func _ready():
 
 func _on_TextureButton_pressed():
 	if n == 3:				 #se o índice do dicionario for 3 ele muda de cena, pois não há este indice nele
-		get_tree().change_scene("res://cenas/DiálogoFabricio.tscn") 
+		get_tree().change_scene("res://cenas/dialogo_fabricio/DiálogoFabricio.tscn") 
 	else:  					#ao clicar no botão ele atualiza o dialogo(passa para as proximas falas)
 		$dialogo/texto.text = falas_diamante[n]
 		n += 1
