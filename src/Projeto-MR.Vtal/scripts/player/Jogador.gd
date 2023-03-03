@@ -70,5 +70,3 @@ func _on_Situao1_body_exited(body):
 	queue_free()
 	print(posicaox)
 	print(posicaoy)
-	
-#	$Personagem.position = Vector2(posicaox, posicaoy)

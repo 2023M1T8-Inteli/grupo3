@@ -22,6 +22,8 @@ func _on_Situao1_body_entered(body):
 func _on_Timer_timeout():
 	$Timer.queue_free()
 	$CaixaDialogo.show()
+	$NPC.animation = "esquerda"[0]
+	$NPC.stop()
 	
 func _on_Button_pressed():
 	if n == 3:

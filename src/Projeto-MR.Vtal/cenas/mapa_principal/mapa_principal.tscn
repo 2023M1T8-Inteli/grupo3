@@ -320,3 +320,4 @@ shape = SubResource( 8 )
 
 [connection signal="body_entered" from="Situacao" to="." method="_on_Situacao_body_entered"]
 [connection signal="body_entered" from="Situacao" to="Personagem" method="_on_Situacao_body_entered"]
+[connection signal="body_exited" from="Situacao" to="." method="_on_Situacao_body_exited"]
