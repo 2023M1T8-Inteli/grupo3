@@ -1,19 +1,16 @@
 extends KinematicBody2D
 
 var speed = Global.speed
-
-signal hit
-
 var pontuacao = Global.pontuacao
 var screen_size #variável pra definir o tamanho da tela	
 var control = true
 var controle_tela = Global.controle_tela
 var vel = Vector2.ZERO
+var posicaox
+var posicaoy
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size #Define o tamanho da tela
-#	$Colisao.position.x = 500
-#	$Colisao.position.y = 300
 
 func _physics_process(delta): #Define os controles do jogo
 	if control == true:
@@ -55,6 +52,23 @@ func _on_Diamante_body_entered(body):
 	$Animacao.stop()
 	Global.tela()
 	
+func _on_Situacao_body_entered(body):
+	posicaox = position.x 
+	posicaoy = position.y
+	Global.atualizar_posicao(posicaox,posicaoy)
+	control = false
+	$Animacao.stop()
+	get_tree().change_scene("res://cenas/situacoes/Situação1.tscn")
+
 func _on_Situao1_body_entered(body):
 	control = false
 	$Animacao.stop()
+
+func _on_Situao1_body_exited(body):
+	var posicaox = float(Global.posicaox)
+	var posicaoy = float(Global.posicaoy)
+	queue_free()
+	print(posicaox)
+	print(posicaoy)
+	
+#	$Personagem.position = Vector2(posicaox, posicaoy)

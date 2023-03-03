@@ -3,6 +3,7 @@ extends Area2D
 var pontuacao = Global.pontuacao
 var dialogo = Global.falas['situacao1']
 var n = 1
+var timer = Timer.new()
 
 func _ready():
 	$CaixaDialogo/conversa.text = dialogo[0]
@@ -11,9 +12,11 @@ func _ready():
 	$CaixaDialogo/Escolha3.hide()
 	$CaixaDialogo/Escolha4.hide()
 	$CaixaDialogo.hide()
+	$NPC.hide()
 
 func _on_Situao1_body_entered(body):
-	$Sprite/AnimationPlayer.play("Situacao1")
+	$NPC.show()
+	$NPC/AnimationPlayer.play("Situacao1")
 	$Timer.start()
 
 func _on_Timer_timeout():
@@ -29,40 +32,43 @@ func _on_Button_pressed():
 		$CaixaDialogo/Escolha3.show()
 		$CaixaDialogo/Escolha4.show()
 	elif n == 4:
-		queue_free()
+		get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn")
 	else:
 		$CaixaDialogo/conversa.text = dialogo[n]
 		n += 1 
-	print(n)
+	
 func _on_Escolha1_pressed():
 	pontuacao += 2
 	Global.atualizar_pontuacao(pontuacao)
 	clear() 
 	$CaixaDialogo/conversa2.text = dialogo[n][1]
 	n += 1
+	
 func _on_Escolha2_pressed():
 	pontuacao += 1
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo/conversa2.text = dialogo[n][2]
 	n += 1
+	
 func _on_Escolha3_pressed():
 	pontuacao += 0
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo/conversa2.text = dialogo[n][3]
 	n += 1
+	
 func _on_Escolha4_pressed():
 	pontuacao += -1
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo/conversa2.text = dialogo[n][4]
 	n += 1
+	
 func clear():
 	$CaixaDialogo/Escolha1.queue_free()
 	$CaixaDialogo/Escolha2.queue_free()
 	$CaixaDialogo/Escolha3.queue_free()
 	$CaixaDialogo/Escolha4.queue_free()
 	$CaixaDialogo/Button.show()
-	 
-
+	

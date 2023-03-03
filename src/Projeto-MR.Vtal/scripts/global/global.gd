@@ -19,12 +19,15 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 		2: "Eu te pago uma grana se você instalar essa fibra da minha empresa",
 		3: {
 			1: "Parabéns!! Você escolheu a opção mais ética",
-			2: "A família tem grande importância, mas devemos sempre ter um comportamento ético. A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno",
-			3: "A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno, portanto, aceitar o dinheiro seria totalmente contra o código de ética da empresa."
+			2: "Parabéns!! Você escolheu uma ótima opção, agindo plenamente de acordo com o código de ética da empresa. Entretanto, faltou reportar a situação para o compliance, para que possamos ter um controle da situação!",
+			3: "A família tem grande importância, mas devemos sempre ter um comportamento ético. A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno",
+			4: "A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno, portanto, aceitar o dinheiro seria totalmente contra o código de ética da empresa."
 		}
 	}
 }
 
+var posicaox
+var posicaoy
 var pontuacao = 0 
 var controle_tela = true
 
@@ -33,6 +36,11 @@ func tela():
 
 func atualizar_pontuacao(x):
 	pontuacao = x 
+	
+func atualizar_posicao(x,y):
+	posicaox = x
+	posicaoy = y
+	return posicaox + posicaoy
 	
 var speed = 300
 # Called when the node enters the scene tree for the first time.
