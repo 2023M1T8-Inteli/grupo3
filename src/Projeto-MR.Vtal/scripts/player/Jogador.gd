@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = Global.speed
+#var speed = Global.speed
 var pontuacao = Global.pontuacao
 var screen_size #variável pra definir o tamanho da tela	
 var control = true
@@ -13,6 +13,7 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size #Define o tamanho da tela
 
 func _physics_process(delta): #Define os controles do jogo
+	var speed = Global.speed
 	if control == true:
 		var velocity = Vector2.ZERO  #define a velocidade como uma variável de vetor
 		vel = Vector2.ZERO
@@ -47,7 +48,7 @@ func _physics_process(delta): #Define os controles do jogo
 #			position.y = clamp(position.y, 0, screen_size.y) #Define o limite vertical da tela
 		
 func _on_Diamante_body_entered(body):
-	speed = 0
+	Global.velocity(0)
 	control = false
 	$Animacao.stop()
 	Global.tela()
@@ -65,8 +66,10 @@ func _on_Situao1_body_entered(body):
 	$Animacao.stop()
 
 func _on_Situao1_body_exited(body):
-	var posicaox = float(Global.posicaox)
-	var posicaoy = float(Global.posicaoy)
+#	var posicaox = float(Global.posicaox)
+#	var posicaoy = float(Global.posicaoy)
 	queue_free()
-	print(posicaox)
-	print(posicaoy)
+
+func _on_Timer2_timeout():
+	pass
+		

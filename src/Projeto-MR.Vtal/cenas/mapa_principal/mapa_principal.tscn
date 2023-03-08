@@ -1,9 +1,65 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://imagens/mapa_principal/mapa-vtal-2.0.png" type="Texture" id=1]
 [ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/mapa_principal/mapa_principal.gd" type="Script" id=3]
+[ext_resource path="res://fontes/OldSchoolAdventures-42j9.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://imagens/mapa_principal/postes_2.0.png" type="Texture" id=5]
+[ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "mover"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 311.076, 401.18 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 15, 49 )
@@ -27,6 +83,13 @@ radius = 6.0
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 12.5, 90 )
 
+[sub_resource type="DynamicFont" id=10]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 4 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
 __meta__ = {
@@ -43,8 +106,12 @@ position = Vector2( 116, 199 )
 rotation = -0.000547229
 scale = Vector2( 1.0537, 1 )
 
-[node name="Camera2D2" type="Camera2D" parent="Personagem"]
+[node name="Camera2D" type="Camera2D" parent="Personagem"]
 current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Personagem/Camera2D"]
+anims/RESET = SubResource( 12 )
+anims/mover = SubResource( 13 )
 
 [node name="Mapa2" type="Sprite" parent="."]
 position = Vector2( 128, 34 )
@@ -209,7 +276,7 @@ rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="Casa" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
-polygon = PoolVector2Array( 221, 705, 224, 354, 384, 355, 384, 481, 607, 483, 607, 579, 609, 704 )
+polygon = PoolVector2Array( 221, 709, 224, 354, 384, 355, 384, 484, 384, 574, 460, 576, 607, 577, 608, 709 )
 
 [node name="Carro2" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
 polygon = PoolVector2Array( -256, 642, -192, 642, -191, 604, -188, 605, -188, 600, -197, 592, -218, 591, -224, 591, -224, 579, -256, 578, -256, 598, -261, 598, -261, 604, -256, 604 )
@@ -221,7 +288,7 @@ polygon = PoolVector2Array( -288, 675, -256, 675, -256, 738, -288, 738 )
 polygon = PoolVector2Array( 288, 899, 288, 900, 224, 897, 223.292, 1124.31, 223, 1218, 352, 1219, 352, 1188, 254, 1190, 254, 929, 288, 930, 289, 1153, 896, 1153, 895, 1185, 482, 1185, 481, 1218, 931, 1219, 931, 964, 897, 963, 897, 903 )
 
 [node name="Lago" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
-polygon = PoolVector2Array( -473, 1001, -449, 1002, -434, 1006, -417, 1003, -399, 1006, -383, 1002, -370, 1008, -354, 1003, -337, 1007, -321, 1001, -294, 999, -296, 1027, -300, 1073, -297, 1096, -303, 1106, -294, 1121, -292, 1148, -475, 1148, -474, 1122, -467, 1108, -471.62, 1088.88, -468, 1076, -471, 1055, -466, 1042, -476, 1028 )
+polygon = PoolVector2Array( -464, 1001, -449, 1002, -447, 1005, -434, 1006, -417, 1003, -399, 1006, -383, 1002, -370, 1008, -354, 1003, -337, 1007, -321, 1001, -303.12, 999.676, -295, 1009, -296, 1026, -301, 1039, -297.962, 1054.66, -300, 1073, -297, 1096, -302, 1106, -298, 1121, -295, 1123, -295, 1140, -301, 1142, -304.97, 1148, -319, 1146, -332, 1141, -349, 1144, -366, 1141, -382, 1144, -397, 1140, -412, 1145, -430, 1141, -445, 1143, -448, 1147, -470.849, 1147.85, -474, 1143, -473, 1124, -469, 1122, -467, 1108, -470, 1090, -467, 1076, -470, 1058, -466, 1042, -470, 1029, -474, 1025, -473.352, 1009.44 )
 
 [node name="Arbusto" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
 polygon = PoolVector2Array( -33, 930, 34, 929, 33, 994, 65, 994, 65, 899, -33, 899 )
@@ -311,6 +378,18 @@ shape = SubResource( 9 )
 position = Vector2( 304, 725 )
 shape = SubResource( 9 )
 
+[node name="AreaExterna" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -1214, 1377, 1535, 1374, 1760, 1371, 1756, 1703, -1516, 1695, -1512, 1379 )
+
+[node name="AreaExterna2" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -1218, 1374, -1212, -1532, -1467, -1519, -1510, 1398 )
+
+[node name="AreaExterna3" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( -1215, -1311, 1536, -1308, 1774, -1304, 1765, -1613, -1479, -1589, -1472, -1520 )
+
+[node name="AreaExterna4" type="CollisionPolygon2D" parent="Mapa2/Colisões"]
+polygon = PoolVector2Array( 1957, 38, 1781, -1303, 1535, -1307, 1535, 1374, 1759, 1375 )
+
 [node name="Situacao" type="Area2D" parent="."]
 position = Vector2( 254, 799 )
 
@@ -318,6 +397,51 @@ position = Vector2( 254, 799 )
 position = Vector2( 6, 3 )
 shape = SubResource( 8 )
 
+[node name="Dialogo" type="ColorRect" parent="."]
+margin_left = -395.0
+margin_top = 309.0
+margin_right = 626.0
+margin_bottom = 499.0
+
+[node name="texto" type="Label" parent="Dialogo"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 11.0
+margin_top = 51.0
+margin_right = 964.0
+margin_bottom = 184.0
+custom_fonts/font = SubResource( 10 )
+text = "asdasdasdasd"
+align = 3
+autowrap = true
+
+[node name="nome" type="Label" parent="Dialogo"]
+modulate = Color( 0.482353, 0.407843, 0.407843, 1 )
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 360.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 11 )
+text = "Nathália "
+
+[node name="passar" type="TextureButton" parent="Dialogo"]
+margin_left = 962.0
+margin_top = 132.0
+margin_right = 1022.0
+margin_bottom = 189.0
+texture_normal = ExtResource( 6 )
+expand = true
+
+[node name="Timer1" type="Timer" parent="Dialogo"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="Dialogo"]
+one_shot = true
+
 [connection signal="body_entered" from="Situacao" to="." method="_on_Situacao_body_entered"]
 [connection signal="body_entered" from="Situacao" to="Personagem" method="_on_Situacao_body_entered"]
 [connection signal="body_exited" from="Situacao" to="." method="_on_Situacao_body_exited"]
+[connection signal="pressed" from="Dialogo/passar" to="." method="_on_passar_pressed"]
+[connection signal="timeout" from="Dialogo/Timer1" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Dialogo/Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="Dialogo/Timer2" to="Personagem" method="_on_Timer2_timeout"]

@@ -5,7 +5,7 @@
 [ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=3]
 [ext_resource path="res://imagens/tutorial/diamond_sprite/diamond-sh.png" type="Texture" id=4]
 [ext_resource path="res://fontes/OldSchoolAdventures-42j9.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://imagens/icon.png" type="Texture" id=6]
+[ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -84,7 +84,7 @@ shape = SubResource( 1 )
 position = Vector2( -0.271179, 1.62711 )
 scale = Vector2( 0.804555, 0.804555 )
 frames = SubResource( 10 )
-frame = 5
+frame = 6
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -102,19 +102,20 @@ margin_bottom = 602.0
 
 [node name="texto" type="Label" parent="dialogo"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 27.0
-margin_top = 33.0
-margin_right = 950.0
-margin_bottom = 170.0
+margin_left = 24.0
+margin_top = 27.0
+margin_right = 955.0
+margin_bottom = 164.0
 custom_fonts/font = SubResource( 11 )
-text = "Use as setas (imagens das setas) no canto inferior esquerdo para se movimentar para as direções correspondente"
+text = "Use as setas (imagens das setas) no canto inferior esquerdo para se movimentar para as direções correspondente."
+align = 3
 autowrap = true
 
 [node name="diamante2" type="AnimatedSprite" parent="dialogo"]
 position = Vector2( 70, -26 )
 scale = Vector2( 4.77295, 4.77295 )
 frames = SubResource( 10 )
-frame = 5
+frame = 6
 playing = true
 
 [node name="TextureButton" type="TextureButton" parent="dialogo"]

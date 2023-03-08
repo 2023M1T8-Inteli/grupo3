@@ -13,6 +13,8 @@ func _ready():
 	$CaixaDialogo/Escolha4.hide()
 	$CaixaDialogo.hide()
 	$NPC.hide()
+	$parabens.hide()
+	$atencao.hide()
 
 func _on_Situao1_body_entered(body):
 	$NPC.show()
@@ -34,6 +36,7 @@ func _on_Button_pressed():
 		$CaixaDialogo/Escolha3.show()
 		$CaixaDialogo/Escolha4.show()
 	elif n == 4:
+		Global.controle_false()
 		get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn")
 	else:
 		$CaixaDialogo/conversa.text = dialogo[n]
@@ -43,6 +46,7 @@ func _on_Escolha1_pressed():
 	pontuacao += 2
 	Global.atualizar_pontuacao(pontuacao)
 	clear() 
+	$parabens.show()
 	$CaixaDialogo/conversa2.text = dialogo[n][1]
 	n += 1
 	
@@ -50,6 +54,7 @@ func _on_Escolha2_pressed():
 	pontuacao += 1
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
+	$parabens.show()
 	$CaixaDialogo/conversa2.text = dialogo[n][2]
 	n += 1
 	
@@ -57,6 +62,7 @@ func _on_Escolha3_pressed():
 	pontuacao += 0
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
+	$atencao.show()
 	$CaixaDialogo/conversa2.text = dialogo[n][3]
 	n += 1
 	
@@ -64,6 +70,7 @@ func _on_Escolha4_pressed():
 	pontuacao += -1
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
+	$atencao.show()
 	$CaixaDialogo/conversa2.text = dialogo[n][4]
 	n += 1
 	

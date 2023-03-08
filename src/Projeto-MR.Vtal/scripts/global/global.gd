@@ -23,9 +23,14 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 			3: "A família tem grande importância, mas devemos sempre ter um comportamento ético. A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno",
 			4: "A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno, portanto, aceitar o dinheiro seria totalmente contra o código de ética da empresa."
 		}
+	},
+	"nathalia": {
+		0: "Olá, eu sou a Nathália, e sou funcionária da Vtal! E assim como o Fabrício, te auxiliarei na sua jornada. Te ajudarei passando instruções sobre o que fazer ao longo da sua jornada, por meio dessas ligações!",
+		1: "Como sua primeira tarefa, precisamos que você instale a fibra ótica de um cliente na casa do quarteirão abaixo!"
 	}
 }
 
+var controle_nathalia = true
 var posicaox
 var posicaoy
 var pontuacao = 0 
@@ -40,10 +45,15 @@ func atualizar_pontuacao(x):
 func atualizar_posicao(x,y):
 	posicaox = x
 	posicaoy = y
-	return posicaox + posicaoy
 	
+func velocity(x):
+	speed = x 
+
 var speed = 300
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	controle_nathalia = true
+	
+func controle_false():
+	controle_nathalia = false
+	print(controle_nathalia)
