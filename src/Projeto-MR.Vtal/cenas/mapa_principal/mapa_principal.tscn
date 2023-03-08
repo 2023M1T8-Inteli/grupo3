@@ -110,41 +110,41 @@ rotation = -0.000547229
 scale = Vector2( 1.0537, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Personagem"]
+scale = Vector2( 1, 1 )
 current = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Personagem/Camera2D"]
-anims/RESET = SubResource( 12 )
-anims/mover = SubResource( 13 )
+[node name="Node2D" parent="Personagem/Camera2D" instance=ExtResource( 9 )]
+position = Vector2( -757.168, -315.437 )
+rotation = 0.000576615
+scale = Vector2( 0.949037, 1 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Personagem/Camera2D"]
-layer = 2
+[node name="gamepad" type="Node2D" parent="Personagem/Camera2D"]
+position = Vector2( -419.559, 162.758 )
+rotation = 0.000576615
+scale = Vector2( 0.949037, 1 )
 
-[node name="gamepad" type="Node2D" parent="Personagem/Camera2D/CanvasLayer"]
-position = Vector2( 97, 443 )
-scale = Vector2( 1, 1 )
-
-[node name="up" type="TouchScreenButton" parent="Personagem/Camera2D/CanvasLayer/gamepad"]
+[node name="up" type="TouchScreenButton" parent="Personagem/Camera2D/gamepad"]
 position = Vector2( -10, 18 )
 normal = ExtResource( 1 )
 
-[node name="down" type="TouchScreenButton" parent="Personagem/Camera2D/CanvasLayer/gamepad"]
+[node name="down" type="TouchScreenButton" parent="Personagem/Camera2D/gamepad"]
 position = Vector2( 50, 139 )
 rotation = 3.14159
 normal = ExtResource( 1 )
 
-[node name="right" type="TouchScreenButton" parent="Personagem/Camera2D/CanvasLayer/gamepad"]
+[node name="right" type="TouchScreenButton" parent="Personagem/Camera2D/gamepad"]
 position = Vector2( 83, 46 )
 rotation = 1.5708
 normal = ExtResource( 1 )
 
-[node name="left" type="TouchScreenButton" parent="Personagem/Camera2D/CanvasLayer/gamepad"]
+[node name="left" type="TouchScreenButton" parent="Personagem/Camera2D/gamepad"]
 position = Vector2( -44, 109 )
 rotation = -1.5708
 normal = ExtResource( 1 )
 
-[node name="Node2D" parent="Personagem/Camera2D/CanvasLayer" instance=ExtResource( 9 )]
-position = Vector2( -222, -10 )
-scale = Vector2( 1, 1 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Personagem/Camera2D"]
+anims/RESET = SubResource( 12 )
+anims/mover = SubResource( 13 )
 
 [node name="Mapa_detalhes" type="Sprite" parent="."]
 position = Vector2( 128, 34 )
@@ -478,7 +478,6 @@ position = Vector2( 6, 3 )
 shape = SubResource( 8 )
 
 [node name="Dialogo" type="ColorRect" parent="."]
-visible = false
 margin_left = -395.0
 margin_top = 309.0
 margin_right = 626.0
@@ -519,16 +518,26 @@ one_shot = true
 [node name="Timer2" type="Timer" parent="Dialogo"]
 one_shot = true
 
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="sobre_pos" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [node name="Transition" parent="." instance=ExtResource( 7 )]
 
-[connection signal="pressed" from="Personagem/Camera2D/CanvasLayer/gamepad/up" to="Personagem" method="_on_up_pressed"]
-[connection signal="released" from="Personagem/Camera2D/CanvasLayer/gamepad/up" to="Personagem" method="_on_up_released"]
-[connection signal="pressed" from="Personagem/Camera2D/CanvasLayer/gamepad/down" to="Personagem" method="_on_down_pressed"]
-[connection signal="released" from="Personagem/Camera2D/CanvasLayer/gamepad/down" to="Personagem" method="_on_down_released"]
-[connection signal="pressed" from="Personagem/Camera2D/CanvasLayer/gamepad/right" to="Personagem" method="_on_right_pressed"]
-[connection signal="released" from="Personagem/Camera2D/CanvasLayer/gamepad/right" to="Personagem" method="_on_right_released"]
-[connection signal="pressed" from="Personagem/Camera2D/CanvasLayer/gamepad/left" to="Personagem" method="_on_left_pressed"]
-[connection signal="released" from="Personagem/Camera2D/CanvasLayer/gamepad/left" to="Personagem" method="_on_left_released"]
+[connection signal="pressed" from="Personagem/Camera2D/gamepad/up" to="Personagem" method="_on_up_pressed"]
+[connection signal="released" from="Personagem/Camera2D/gamepad/up" to="Personagem" method="_on_up_released"]
+[connection signal="pressed" from="Personagem/Camera2D/gamepad/down" to="Personagem" method="_on_down_pressed"]
+[connection signal="released" from="Personagem/Camera2D/gamepad/down" to="Personagem" method="_on_down_released"]
+[connection signal="pressed" from="Personagem/Camera2D/gamepad/right" to="Personagem" method="_on_right_pressed"]
+[connection signal="released" from="Personagem/Camera2D/gamepad/right" to="Personagem" method="_on_right_released"]
+[connection signal="pressed" from="Personagem/Camera2D/gamepad/left" to="Personagem" method="_on_left_pressed"]
+[connection signal="released" from="Personagem/Camera2D/gamepad/left" to="Personagem" method="_on_left_released"]
 [connection signal="body_entered" from="Situacao" to="." method="_on_Situacao_body_entered"]
 [connection signal="body_entered" from="Situacao" to="Personagem" method="_on_Situacao_body_entered"]
 [connection signal="body_exited" from="Situacao" to="." method="_on_Situacao_body_exited"]

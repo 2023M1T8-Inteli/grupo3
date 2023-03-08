@@ -81,7 +81,6 @@ position = Vector2( 1191, 261 )
 scale = Vector2( 2.39655, 2.39655 )
 frames = SubResource( 7 )
 animation = "esquerda"
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NPC"]
@@ -186,7 +185,6 @@ position = Vector2( 176, 236 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="parabens" type="Sprite" parent="."]
-visible = false
 position = Vector2( 478, 194 )
 scale = Vector2( 0.578907, 0.688244 )
 texture = ExtResource( 9 )
