@@ -5,6 +5,8 @@ var n = 0
 var controle = Global.controle_nathalia
 
 func _ready():
+	$Transition/Fill/animation.play_backwards("transicao")
+	$Transition.timer()
 	$Dialogo.hide()
 	if controle == true:
 		$Dialogo/texto.text = dialogo[0]
@@ -14,7 +16,6 @@ func _ready():
 		$Situacao.queue_free()
 		$Personagem.position = Vector2(Global.posicaox,Global.posicaoy)
 		
-	
 func _on_Situacao_body_entered(body):
 	get_tree().change_scene("res://cenas/situacoes/Situação1.tscn")
 	get_parent().remove_child($Situacao)
@@ -37,3 +38,5 @@ func _on_Timer2_timeout():
 	Global.velocity(300)
 #	Global.controle_false()
 
+func _on_transicao_timeout():
+	$Transition.queue_free()

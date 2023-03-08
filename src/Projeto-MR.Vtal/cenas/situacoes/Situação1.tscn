@@ -81,7 +81,6 @@ position = Vector2( 1191, 261 )
 scale = Vector2( 2.39655, 2.39655 )
 frames = SubResource( 7 )
 animation = "esquerda"
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NPC"]
@@ -96,13 +95,12 @@ margin_bottom = 607.0
 
 [node name="conversa" type="Label" parent="CaixaDialogo"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 7.0
+margin_left = 10.0
 margin_top = 20.0
 margin_right = 964.0
 margin_bottom = 173.0
 custom_fonts/font = SubResource( 4 )
 align = 3
-valign = 3
 autowrap = true
 
 [node name="Button" type="TextureButton" parent="CaixaDialogo"]
@@ -115,14 +113,13 @@ expand = true
 
 [node name="conversa2" type="Label" parent="CaixaDialogo"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 48.0
+margin_left = 22.0
 margin_top = 22.0
 margin_right = 964.0
 margin_bottom = 163.0
 rect_pivot_offset = Vector2( -17, -459 )
 custom_fonts/font = SubResource( 6 )
 align = 3
-valign = 3
 autowrap = true
 
 [node name="Escolha1" type="LinkButton" parent="CaixaDialogo"]
