@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://imagens/joy_stick/pixil-frame-0 (4).png" type="Texture" id=1]
 [ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
@@ -81,6 +81,9 @@ extents = Vector2( 48.5, 17.5 )
 
 [sub_resource type="CircleShape2D" id=9]
 radius = 6.0
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 3.5, 30.75 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 12.5, 90 )
@@ -307,6 +310,9 @@ shape = SubResource( 5 )
 [node name="Casa" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
 polygon = PoolVector2Array( 221, 709, 224, 354, 384, 355, 384, 484, 384, 574, 460, 576, 607, 577, 608, 709 )
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
+polygon = PoolVector2Array( 383, 1152, 289, 1152, 286, 866, 894, 863, 897, 1151, 451, 1153, 449, 1145, 386, 1145 )
+
 [node name="Carro2" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
 polygon = PoolVector2Array( -256, 642, -192, 642, -191, 604, -188, 605, -188, 600, -197, 592, -218, 591, -224, 591, -224, 579, -256, 578, -256, 598, -261, 598, -261, 604, -256, 604 )
 
@@ -314,7 +320,7 @@ polygon = PoolVector2Array( -256, 642, -192, 642, -191, 604, -188, 605, -188, 60
 polygon = PoolVector2Array( -288, 675, -256, 675, -256, 738, -288, 738 )
 
 [node name="Casa2" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
-polygon = PoolVector2Array( 288, 899, 288, 900, 224, 897, 223.292, 1124.31, 223, 1218, 352, 1219, 352, 1188, 254, 1190, 254, 929, 288, 930, 289, 1153, 896, 1153, 895, 1185, 482, 1185, 481, 1218, 931, 1219, 931, 964, 897, 963, 897, 903 )
+polygon = PoolVector2Array( -840, 1184, -831, 1173, -826, 1166 )
 
 [node name="Lago" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
 polygon = PoolVector2Array( -464, 1001, -449, 1002, -447, 1005, -434, 1006, -417, 1003, -399, 1006, -383, 1002, -370, 1008, -354, 1003, -337, 1007, -321, 1001, -303.12, 999.676, -295, 1009, -296, 1026, -301, 1039, -297.962, 1054.66, -300, 1073, -297, 1096, -302, 1106, -298, 1121, -295, 1123, -295, 1140, -301, 1142, -304.97, 1148, -319, 1146, -332, 1141, -349, 1144, -366, 1141, -382, 1144, -397, 1140, -412, 1145, -430, 1141, -445, 1143, -448, 1147, -470.849, 1147.85, -474, 1143, -473, 1124, -469, 1122, -467, 1108, -470, 1090, -467, 1076, -470, 1058, -466, 1042, -470, 1029, -474, 1025, -473.352, 1009.44 )
@@ -466,6 +472,18 @@ polygon = PoolVector2Array( -1185, 767, -1059, 767, -1057, 743, -994, 743, -992,
 position = Vector2( 128, 43 )
 polygon = PoolVector2Array( -226, 669, -285, 671, -288, 335, -251, 293, -99, 289, -96, 671, -159, 674, -163, 637, -226, 643 )
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
+position = Vector2( 128, 34 )
+polygon = PoolVector2Array( 191, 1155, 210, 1149, 214, 1151, 222, 1163, 222, 1173, 222, 1173, 178, 1185, 96, 1183, 95, 860, 759, 890, 764, 925, 794, 922, 800, 1177, 354, 1183, 352, 1163, 360, 1157, 380, 1153, 389, 1156, 418, 1149, 426, 1153, 457, 1153, 764, 1149, 766, 934, 153, 895, 130, 895, 131, 1151 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 753, 763 )
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 393.501, 336.749 )
+shape = SubResource( 14 )
+
 [node name="sobre_pos" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -547,6 +565,7 @@ one_shot = true
 
 [node name="Transition" parent="." instance=ExtResource( 7 )]
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Situacao" to="." method="_on_Situacao_body_entered"]
 [connection signal="body_entered" from="Situacao" to="Personagem" method="_on_Situacao_body_entered"]
 [connection signal="body_exited" from="Situacao" to="." method="_on_Situacao_body_exited"]

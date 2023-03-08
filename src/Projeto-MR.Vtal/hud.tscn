@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://hud.gd" type="Script" id=1]
-[ext_resource path="res://imagens/hud/pixil-frame-0 (5)_scaled_14x_pngcrushed (2).png" type="Texture" id=2]
-[ext_resource path="res://imagens/hud/pixil-frame-0 (5).png" type="Texture" id=3]
+[ext_resource path="res://imagens/hud/pixil-frame-0 (5)_scaled_14x_pngcrushed (4).png" type="Texture" id=2]
+[ext_resource path="res://imagens/hud/pixil-frame-0 (5)_scaled_14x_pngcrushed (3).png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 243, 59 )
@@ -24,8 +24,8 @@ scale = Vector2( 0.375074, 0.357076 )
 texture = ExtResource( 2 )
 
 [node name="nivel" type="Sprite" parent="VBoxContainer"]
-position = Vector2( 142, 72 )
-scale = Vector2( 2.44371, 1.99838 )
+position = Vector2( 124, 128 )
+scale = Vector2( 0.387465, 0.313405 )
 texture = ExtResource( 3 )
 
 [node name="moldura" type="Sprite" parent="VBoxContainer"]

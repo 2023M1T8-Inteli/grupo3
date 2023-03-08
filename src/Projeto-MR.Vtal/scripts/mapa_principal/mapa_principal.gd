@@ -40,3 +40,9 @@ func _on_Timer2_timeout():
 
 func _on_transicao_timeout():
 	$Transition.queue_free()
+
+
+func _on_Area2D_body_entered(body):
+	
+#	$Personagem.position = Vector2(Global.posicaox,Global.posicaoy)
+	get_tree().change_scene("res://casa_1_interno.tscn") # Replace with function body.
