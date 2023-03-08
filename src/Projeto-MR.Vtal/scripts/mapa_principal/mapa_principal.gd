@@ -7,10 +7,10 @@ var controle = Global.controle_nathalia
 func _ready():
 	$Transition/Fill/animation.play_backwards("transicao")
 	$Transition.timer()
-	$Dialogo.hide()
+	$dialogo/Dialogo.hide()
 	if controle == true:
-		$Dialogo/texto.text = dialogo[0]
-		$Dialogo.show()
+		$dialogo/Dialogo/texto.text = dialogo[0]
+		$dialogo/Dialogo.show()
 		Global.velocity(0)
 	else:
 		$Situacao.queue_free()
@@ -24,14 +24,14 @@ func _on_passar_pressed():
 	n += 1 
 	if n == 2:
 		$Personagem/Camera2D/AnimationPlayer.play("mover")
-		$Dialogo.hide()
-		$Dialogo/Timer1.start()
+		$dialogo/Dialogo.hide()
+		$dialogo/Dialogo/Timer1.start()
 	else:
-		$Dialogo/texto.text = dialogo[n]
+		$dialogo/Dialogo/texto.text = dialogo[n]
 	
 func _on_Timer_timeout():
 	$Personagem/Camera2D/AnimationPlayer.play_backwards("mover")
-	$Dialogo/Timer2.start()
+	$dialogo/Dialogo/Timer2.start()
 	
 	
 func _on_Timer2_timeout():
