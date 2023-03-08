@@ -2,6 +2,7 @@ extends Node
 
 var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do diamante no tutorial
 	'fabricio': {
+		"nome":"Fabricio",
 		0: 'Olá, tudo bem? Prazer em conhecê-lo, eu sou o Fabrício, e trabalho na V.Tal. Estarei aqui para te auxiliar!',
 		1: 'Será delegado a você algumas tarefas para serem cumpridas. Entretanto, haverão alguns desafios que irão tentar dificultar o seu trajeto.',
 		2: "Eles se resumem a conflitos que testarão o seu comportamento ético perante operações da empresa.",
@@ -14,14 +15,15 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 		2: 'No canto da tela, você pode clicar no botão “Y” para ligar ou desligar o som do jogo.'
 	},
 	'situacao1': {
+		"nome":"Robert",
 		0: "Boa tarde, meu nome é Robert e eu trabalho na Claro, vi que você trabalha na V.tal para qual empresa você está indo instalar a fibra?",
 		1: "Estou indo instalar da Tim",
 		2: "Eu te pago uma grana se você instalar essa fibra da minha empresa",
 		3: {
-			1: "Parabéns!! Você escolheu a opção mais ética",
-			2: "Parabéns!! Você escolheu uma ótima opção, agindo plenamente de acordo com o código de ética da empresa. Entretanto, faltou reportar a situação para o compliance, para que possamos ter um controle da situação!",
-			3: "A família tem grande importância, mas devemos sempre ter um comportamento ético. A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno",
-			4: "A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno, portanto, aceitar o dinheiro seria totalmente contra o código de ética da empresa."
+			1: {"text":"Parabéns!! Você escolheu a opção mais ética", "feedback":"res://imagens/parabens.png"},
+			2: {"text":"Parabéns!! Você escolheu uma ótima opção, agindo plenamente de acordo com o código de ética da empresa. Entretanto, faltou reportar a situação para o compliance, para que possamos ter um controle da situação!", "feedback":"res://imagens/parabens.png"},
+			3: {"text":"A família tem grande importância, mas devemos sempre ter um comportamento ético. A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno", "feedback":"res://imagens/aten.png"},
+			4: {"text":"A opção mais ética seria recusar a proposta e reportar ao compliance, já que se trata de uma tentativa de suborno, portanto, aceitar o dinheiro seria totalmente contra o código de ética da empresa.", "feedback":"res://imagens/aten.png"}
 		}
 	},
 	"nathalia": {

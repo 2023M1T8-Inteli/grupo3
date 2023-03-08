@@ -4,17 +4,18 @@ var pontuacao = Global.pontuacao
 var dialogo = Global.falas['situacao1']
 var n = 1
 var timer = Timer.new()
-
+onready var imagem = $parabens
 func _ready():
+	$CaixaDialogo/nome.text = dialogo.nome
 	$CaixaDialogo/conversa.text = dialogo[0]
-	$CaixaDialogo/Escolha1.hide()
-	$CaixaDialogo/Escolha2.hide()
-	$CaixaDialogo/Escolha3.hide()
-	$CaixaDialogo/Escolha4.hide()
+	$CaixaDialogo/VBoxContainer/Escolha1.hide()
+	$CaixaDialogo/VBoxContainer/Escolha2.hide()
+	$CaixaDialogo/VBoxContainer/Escolha3.hide()
+	$CaixaDialogo/VBoxContainer/Escolha4.hide()
 	$CaixaDialogo.hide()
 	$NPC.hide()
 	$parabens.hide()
-	$atencao.hide()
+#	$atencao.hide()
 
 func _on_Situao1_body_entered(body):
 	$NPC.show()
@@ -31,53 +32,71 @@ func _on_Button_pressed():
 	if n == 3:
 		$CaixaDialogo/conversa.hide()
 		$CaixaDialogo/Button.hide()
-		$CaixaDialogo/Escolha1.show()
-		$CaixaDialogo/Escolha2.show()
-		$CaixaDialogo/Escolha3.show()
-		$CaixaDialogo/Escolha4.show()
-	elif n == 4:
-		Global.controle_false()
-		get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn")
+		$CaixaDialogo/VBoxContainer/Escolha1.show()
+		$CaixaDialogo/VBoxContainer/Escolha2.show()
+		$CaixaDialogo/VBoxContainer/Escolha3.show()
+		$CaixaDialogo/VBoxContainer/Escolha4.show()
+#	elif n == 4:
+#		Global.controle_false()
+#		get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn")
 	else:
 		$CaixaDialogo/conversa.text = dialogo[n]
 		n += 1 
 	
 func _on_Escolha1_pressed():
+	dialogo = dialogo[n][1]
 	pontuacao += 2
 	Global.atualizar_pontuacao(pontuacao)
 	clear() 
-	$parabens.show()
-	$CaixaDialogo/conversa2.text = dialogo[n][1]
+	$CaixaDialogo.queue_free()
+	$parabens.visible = true
+	imagem.texture = load(dialogo.feedback)
+	$parabens/feedback.text = dialogo.text
 	n += 1
 	
 func _on_Escolha2_pressed():
-	pontuacao += 1
+	dialogo = dialogo[n][2]
+	pontuacao += 3
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
+	$CaixaDialogo.queue_free()
+	imagem.texture = load(dialogo.feedback)
 	$parabens.show()
-	$CaixaDialogo/conversa2.text = dialogo[n][2]
+	$parabens/feedback.text = dialogo.text
 	n += 1
 	
 func _on_Escolha3_pressed():
+	dialogo = dialogo[n][3]
 	pontuacao += 0
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
-	$atencao.show()
-	$CaixaDialogo/conversa2.text = dialogo[n][3]
+	$CaixaDialogo.queue_free()
+	$parabens.show()
+	imagem.texture = load(dialogo.feedback)
+	
+	$parabens/feedback.text = dialogo.text
 	n += 1
 	
 func _on_Escolha4_pressed():
+	dialogo = dialogo[n][4]
 	pontuacao += -1
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
-	$atencao.show()
-	$CaixaDialogo/conversa2.text = dialogo[n][4]
+	$CaixaDialogo.queue_free()
+	imagem.texture = load(dialogo.feedback)
+	$parabens.show()
+	$parabens/feedback.text = dialogo.text
 	n += 1
 	
 func clear():
-	$CaixaDialogo/Escolha1.queue_free()
-	$CaixaDialogo/Escolha2.queue_free()
-	$CaixaDialogo/Escolha3.queue_free()
-	$CaixaDialogo/Escolha4.queue_free()
+	$CaixaDialogo/VBoxContainer/Escolha1.queue_free()
+	$CaixaDialogo/VBoxContainer/Escolha2.queue_free()
+	$CaixaDialogo/VBoxContainer/Escolha3.queue_free()
+	$CaixaDialogo/VBoxContainer/Escolha4.queue_free()
 	$CaixaDialogo/Button.show()
 	
+
+
+func _on_passar_pressed():
+	Global.controle_false()
+	get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn") # Replace with function body.

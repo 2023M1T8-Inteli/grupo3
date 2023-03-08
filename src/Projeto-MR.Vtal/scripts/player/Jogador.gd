@@ -8,7 +8,10 @@ var controle_tela = Global.controle_tela
 var vel = Vector2.ZERO
 var posicaox
 var posicaoy
-
+var up = false
+var down = false
+var right = false
+var left = false
 func _ready() -> void:
 	screen_size = get_viewport_rect().size #Define o tamanho da tela
 
@@ -17,15 +20,19 @@ func _physics_process(delta): #Define os controles do jogo
 	if control == true:
 		var velocity = Vector2.ZERO  #define a velocidade como uma variável de vetor
 		vel = Vector2.ZERO
-		if Input.is_action_pressed('ui_up'):
+		if Input.is_action_pressed('ui_up') or up:
 			vel.y-= 1
-		if Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("ui_down")or down:
+#			vel.y-= 1
 			vel.y += 1
-		if Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("ui_left")or left:
+#			vel.y-= 1
 			vel.x -= 1 
-		if Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("ui_right")or right:
+#			vel.y-= 1
 			vel.x += 1
 		if Input.is_action_pressed("ui_accept"):
+			vel.y-= 1
 			print(pontuacao)
 		move_and_slide(vel * speed, Vector2.ZERO)
 		if vel.x != 0: 
@@ -73,3 +80,35 @@ func _on_Situao1_body_exited(body):
 func _on_Timer2_timeout():
 	pass
 		
+
+
+func _on_up_pressed():
+	up = true # Replace with function body.
+
+
+func _on_up_released():
+	up = false #Replace with function body.
+
+
+func _on_down_pressed():
+	down = true # Replace with function body.
+
+
+func _on_down_released():
+	down = false # Replace with function body.
+
+
+func _on_right_pressed():
+	right = true # Replace with function body.
+
+
+func _on_left_pressed():
+	left = true# Replace with function body.
+
+
+func _on_right_released():
+	right = false # Replace with function body.
+
+
+func _on_left_released():
+	left = false # Replace with function body.

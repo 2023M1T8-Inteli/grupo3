@@ -18,6 +18,10 @@ config/icon="res://imagens/icon.png"
 
 Global="*res://scripts/global/global.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global]
 
 layer=false
@@ -25,6 +29,10 @@ layer=false
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [mono]
 

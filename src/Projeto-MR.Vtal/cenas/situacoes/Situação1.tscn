@@ -7,7 +7,7 @@
 [ext_resource path="res://imagens/mapa_principal/mapa-vtal-2.0.png" type="Texture" id=5]
 [ext_resource path="res://imagens/spritesheet_player/3ef35179c31986a (4).png" type="Texture" id=6]
 [ext_resource path="res://imagens/spritesheet_player/3ef35179c31986a (2).png" type="Texture" id=7]
-[ext_resource path="res://imagens/icon.png" type="Texture" id=8]
+[ext_resource path="res://imagens/aten.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17.5, 160 )
@@ -81,6 +81,7 @@ position = Vector2( 1191, 261 )
 scale = Vector2( 2.39655, 2.39655 )
 frames = SubResource( 7 )
 animation = "esquerda"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NPC"]
@@ -95,11 +96,13 @@ margin_bottom = 607.0
 
 [node name="conversa" type="Label" parent="CaixaDialogo"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 10.0
-margin_top = 20.0
+margin_left = 22.0
+margin_top = 51.0
 margin_right = 964.0
-margin_bottom = 173.0
+margin_bottom = 192.0
+rect_scale = Vector2( 0.947278, 0.752094 )
 custom_fonts/font = SubResource( 4 )
+text = "tttttttttttttttt"
 align = 3
 autowrap = true
 
@@ -113,53 +116,63 @@ expand = true
 
 [node name="conversa2" type="Label" parent="CaixaDialogo"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 964.0
-margin_bottom = 163.0
+margin_left = 26.0
+margin_top = 167.0
+margin_right = 968.0
+margin_bottom = 308.0
+rect_scale = Vector2( 0.947, 0.752 )
 rect_pivot_offset = Vector2( -17, -459 )
 custom_fonts/font = SubResource( 6 )
 align = 3
 autowrap = true
 
-[node name="Escolha1" type="LinkButton" parent="CaixaDialogo"]
+[node name="nome" type="Label" parent="CaixaDialogo"]
+margin_left = 33.0
+margin_top = 14.0
+margin_right = 80.0
+margin_bottom = 28.0
+rect_scale = Vector2( 2.62044, 2.48758 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CaixaDialogo"]
+margin_left = 13.0
+margin_top = 55.0
+margin_right = 952.0
+margin_bottom = 179.0
+
+[node name="Escolha1" type="LinkButton" parent="CaixaDialogo/VBoxContainer"]
 modulate = Color( 0.45098, 0.368627, 0.368627, 1 )
-margin_left = 7.0
-margin_top = 19.0
-margin_right = 731.0
-margin_bottom = 42.0
+margin_right = 939.0
+margin_bottom = 23.0
 custom_fonts/font = SubResource( 5 )
 text = "a) Recusar a oferta e informar o Compliance sobre o acontecimento"
 underline = 1
 
-[node name="Escolha2" type="LinkButton" parent="CaixaDialogo"]
+[node name="Escolha2" type="LinkButton" parent="CaixaDialogo/VBoxContainer"]
 modulate = Color( 0.45098, 0.368627, 0.368627, 1 )
-margin_left = 7.0
-margin_top = 57.0
-margin_right = 480.0
-margin_bottom = 80.0
+margin_top = 27.0
+margin_right = 939.0
+margin_bottom = 50.0
 focus_mode = 2
 custom_fonts/font = SubResource( 5 )
 text = "b) Recusar a oferta e instalar a fibra da Tim"
 underline = 1
 
-[node name="Escolha3" type="LinkButton" parent="CaixaDialogo"]
+[node name="Escolha3" type="LinkButton" parent="CaixaDialogo/VBoxContainer"]
 modulate = Color( 0.45098, 0.368627, 0.368627, 1 )
-margin_left = 6.0
-margin_top = 91.0
-margin_right = 922.0
-margin_bottom = 117.0
+margin_top = 54.0
+margin_right = 939.0
+margin_bottom = 77.0
 focus_mode = 2
 custom_fonts/font = SubResource( 5 )
 text = "c) Pegar o dinheiro, mas não instalar a fibra e usar para auxiliar na renda da sua família"
 underline = 1
 
-[node name="Escolha4" type="LinkButton" parent="CaixaDialogo"]
+[node name="Escolha4" type="LinkButton" parent="CaixaDialogo/VBoxContainer"]
 modulate = Color( 0.45098, 0.368627, 0.368627, 1 )
-margin_left = 6.0
-margin_top = 125.0
-margin_right = 410.0
-margin_bottom = 148.0
+margin_top = 81.0
+margin_right = 939.0
+margin_bottom = 104.0
 focus_mode = 2
 custom_fonts/font = SubResource( 5 )
 text = "d) Aceitar o dinheiro e instalar a fibra"
@@ -173,23 +186,34 @@ position = Vector2( 176, 236 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="parabens" type="Sprite" parent="."]
-modulate = Color( 0, 1, 0.0156863, 1 )
-position = Vector2( 477, 254 )
-scale = Vector2( 4.00781, 4.00781 )
-texture = ExtResource( 8 )
+visible = false
+position = Vector2( 478, 194 )
+scale = Vector2( 0.578907, 0.688244 )
+texture = ExtResource( 9 )
 
-[node name="atencao" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 477.5, 252.5 )
-scale = Vector2( 3.89063, 3.89063 )
-texture = ExtResource( 8 )
+[node name="passar" type="TouchScreenButton" parent="parabens"]
+position = Vector2( 192.877, 446.75 )
+scale = Vector2( 0.303139, 0.26466 )
+normal = ExtResource( 1 )
+
+[node name="feedback" type="Label" parent="parabens"]
+margin_left = -415.0
+margin_top = 175.0
+margin_right = -210.0
+margin_bottom = 269.0
+rect_scale = Vector2( 3.01222, 3.91155 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.678431, 0.647059, 0.647059, 1 )
+text = "teste"
+autowrap = true
 
 [connection signal="body_entered" from="." to="." method="_on_Situao1_body_entered"]
 [connection signal="body_entered" from="." to="Personagem" method="_on_Situao1_body_entered"]
 [connection signal="body_exited" from="." to="Personagem" method="_on_Situao1_body_exited"]
 [connection signal="pressed" from="CaixaDialogo/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="CaixaDialogo/Escolha1" to="." method="_on_Escolha1_pressed"]
-[connection signal="pressed" from="CaixaDialogo/Escolha2" to="." method="_on_Escolha2_pressed"]
-[connection signal="pressed" from="CaixaDialogo/Escolha3" to="." method="_on_Escolha3_pressed"]
-[connection signal="pressed" from="CaixaDialogo/Escolha4" to="." method="_on_Escolha4_pressed"]
+[connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha1" to="." method="_on_Escolha1_pressed"]
+[connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha2" to="." method="_on_Escolha2_pressed"]
+[connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha3" to="." method="_on_Escolha3_pressed"]
+[connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha4" to="." method="_on_Escolha4_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="parabens/passar" to="." method="_on_passar_pressed"]

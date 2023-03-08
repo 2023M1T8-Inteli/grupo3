@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://imagens/tutorial/46701.jpg" type="Texture" id=1]
 [ext_resource path="res://scripts/tutorial/tutorial.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://fontes/OldSchoolAdventures-42j9.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=6]
 [ext_resource path="res://cenas/TransitionNode.tscn" type="PackedScene" id=7]
+[ext_resource path="res://imagens/joy_stick/pixil-frame-0 (4).png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -74,6 +75,30 @@ texture = ExtResource( 1 )
 position = Vector2( -6, 37 )
 scale = Vector2( 1.5, 1.5 )
 
+[node name="gamepad" type="Node2D" parent="."]
+position = Vector2( 87, 434 )
+rotation = 0.000576615
+scale = Vector2( 0.949037, 1 )
+
+[node name="up" type="TouchScreenButton" parent="gamepad"]
+position = Vector2( -10, 18 )
+normal = ExtResource( 8 )
+
+[node name="down" type="TouchScreenButton" parent="gamepad"]
+position = Vector2( 50, 139 )
+rotation = 3.14159
+normal = ExtResource( 8 )
+
+[node name="right" type="TouchScreenButton" parent="gamepad"]
+position = Vector2( 83, 46 )
+rotation = 1.5708
+normal = ExtResource( 8 )
+
+[node name="left" type="TouchScreenButton" parent="gamepad"]
+position = Vector2( -44, 109 )
+rotation = -1.5708
+normal = ExtResource( 8 )
+
 [node name="Diamante" type="Area2D" parent="."]
 position = Vector2( 512, 544 )
 scale = Vector2( 3.6875, 3.6875 )
@@ -85,7 +110,7 @@ shape = SubResource( 1 )
 position = Vector2( -0.271179, 1.62711 )
 scale = Vector2( 0.804555, 0.804555 )
 frames = SubResource( 10 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -96,6 +121,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="dialogo" type="ColorRect" parent="."]
+visible = false
 margin_left = -1.0
 margin_top = 434.0
 margin_right = 1026.0
@@ -116,7 +142,7 @@ autowrap = true
 position = Vector2( 70, -26 )
 scale = Vector2( 4.77295, 4.77295 )
 frames = SubResource( 10 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="TextureButton" type="TextureButton" parent="dialogo"]
@@ -133,6 +159,14 @@ expand = true
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="pressed" from="gamepad/up" to="Personagem" method="_on_up_pressed"]
+[connection signal="released" from="gamepad/up" to="Personagem" method="_on_up_released"]
+[connection signal="pressed" from="gamepad/down" to="Personagem" method="_on_down_pressed"]
+[connection signal="released" from="gamepad/down" to="Personagem" method="_on_down_released"]
+[connection signal="pressed" from="gamepad/right" to="Personagem" method="_on_right_pressed"]
+[connection signal="released" from="gamepad/right" to="Personagem" method="_on_right_released"]
+[connection signal="pressed" from="gamepad/left" to="Personagem" method="_on_left_pressed"]
+[connection signal="released" from="gamepad/left" to="Personagem" method="_on_left_released"]
 [connection signal="area_entered" from="Diamante" to="." method="_on_diamond_area_entered"]
 [connection signal="body_entered" from="Diamante" to="." method="_on_Diamante_body_entered"]
 [connection signal="body_entered" from="Diamante" to="Personagem" method="_on_Diamante_body_entered"]
