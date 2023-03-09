@@ -31,11 +31,7 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 		1: "Como sua primeira tarefa, precisamos que você instale a fibra ótica de um cliente na casa do quarteirão abaixo!"
 	}
 }
-var nivel_1= false
-var nivel_2= false
-var nivel_3= false
-var nivel_4= false
-var nivel_5= false
+
 var controle_nathalia = true
 var posicaox
 var posicaoy

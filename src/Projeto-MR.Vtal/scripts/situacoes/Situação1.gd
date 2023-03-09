@@ -55,7 +55,7 @@ func _on_Escolha1_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 	
 func _on_Escolha2_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	dialogo = dialogo[n][2]
-	pontuacao += 1
+	pontuacao += 3
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo.queue_free()

@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://imagens/joy_stick/pixil-frame-0 (4).png" type="Texture" id=1]
 [ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/mapa_principal/mapa_principal.gd" type="Script" id=3]
-[ext_resource path="res://fontes/PTSansNarrow-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fontes/OldSchoolAdventures-42j9.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://imagens/mapa_principal/sobreposição.png" type="Texture" id=5]
 [ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=6]
 [ext_resource path="res://cenas/TransitionNode.tscn" type="PackedScene" id=7]
@@ -12,8 +12,6 @@
 [ext_resource path="res://imagens/mapa_principal/cones_area-2.png" type="Texture" id=10]
 [ext_resource path="res://imagens/mapa_principal/cones_area-3.png" type="Texture" id=11]
 [ext_resource path="res://TransitionCasas.tscn" type="PackedScene" id=12]
-[ext_resource path="res://excl.tscn" type="PackedScene" id=13]
-[ext_resource path="res://fontes/OldSchoolAdventures-42j9.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="Animation" id=12]
 length = 0.001
@@ -73,9 +71,6 @@ tracks/1/keys = {
 radius = 9.0
 height = 6.0
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 48, 16 )
-
 [sub_resource type="CircleShape2D" id=9]
 radius = 6.0
 
@@ -83,15 +78,14 @@ radius = 6.0
 extents = Vector2( 3.5, 30.75 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 6.5, 21 )
+extents = Vector2( 12.5, 90 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 20
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=11]
-size = 24
-font_data = ExtResource( 14 )
+font_data = ExtResource( 4 )
 
 [node name="Mapa" type="Node2D"]
 script = ExtResource( 3 )
@@ -127,15 +121,15 @@ current = true
 anims/RESET = SubResource( 12 )
 anims/mover = SubResource( 13 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Cones" type="Sprite" parent="."]
 position = Vector2( 128, 34 )
 texture = ExtResource( 11 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Cones"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cones/StaticBody2D"]
 position = Vector2( -128, -34 )
-polygon = PoolVector2Array( 215, -1316, 193, -1282.69, 193, -287, 364, -286, 379, -286, 391, -270, 385, -255, 414, -252, 422, -235, 417, -223, 440, -221, 455, -205, 451, -190, 449, 223, 1315, 1089, 1537, 1090, 1536, 1062, 1329, 1063, 468, 191, 480, -238, 391, -319, 229, -315, 223, -1312 )
+polygon = PoolVector2Array( 215, -1316, 193, -1282.69, 193, -441.9, 193, -363.9, 193, -287, 364, -286, 379, -286, 391, -270, 385, -255, 414, -252, 422, -235, 417, -223, 440, -221, 455, -205, 451, -190, 449, 223, 1315, 1089, 1537, 1090, 1536, 1062, 1329, 1063, 722.605, 456.605, 480, 214, 480, -238, 391, -319, 229, -315, 223, -1312 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 128, 34 )
@@ -377,10 +371,6 @@ polygon = PoolVector2Array( -768, 1154, -767, 1182, -704, 1182, -704, 1154 )
 [node name="Árvore3" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
 polygon = PoolVector2Array( -672, 1179, -662, 1178, -659, 1187, -653, 1187, -652, 1179, -643, 1181, -639, 1178, -647, 1167, -665, 1167, -672, 1173 )
 
-[node name="Barreira6" type="CollisionShape2D" parent="Mapa_detalhes/Colisões"]
-position = Vector2( -1137, 1106 )
-shape = SubResource( 6 )
-
 [node name="Barreira5" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
 polygon = PoolVector2Array( 355, -286, 379, -286, 391, -271, 385, -255, 414, -253, 422, -236, 417, -223, 440, -221, 456, -204, 448, -190, 481, -189, 469, -218, 448, -226, 434, -252, 415, -259, 404, -282, 383, -291, 371, -316, 359, -309 )
 
@@ -409,7 +399,7 @@ polygon = PoolVector2Array( -1218, 1374, -1212, -1532, -1467, -1519, -1510, 1398
 polygon = PoolVector2Array( -1215, -1311, 196.476, -1309.46, 1536, -1308, 1774, -1304, 1765, -1613, -1479, -1589, -1472, -1520 )
 
 [node name="AreaExterna4" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
-polygon = PoolVector2Array( 1957, 38, 1781, -1303, 1535, -1307, 1535, 1374, 1759, 1375 )
+polygon = PoolVector2Array( 1739, 85, 1759, -1316, 1535, -1307, 1535, 1374, 1759, 1375 )
 
 [node name="carrinhos-1" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
 polygon = PoolVector2Array( -638, -130, -633, -126, -481, -127, -484, -133, -484, -140, -480, -145, -485, -158, -636, -158 )
@@ -430,7 +420,7 @@ polygon = PoolVector2Array( 959, -124, 960, -95, 480, -95, 480, -169, 484, -170,
 
 [node name="piscina_clube" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
 position = Vector2( 128, 43 )
-polygon = PoolVector2Array( 1247, -488, 1247, -986, 1227, -998, 1208, -992, 1188, -992, 1161, -992, 1154, -986, 1149, -972, 1149, -968, 1142, -960, 1117, -960, 1117, -949, 1115, -937, 1084, -926, 1052, -890, 1021, -856, 811, -651, 808, -528, 844, -409, 1072, -403 )
+polygon = PoolVector2Array( 1247, -488, 1249, -1003, 1153, -1003, 1149, -972, 1119, -967, 1116, -937, 1099, -939, 1052, -890, 1021, -856, 811, -651, 808, -528, 844, -409, 1072, -403 )
 
 [node name="restaurante" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
 polygon = PoolVector2Array( 733, 397, 678, 392, 674, 363, 638, 364, 639, 332, 607, 330, 608, 72, 1180, 77, 1183, 364, 1089, 364, 1089, 394, 709, 397, 718, 393, 722, 395 )
@@ -492,7 +482,7 @@ layer = 2
 position = Vector2( 254, 799 )
 
 [node name="Situacao1" type="CollisionShape2D" parent="Situacao"]
-position = Vector2( 3.5, -66 )
+position = Vector2( 6, 3 )
 shape = SubResource( 8 )
 
 [node name="gamepad" type="CanvasLayer" parent="."]
@@ -571,11 +561,6 @@ one_shot = true
 [node name="Timer4" type="Timer" parent="."]
 one_shot = true
 
-[node name="excl" parent="." instance=ExtResource( 13 )]
-position = Vector2( 258, 734 )
-
-[node name="nivel_1" type="Timer" parent="."]
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Situacao" to="." method="_on_Situacao_body_entered"]
 [connection signal="body_entered" from="Situacao" to="Personagem" method="_on_Situacao_body_entered"]
@@ -594,4 +579,3 @@ position = Vector2( 258, 734 )
 [connection signal="timeout" from="dialogo/Dialogo/Timer2" to="Personagem" method="_on_Timer2_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
 [connection signal="timeout" from="Timer4" to="." method="_on_Timer4_timeout"]
-[connection signal="timeout" from="nivel_1" to="." method="_on_nivel_1_timeout"]
