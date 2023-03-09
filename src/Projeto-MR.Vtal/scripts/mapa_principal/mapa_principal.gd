@@ -26,7 +26,7 @@ func _on_passar_pressed():
 	n += 1 
 	if n == 2:
 		$Personagem/Camera2D/AnimationPlayer.play("mover")
-		$dialogo/Dialogo.hide()
+		$dialogo.hide()
 		$dialogo/Dialogo/Timer1.start()
 	else:
 		$dialogo/Dialogo/texto.text = dialogo[n]

@@ -34,7 +34,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1191, 261 ), Vector2( 327, 261 ) ]
+"values": [ Vector2( 1189, 331 ), Vector2( 327, 261 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1112, 243 ), Vector2( 299, 243 ) ]
+"values": [ Vector2( 1155, 337 ), Vector2( 353, 337 ) ]
 }
 
 [sub_resource type="DynamicFont" id=4]
@@ -79,7 +79,7 @@ position = Vector2( 193, 239 )
 shape = SubResource( 1 )
 
 [node name="NPC" type="AnimatedSprite" parent="."]
-position = Vector2( 1191, 261 )
+position = Vector2( 1189, 331 )
 scale = Vector2( 2.39655, 2.39655 )
 frames = SubResource( 7 )
 animation = "esquerda"
@@ -183,8 +183,8 @@ underline = 1
 wait_time = 3.0
 
 [node name="Personagem" parent="." instance=ExtResource( 2 )]
-position = Vector2( 176, 236 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 194, 190 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="atencao" type="Sprite" parent="."]
 position = Vector2( 539, 195 )
@@ -233,6 +233,7 @@ valign = 1
 autowrap = true
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_Situao1_body_entered"]
 [connection signal="body_entered" from="." to="Personagem" method="_on_Situao1_body_entered"]
