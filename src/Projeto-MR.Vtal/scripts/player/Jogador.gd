@@ -22,13 +22,13 @@ func _physics_process(delta): #Define os controles do jogo
 		vel = Vector2.ZERO
 		if Input.is_action_pressed('ui_up') or up:
 			vel.y-= 1
-		if Input.is_action_pressed("ui_down")or down:
+		if Input.is_action_pressed("ui_down") or down:
 #			vel.y-= 1
 			vel.y += 1
-		if Input.is_action_pressed("ui_left")or left:
+		if Input.is_action_pressed("ui_left") or left:
 #			vel.y-= 1
 			vel.x -= 1 
-		if Input.is_action_pressed("ui_right")or right:
+		if Input.is_action_pressed("ui_right") or right:
 #			vel.y-= 1
 			vel.x += 1
 		if Input.is_action_pressed("ui_accept"):
@@ -53,7 +53,7 @@ func _physics_process(delta): #Define os controles do jogo
 #		else:
 #			position.x = clamp(position.x, 0, screen_size.x) #Define o limite horizontal da tela
 #			position.y = clamp(position.y, 0, screen_size.y) #Define o limite vertical da tela
-		
+		#Código comentado para poder instanciar o mapa principal diretamente sem definir a tela. Mas pro funcionamento do jogo, ele deve estar rodando
 func _on_Diamante_body_entered(body):
 	Global.velocity(0)
 	control = false
@@ -66,12 +66,12 @@ func _on_Situacao_body_entered(body):
 	Global.atualizar_posicao(posicaox,posicaoy)
 	control = false
 	$Animacao.stop()
-	get_tree().change_scene("res://cenas/situacoes/Situação1.tscn")
+#	get_tree().change_scene("res://cenas/situacoes/Situação1.tscn")
 
 func _on_Situao1_body_entered(body):
 	control = false
 	$Animacao.stop()
-
+#
 func _on_Situao1_body_exited(body):
 #	var posicaox = float(Global.posicaox)
 #	var posicaoy = float(Global.posicaoy)

@@ -4,8 +4,10 @@ var pontuacao = Global.pontuacao
 var dialogo = Global.falas['situacao1']
 var n = 1
 var timer = Timer.new()
-onready var imagem = $parabens
+onready var imagem = $atencao
 func _ready():
+	$CanvasLayer.comecar_reverso()
+	$CanvasLayer.timer()
 	$CaixaDialogo/nome.text = dialogo.nome
 	$CaixaDialogo/conversa.text = dialogo[0]
 	$CaixaDialogo/VBoxContainer/Escolha1.hide()
@@ -14,8 +16,8 @@ func _ready():
 	$CaixaDialogo/VBoxContainer/Escolha4.hide()
 	$CaixaDialogo.hide()
 	$NPC.hide()
+	$atencao.hide()
 	$parabens.hide()
-#	$atencao.hide()
 
 func _on_Situao1_body_entered(body):
 	$NPC.show()
@@ -36,9 +38,6 @@ func _on_Button_pressed():
 		$CaixaDialogo/VBoxContainer/Escolha2.show()
 		$CaixaDialogo/VBoxContainer/Escolha3.show()
 		$CaixaDialogo/VBoxContainer/Escolha4.show()
-#	elif n == 4:
-#		Global.controle_false()
-#		get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn")
 	else:
 		$CaixaDialogo/conversa.text = dialogo[n]
 		n += 1 
@@ -50,7 +49,7 @@ func _on_Escolha1_pressed():
 	clear() 
 	$CaixaDialogo.queue_free()
 	$parabens.visible = true
-	imagem.texture = load(dialogo.feedback)
+#	imagem.texture = load(dialogo.feedback) #código comentado porque fiz essa função de outra forma. Ver com o Ever qual se encaixa melhor
 	$parabens/feedback.text = dialogo.text
 	n += 1
 	
@@ -60,7 +59,7 @@ func _on_Escolha2_pressed():
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo.queue_free()
-	imagem.texture = load(dialogo.feedback)
+#	imagem.texture = load(dialogo.feedback)
 	$parabens.show()
 	$parabens/feedback.text = dialogo.text
 	n += 1
@@ -71,10 +70,9 @@ func _on_Escolha3_pressed():
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo.queue_free()
-	$parabens.show()
-	imagem.texture = load(dialogo.feedback)
-	
-	$parabens/feedback.text = dialogo.text
+	$atencao.show()
+#	imagem.texture = load(dialogo.feedback)
+	$atencao/feedback.text = dialogo.text
 	n += 1
 	
 func _on_Escolha4_pressed():
@@ -83,9 +81,9 @@ func _on_Escolha4_pressed():
 	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo.queue_free()
-	imagem.texture = load(dialogo.feedback)
-	$parabens.show()
-	$parabens/feedback.text = dialogo.text
+#	imagem.texture = load(dialogo.feedback)
+	$atencao.show()
+	$atencao/feedback.text = dialogo.text
 	n += 1
 	
 func clear():
@@ -95,8 +93,6 @@ func clear():
 	$CaixaDialogo/VBoxContainer/Escolha4.queue_free()
 	$CaixaDialogo/Button.show()
 	
-
-
 func _on_passar_pressed():
 	Global.controle_false()
 	get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn") # Replace with function body.
