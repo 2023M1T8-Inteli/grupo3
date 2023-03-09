@@ -3,7 +3,7 @@
 [ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=1]
 [ext_resource path="res://imagens/dialogo_fabricio/pixil-frame-0 (6).png" type="Texture" id=2]
 [ext_resource path="res://scripts/diálogo/DiálogoFabricio.gd" type="Script" id=3]
-[ext_resource path="res://fontes/OldSchoolAdventures-42j9.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fontes/PTSansNarrow-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://cenas/TransitionNode.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Theme" id=1]

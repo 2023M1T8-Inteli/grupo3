@@ -1,8 +1,61 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://hud.gd" type="Script" id=1]
 [ext_resource path="res://imagens/hud/pixil-frame-0 (5)_scaled_14x_pngcrushed (4).png" type="Texture" id=2]
 [ext_resource path="res://imagens/hud/pixil-frame-0 (5)_scaled_14x_pngcrushed (3).png" type="Texture" id=3]
+[ext_resource path="res://imagens/pixil-frame-0 (5)_scaled_14x_pngcrushed (5) (2).png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 450, 600, 450 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 600, 0, 600, 600 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 600, 450, 600, 450 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 900, 600, 450 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 243, 59 )
@@ -23,9 +76,39 @@ position = Vector2( 121, 140 )
 scale = Vector2( 0.375074, 0.357076 )
 texture = ExtResource( 2 )
 
-[node name="nivel" type="Sprite" parent="VBoxContainer"]
+[node name="pont_2" type="AnimatedSprite" parent="VBoxContainer"]
+visible = false
+position = Vector2( 123, 57 )
+scale = Vector2( 0.387465, 0.313405 )
+frames = SubResource( 2 )
+
+[node name="pont_1" type="AnimatedSprite" parent="VBoxContainer"]
+visible = false
+position = Vector2( 124, 128 )
+scale = Vector2( 0.387465, 0.313405 )
+frames = SubResource( 4 )
+
+[node name="pont_0" type="Sprite" parent="VBoxContainer"]
+visible = false
 position = Vector2( 124, 128 )
 scale = Vector2( 0.387465, 0.313405 )
 texture = ExtResource( 3 )
 
+[node name="pont3" type="AnimatedSprite" parent="VBoxContainer"]
+visible = false
+position = Vector2( 124, 58 )
+scale = Vector2( 0.387, 0.313 )
+frames = SubResource( 6 )
+
+[node name="pont_4" type="AnimatedSprite" parent="VBoxContainer"]
+visible = false
+position = Vector2( 124, 10 )
+scale = Vector2( 0.387, 0.313 )
+frames = SubResource( 8 )
+
 [node name="moldura" type="Sprite" parent="VBoxContainer"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
