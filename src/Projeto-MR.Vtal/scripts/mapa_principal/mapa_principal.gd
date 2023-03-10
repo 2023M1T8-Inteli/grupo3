@@ -3,6 +3,7 @@ extends Node2D
 var dialogo = Global.falas["nathalia"] #carrega falas da nathalia 
 var n = 0 #controle de falas, indíce do dicionário 
 var controle = Global.controle_nathalia #controla se está no diálogo da nathalia, dicionário nathalia 
+var nivel_2 = Global.nivel_2
 
 func _ready(): 
 	$dialogo.hide() #esconde dialogo e falas durante início da cena 
@@ -15,13 +16,11 @@ func _ready():
 #		Global.nivel_1 = true
 #		Global.pontuacao = 0
 	else:
-		var nivel_2 = Global.nivel_2
 		$Situacao.queue_free() #após dialogo o personagem fica na posição inicial 
 		$Personagem.position = Vector2(Global.posicaox,Global.posicaoy) 
 		$excl.hide()
-	if Global.nivel_2 == true :
+	if Global.teste == true :
 		$nivel_1.start()
-		
 
 func _on_Situacao_body_entered(body): #inicia animação nathalia e começa o timer da cena 
 	$CanvasLayer.show()
@@ -76,12 +75,8 @@ func _on_nivel_12_timeout():
 
 func _on_area_desbloqueada_timeout():
 	$Sprite/AnimationPlayer.play("sumir")
-	$nivel_1_2.start()
-	
-	
-func _on_area_reverso_timeout():
 	$Sprite/StaticBody2D.queue_free()
-	$Sprite.queue_free()
-	$Sprite/StaticBody2D/CollisionPolygon2D2.queue_free()
-	$Sprite/StaticBody2D/CollisionPolygon2D.queue_free()
+	$nivel_1_2.start()
+
+func _on_area_reverso_timeout():
 	$Personagem/Camera2D.position = Vector2(0,0)

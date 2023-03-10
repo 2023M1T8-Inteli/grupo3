@@ -31,6 +31,7 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 		1: "Como sua primeira tarefa, precisamos que você instale a fibra ótica de um cliente na casa do quarteirão abaixo!"
 	}
 }
+
 var nivel_1= false
 var nivel_2= false
 var nivel_3= false
@@ -55,7 +56,7 @@ func atualizar_posicao(x,y):
 func velocity(x):
 	speed = x 
 
-var speed = 300
+var speed = 250
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	controle_nathalia = true

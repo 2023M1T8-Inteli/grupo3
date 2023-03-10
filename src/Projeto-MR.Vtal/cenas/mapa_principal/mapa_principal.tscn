@@ -144,7 +144,7 @@ extents = Vector2( 3.5, 30.75 )
 extents = Vector2( 9.5, 72.5 )
 
 [sub_resource type="DynamicFont" id=10]
-size = 20
+size = 28
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=11]
@@ -444,12 +444,6 @@ polygon = PoolVector2Array( -672, 1179, -662, 1178, -659, 1187, -653, 1187, -652
 position = Vector2( -1137, 1106 )
 shape = SubResource( 6 )
 
-[node name="Barreira5" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
-polygon = PoolVector2Array( 355, -286, 379, -286, 391, -271, 385, -255, 414, -253, 422, -236, 417, -223, 440, -221, 456, -204, 448, -190, 481, -189, 469, -218, 448, -226, 434, -252, 415, -259, 404, -282, 383, -291, 371, -316, 359, -309 )
-
-[node name="Barreira" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
-polygon = PoolVector2Array( -189, -191, -162, -190, -172, -215, -158, -222, -128, -222, -140, -246, -125, -253, -95, -254, -106, -279, -92, -287, -66, -287, -75, -316, -96, -303, -181, -216 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa_detalhes/Colisões"]
 position = Vector2( 624, 725 )
 shape = SubResource( 9 )
@@ -593,10 +587,10 @@ margin_bottom = 604.0
 
 [node name="texto" type="Label" parent="dialogo/Dialogo"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 11.0
+margin_left = 15.0
 margin_top = 51.0
 margin_right = 964.0
-margin_bottom = 184.0
+margin_bottom = 177.0
 custom_fonts/font = SubResource( 10 )
 text = "asdasdasdasd"
 align = 3

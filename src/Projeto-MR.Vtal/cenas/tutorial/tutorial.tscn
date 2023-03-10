@@ -72,30 +72,30 @@ scale = Vector2( 0.290257, 0.160466 )
 texture = ExtResource( 1 )
 
 [node name="Personagem" parent="." instance=ExtResource( 3 )]
-position = Vector2( -6, 37 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 512, 300 )
+scale = Vector2( 1.3, 1.3 )
 
 [node name="gamepad" type="Node2D" parent="."]
-position = Vector2( 87, 434 )
+position = Vector2( 76, 402 )
 rotation = 0.000576615
-scale = Vector2( 0.949037, 1 )
+scale = Vector2( 1.4, 1.4 )
 
 [node name="up" type="TouchScreenButton" parent="gamepad"]
-position = Vector2( -10, 18 )
+position = Vector2( 6.65666, -4.00366 )
 normal = ExtResource( 8 )
 
 [node name="down" type="TouchScreenButton" parent="gamepad"]
-position = Vector2( 50, 139 )
+position = Vector2( 66.6566, 116.996 )
 rotation = 3.14159
 normal = ExtResource( 8 )
 
 [node name="right" type="TouchScreenButton" parent="gamepad"]
-position = Vector2( 83, 46 )
+position = Vector2( 98.8078, 22.8148 )
 rotation = 1.5708
 normal = ExtResource( 8 )
 
 [node name="left" type="TouchScreenButton" parent="gamepad"]
-position = Vector2( -44, 109 )
+position = Vector2( -28.1922, 85.8148 )
 rotation = -1.5708
 normal = ExtResource( 8 )
 
@@ -110,6 +110,7 @@ shape = SubResource( 1 )
 position = Vector2( -0.271179, 1.62711 )
 scale = Vector2( 0.804555, 0.804555 )
 frames = SubResource( 10 )
+frame = 5
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -120,7 +121,6 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="dialogo" type="ColorRect" parent="."]
-visible = false
 margin_left = -1.0
 margin_top = 434.0
 margin_right = 1026.0
@@ -141,6 +141,7 @@ autowrap = true
 position = Vector2( 70, -26 )
 scale = Vector2( 4.77295, 4.77295 )
 frames = SubResource( 10 )
+frame = 5
 playing = true
 
 [node name="TextureButton" type="TextureButton" parent="dialogo"]

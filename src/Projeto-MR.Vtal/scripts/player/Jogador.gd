@@ -12,6 +12,7 @@ var up = false
 var down = false
 var right = false
 var left = false
+
 func _ready() -> void:
 	screen_size = get_viewport_rect().size #Define o tamanho da tela
 
@@ -48,11 +49,11 @@ func _physics_process(delta): #Define os controles do jogo
 				$Animacao.animation = 'baixo'
 		else:
 			$Animacao.stop()
-#		if controle_tela == false:
-#			pass
-#		else:
-#			position.x = clamp(position.x, 0, screen_size.x) #Define o limite horizontal da tela
-#			position.y = clamp(position.y, 0, screen_size.y) #Define o limite vertical da tela
+		if controle_tela == false:
+			pass
+		else:
+			position.x = clamp(position.x, 0, screen_size.x) #Define o limite horizontal da tela
+			position.y = clamp(position.y, 0, screen_size.y) #Define o limite vertical da tela
 		#Código comentado para poder instanciar o mapa principal diretamente sem definir a tela. Mas pro funcionamento do jogo, ele deve estar rodando
 func _on_Diamante_body_entered(body):
 	Global.velocity(0)
@@ -80,39 +81,29 @@ func _on_Situao1_body_exited(body):
 func _on_Timer2_timeout():
 	pass
 		
-
-
 func _on_up_pressed():
 	up = true # Replace with function body.
-
 
 func _on_up_released():
 	up = false #Replace with function body.
 
-
 func _on_down_pressed():
 	down = true # Replace with function body.
-
 
 func _on_down_released():
 	down = false # Replace with function body.
 
-
 func _on_right_pressed():
 	right = true # Replace with function body.
-
 
 func _on_left_pressed():
 	left = true# Replace with function body.
 
-
 func _on_right_released():
 	right = false # Replace with function body.
 
-
 func _on_left_released():
 	left = false # Replace with function body.
-
 
 func _on_Area2D_body_entered(body):
 	posicaox = position.x 
