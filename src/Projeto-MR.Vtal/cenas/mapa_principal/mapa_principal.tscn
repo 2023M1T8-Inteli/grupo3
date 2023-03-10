@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://imagens/joy_stick/pixil-frame-0 (4).png" type="Texture" id=1]
 [ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
@@ -42,6 +42,33 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "area_desb"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.2, 1 ),
+"transitions": PoolRealArray( 1, 1.18921 ),
+"update": 0,
+"values": [ Vector2( 27.2536, 517.016 ), Vector2( -188.751, -207.109 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=13]
 resource_name = "mover"
 tracks/0/type = "value"
@@ -67,6 +94,37 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "sumir"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0.4, 0.7, 1.1, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.94615 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="CapsuleShape2D" id=5]
@@ -125,6 +183,7 @@ current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Personagem/Camera2D"]
 anims/RESET = SubResource( 12 )
+anims/area_desb = SubResource( 15 )
 anims/mover = SubResource( 13 )
 
 [node name="Sprite2" type="Sprite" parent="."]
@@ -149,6 +208,10 @@ polygon = PoolVector2Array( -1313, 1030, -1301, 1028, -1299, 1022, -1294, 1021, 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Sprite/StaticBody2D"]
 position = Vector2( -128, -34 )
 polygon = PoolVector2Array( -1184, 1089, -1214, 1090, -1214, 1055, -1185, 1056, -1181, 1063 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/RESET = SubResource( 16 )
+anims/sumir = SubResource( 17 )
 
 [node name="Mapa_detalhes" type="Sprite" parent="."]
 position = Vector2( 128, 34 )
@@ -574,7 +637,13 @@ one_shot = true
 [node name="excl" parent="." instance=ExtResource( 13 )]
 position = Vector2( 258, 734 )
 
+[node name="nivel_1_2" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="nivel_1" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Situacao" to="." method="_on_Situacao_body_entered"]
@@ -594,4 +663,5 @@ position = Vector2( 258, 734 )
 [connection signal="timeout" from="dialogo/Dialogo/Timer2" to="Personagem" method="_on_Timer2_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
 [connection signal="timeout" from="Timer4" to="." method="_on_Timer4_timeout"]
+[connection signal="timeout" from="nivel_1_2" to="." method="_on_nivel_12_timeout"]
 [connection signal="timeout" from="nivel_1" to="." method="_on_nivel_1_timeout"]

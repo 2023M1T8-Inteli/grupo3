@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://hud.gd" type="Script" id=1]
-[ext_resource path="res://imagens/hud/pixil-frame-0 (5)_scaled_14x_pngcrushed (4).png" type="Texture" id=2]
+[ext_resource path="res://imagens/níveis/MolduraDefensorPronta.png" type="Texture" id=2]
 [ext_resource path="res://imagens/hud/pixil-frame-0 (5)_scaled_14x_pngcrushed (3).png" type="Texture" id=3]
 [ext_resource path="res://imagens/pixil-frame-0 (5)_scaled_14x_pngcrushed (5) (2).png" type="Texture" id=4]
 
@@ -107,8 +107,3 @@ scale = Vector2( 0.387, 0.313 )
 frames = SubResource( 8 )
 
 [node name="moldura" type="Sprite" parent="VBoxContainer"]
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

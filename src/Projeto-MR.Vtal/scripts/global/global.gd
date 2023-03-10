@@ -41,7 +41,7 @@ var posicaox
 var posicaoy
 var pontuacao = 0 
 var controle_tela = true
-
+var teste
 func tela():
 	controle_tela = false
 

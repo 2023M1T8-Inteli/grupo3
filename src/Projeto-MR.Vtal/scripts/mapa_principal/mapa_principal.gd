@@ -3,32 +3,25 @@ extends Node2D
 var dialogo = Global.falas["nathalia"] #carrega falas da nathalia 
 var n = 0 #controle de falas, indíce do dicionário 
 var controle = Global.controle_nathalia #controla se está no diálogo da nathalia, dicionário nathalia 
-var nivel_1 = Global.nivel_1
 var nivel_2 = Global.nivel_2
-var nivel_3 = Global.nivel_3
-var nivel_4 = Global.nivel_4
-var nivel_5 = Global.nivel_5
-
-func _process(delta):
-	if Global.pontuacao == 2:
-		Global.nivel_2 = true
-		
-		$nivel_1.start()
-		
 func _ready(): 
 	$dialogo.hide() #esconde dialogo e falas durante início da cena 
 	$CanvasLayer.hide()
-	if controle == true: #primeira abertura do jogo inicia dialogo com nathalia  
+	if controle == true:#primeira abertura do jogo inicia dialogo com nathalia  
 		$hud.hide()
 		$dialogo.hide()
 		$Transition/Fill/animation.play_backwards("transicao")
 		$Timer4.start()
-		Global.nivel_1 = true
-		Global.pontuacao = 0
+#		Global.nivel_1 = true
+#		Global.pontuacao = 0
 	else:
 		$Situacao.queue_free() #após dialogo o personagem fica na posição inicial 
 		$Personagem.position = Vector2(Global.posicaox,Global.posicaoy) 
 		$excl.hide()
+	if Global.teste == true :
+		$nivel_1.start()
+		
+
 func _on_Situacao_body_entered(body): #inicia animação nathalia e começa o timer da cena 
 	$CanvasLayer.show()
 	esconder()
@@ -71,7 +64,14 @@ func _on_Timer4_timeout(): #carrega a hud
 	$dialogo/Dialogo/texto.text = dialogo[0]
 	Global.velocity(0)
 	$dialogo.show()
-
+	$Sprite.queue_free()
+	
 
 func _on_nivel_1_timeout():
-	Global.pontuacao = 0
+	print(Global.nivel_2)
+	$Personagem/Camera2D/AnimationPlayer.play("area_desb")
+	$Sprite/AnimationPlayer.play("sumir")
+	$nivel_1_2.start()
+
+func _on_nivel_12_timeout():
+	$Personagem/Camera2D/AnimationPlayer.play_backwards("area_desb") # Replace with function body.

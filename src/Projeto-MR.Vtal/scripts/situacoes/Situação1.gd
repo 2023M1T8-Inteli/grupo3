@@ -5,6 +5,7 @@ var dialogo = Global.falas['situacao1'] #utiliando a variavel definida no script
 var n = 1 #controle do diálogo
 var timer = Timer.new() #tempo de transição
 onready var imagem = $atencao #carrega a imagem atenção 
+
 func _ready(): #
 	$CanvasLayer.comecar_reverso()
 	$CanvasLayer.timer() #inicia o tempo e animação reversa acima 
@@ -45,7 +46,6 @@ func _on_Button_pressed(): #após a apresentação da pergunta as escolhas apare
 func _on_Escolha1_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	dialogo = dialogo[n][1]
 	pontuacao += 2
-	Global.atualizar_pontuacao(pontuacao)
 	clear() 
 	$CaixaDialogo.queue_free()
 	$parabens.visible = true
@@ -56,7 +56,6 @@ func _on_Escolha1_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 func _on_Escolha2_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	dialogo = dialogo[n][2]
 	pontuacao += 1
-	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo.queue_free()
 #	imagem.texture = load(dialogo.feedback)
@@ -67,7 +66,6 @@ func _on_Escolha2_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 func _on_Escolha3_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	dialogo = dialogo[n][3]
 	pontuacao += 0
-	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo.queue_free()
 	$atencao.show()
@@ -78,7 +76,6 @@ func _on_Escolha3_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 func _on_Escolha4_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	dialogo = dialogo[n][4]
 	pontuacao += -1
-	Global.atualizar_pontuacao(pontuacao)
 	clear()
 	$CaixaDialogo.queue_free()
 #	imagem.texture = load(dialogo.feedback)
@@ -95,4 +92,6 @@ func clear(): #encerra a cena
 	
 func _on_passar_pressed(): #volta o personagem para o mapa 
 	Global.controle_false()
+	Global.atualizar_pontuacao(pontuacao)
+	Global.teste = true
 	get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn") # Replace with function body.
