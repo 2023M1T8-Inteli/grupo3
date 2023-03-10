@@ -13,10 +13,10 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "baixo",
-"speed": 9.0
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ],
 "loop": true,
@@ -30,7 +30,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "paradob",
+"name": "parado",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -51,7 +51,7 @@ script = ExtResource( 5 )
 position = Vector2( 1.00001, 3.00001 )
 scale = Vector2( 0.0462583, 0.0482471 )
 frames = SubResource( 1 )
-animation = "paradob"
+animation = "parado"
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 pause_mode = 1

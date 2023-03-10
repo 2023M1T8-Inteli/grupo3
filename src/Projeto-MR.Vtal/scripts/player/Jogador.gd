@@ -21,17 +21,31 @@ func _physics_process(delta): #Define os controles do jogo
 	if control == true:
 		var velocity = Vector2.ZERO  #define a velocidade como uma variável de vetor
 		vel = Vector2.ZERO
+		
 		if Input.is_action_pressed('ui_up') or up:
 			vel.y-= 1
-		if Input.is_action_pressed("ui_down") or down:
-#			vel.y-= 1
-			vel.y += 1
+		elif Input.is_action_just_released('ui_up') or up:
+			$Animacao.stop()
+			$Animacao.animation = 'paradoc'
+			
 		if Input.is_action_pressed("ui_left") or left:
 #			vel.y-= 1
 			vel.x -= 1 
+		elif Input.is_action_just_released("ui_left") or left:
+			$Animacao.play("paradod")
+			
 		if Input.is_action_pressed("ui_right") or right:
 #			vel.y-= 1
 			vel.x += 1
+		elif Input.is_action_just_released("ui_right") or right:
+			$Animacao.play("paradod")
+			
+		if Input.is_action_pressed("ui_down") or down:
+#			vel.y-= 1
+			vel.y += 1
+		elif Input.is_action_just_released("ui_down") or down:
+			$Animacao.play("parado")
+			
 		if Input.is_action_pressed("ui_accept"):
 			vel.y-= 1
 			print(pontuacao)
@@ -47,9 +61,9 @@ func _physics_process(delta): #Define os controles do jogo
 				$Animacao.animation = 'cima'
 			elif vel.y == 1:
 				$Animacao.animation = 'baixo'
+				
 		else:
 			$Animacao.stop()
-			
 		
 		
 		if controle_tela == false:
