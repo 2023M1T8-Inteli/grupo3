@@ -19,3 +19,7 @@ func _on_Volume_pressed(): #ao clicar no botão de volume a música para e ao cl
 	else:
 		$musica_fundo.play()
 		music_status = true
+
+
+func _on_sair_pressed():
+	get_tree().quit()
