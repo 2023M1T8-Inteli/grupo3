@@ -69,8 +69,10 @@ func _on_Timer4_timeout(): #carrega a hud
 
 func _on_nivel_1_timeout():
 	print(Global.nivel_2)
+	$Personagem/Camera2D.position = Vector2(56,425)
 	$Personagem/Camera2D/AnimationPlayer.play("area_desb")
 	$Sprite/AnimationPlayer.play("sumir")
+	$Sprite/StaticBody2D.queue_free()
 	$nivel_1_2.start()
 
 func _on_nivel_12_timeout():
