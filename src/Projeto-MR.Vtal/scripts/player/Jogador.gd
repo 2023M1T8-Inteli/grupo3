@@ -34,7 +34,7 @@ func _physics_process(delta): #Define os controles do jogo
 		if Input.is_action_pressed("ui_accept"):
 			vel.y-= 1
 			print(pontuacao)
-		move_and_slide(vel * speed, Vector2.ZERO)
+		move_and_slide(vel.normalized() * speed, Vector2.ZERO)
 		if vel.x != 0: 
 			$Animacao.play()
 			$Animacao.animation = 'direita'
@@ -112,3 +112,9 @@ func _on_right_released():
 
 func _on_left_released():
 	left = false # Replace with function body.
+
+
+func _on_Area2D_body_entered(body):
+	posicaox = position.x 
+	posicaoy = position.y +10
+	Global.atualizar_posicao(posicaox,posicaoy)

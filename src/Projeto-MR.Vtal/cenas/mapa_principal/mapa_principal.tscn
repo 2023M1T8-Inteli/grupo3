@@ -54,7 +54,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1.18921 ),
 "update": 0,
-"values": [ Vector2( -19.8664, -122.011 ), Vector2( -461.878, -584.266 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -461.878, -584.266 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:zoom")
@@ -81,7 +81,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 311.076, 401.18 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 171.474, 581.099 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:zoom")
@@ -93,7 +93,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -141,7 +141,7 @@ radius = 6.0
 extents = Vector2( 3.5, 30.75 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 6.5, 21 )
+extents = Vector2( 9.5, 72.5 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 20
@@ -525,7 +525,20 @@ polygon = PoolVector2Array( -278, -136, -264, -136, -252, -150, -222, -150, -209
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
 polygon = PoolVector2Array( -1020, -121, -1020, -62, -996, -62, -995, -122, -999, -125, -1017, -125 )
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
+[node name="Mesa" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
+polygon = PoolVector2Array( -721, -1139, -721, -1122, -716, -1106, -714, -1093, -718, -1087, -711, -1087, -707, -1095, -699, -1095, -694, -1088, -689, -1086, -686, -1093, -683, -1098, -655, -1101, -657, -1088, -648, -1086, -644, -1093, -637, -1093, -632, -1087, -628, -1086, -626, -1113, -621, -1132, -622, -1140, -628, -1140, -636, -1125, -640, -1125, -640, -1140, -656, -1147, -656, -1152, -661, -1156, -660, -1162, -660, -1174, -670, -1180, -674, -1181, -685, -1171, -685, -1160, -683, -1156, -689, -1149, -703, -1139, -704, -1126, -709, -1126, -713, -1137, -717, -1141 )
+
+[node name="Mesa2" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
+position = Vector2( 95, 96 )
+polygon = PoolVector2Array( -721, -1139, -721, -1122, -716, -1106, -714, -1093, -718, -1087, -711, -1087, -707, -1095, -699, -1095, -694, -1088, -689, -1086, -686, -1093, -683, -1098, -655, -1101, -657, -1088, -648, -1086, -644, -1093, -637, -1093, -632, -1087, -628, -1086, -626, -1113, -621, -1132, -622, -1140, -628, -1140, -636, -1125, -640, -1125, -640, -1140, -656, -1147, -656, -1152, -661, -1156, -660, -1162, -660, -1174, -670, -1180, -674, -1181, -685, -1171, -685, -1160, -683, -1156, -689, -1149, -703, -1139, -704, -1126, -709, -1126, -713, -1137, -717, -1141 )
+
+[node name="Mesa3" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
+position = Vector2( 192, 193 )
+polygon = PoolVector2Array( -721, -1139, -721, -1122, -716, -1106, -714, -1093, -718, -1087, -711, -1087, -707, -1095, -699, -1095, -694, -1088, -689, -1086, -686, -1093, -683, -1098, -655, -1101, -657, -1088, -648, -1086, -647, -1098, -640, -1106, -640, -1125, -640, -1140, -656, -1147, -656, -1152, -661, -1156, -660, -1162, -660, -1174, -670, -1180, -674, -1181, -685, -1171, -685, -1160, -682, -1152, -688, -1148, -703, -1139, -704, -1126, -709, -1126, -713, -1137, -717, -1141 )
+
+[node name="Mesa4" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisões"]
+position = Vector2( 288, 192 )
+polygon = PoolVector2Array( -721, -1139, -721, -1122, -716, -1106, -714, -1093, -718, -1087, -711, -1087, -707, -1095, -699, -1095, -694, -1088, -689, -1086, -686, -1093, -683, -1098, -655, -1101, -657, -1088, -648, -1086, -644, -1093, -637, -1093, -632, -1087, -628, -1086, -626, -1113, -621, -1132, -622, -1140, -628, -1140, -636, -1125, -640, -1125, -640, -1140, -656, -1147, -656, -1152, -661, -1156, -660, -1162, -660, -1174, -670, -1180, -674, -1181, -685, -1171, -685, -1160, -683, -1156, -689, -1149, -703, -1139, -704, -1126, -709, -1126, -713, -1137, -717, -1141 )
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 753, 763 )
@@ -542,7 +555,7 @@ layer = 2
 position = Vector2( 254, 799 )
 
 [node name="Situacao1" type="CollisionShape2D" parent="Situacao"]
-position = Vector2( 3.5, -66 )
+position = Vector2( 31.5, -12.5 )
 shape = SubResource( 8 )
 
 [node name="gamepad" type="CanvasLayer" parent="."]
@@ -622,17 +635,24 @@ one_shot = true
 one_shot = true
 
 [node name="excl" parent="." instance=ExtResource( 13 )]
-position = Vector2( 258, 734 )
+position = Vector2( 291, 789 )
 
 [node name="nivel_1_2" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="nivel_1" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.8
+one_shot = true
+
+[node name="area_desbloqueada" type="Timer" parent="."]
+one_shot = true
+
+[node name="area_reverso" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Personagem" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Situacao" to="." method="_on_Situacao_body_entered"]
 [connection signal="body_entered" from="Situacao" to="Personagem" method="_on_Situacao_body_entered"]
 [connection signal="body_exited" from="Situacao" to="." method="_on_Situacao_body_exited"]
@@ -652,3 +672,5 @@ one_shot = true
 [connection signal="timeout" from="Timer4" to="." method="_on_Timer4_timeout"]
 [connection signal="timeout" from="nivel_1_2" to="." method="_on_nivel_12_timeout"]
 [connection signal="timeout" from="nivel_1" to="." method="_on_nivel_1_timeout"]
+[connection signal="timeout" from="area_desbloqueada" to="." method="_on_area_desbloqueada_timeout"]
+[connection signal="timeout" from="area_reverso" to="." method="_on_area_reverso_timeout"]

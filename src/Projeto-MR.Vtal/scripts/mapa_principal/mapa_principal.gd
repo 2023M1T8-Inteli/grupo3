@@ -64,16 +64,19 @@ func _on_Timer4_timeout(): #carrega a hud
 	$dialogo/Dialogo/texto.text = dialogo[0]
 	Global.velocity(0)
 	$dialogo.show()
-	$Sprite.queue_free()
-	
 
 func _on_nivel_1_timeout():
-	print(Global.nivel_2)
-	$Personagem/Camera2D.position = Vector2(56,425)
 	$Personagem/Camera2D/AnimationPlayer.play("area_desb")
+	$area_desbloqueada.start()
+
+func _on_nivel_12_timeout():
+	$Personagem/Camera2D/AnimationPlayer.play_backwards("area_desb")
+	$area_reverso.start() # Replace with function body.
+
+func _on_area_desbloqueada_timeout():
 	$Sprite/AnimationPlayer.play("sumir")
 	$Sprite/StaticBody2D.queue_free()
 	$nivel_1_2.start()
 
-func _on_nivel_12_timeout():
-	$Personagem/Camera2D/AnimationPlayer.play_backwards("area_desb") # Replace with function body.
+func _on_area_reverso_timeout():
+	$Personagem/Camera2D.position = Vector2(0,0)
