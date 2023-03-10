@@ -34,7 +34,7 @@ func _physics_process(delta): #Define os controles do jogo
 		if Input.is_action_pressed("ui_accept"):
 			vel.y-= 1
 			print(pontuacao)
-		move_and_slide(vel * speed, Vector2.ZERO)
+		move_and_slide(vel.normalized() * speed, Vector2.ZERO)
 		if vel.x != 0: 
 			$Animacao.play()
 			$Animacao.animation = 'direita'
