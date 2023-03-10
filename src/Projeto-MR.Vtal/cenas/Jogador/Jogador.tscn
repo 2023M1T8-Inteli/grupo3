@@ -13,12 +13,12 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "baixo",
 "speed": 9.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "cima",
 "speed": 6.0
@@ -27,6 +27,21 @@ animations = [ {
 "loop": true,
 "name": "direita",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "paradob",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "paradoc",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "paradod",
+"speed": 5.0
 } ]
 
 [node name="Personagem" type="KinematicBody2D"]
@@ -36,7 +51,7 @@ script = ExtResource( 5 )
 position = Vector2( 1.00001, 3.00001 )
 scale = Vector2( 0.0462583, 0.0482471 )
 frames = SubResource( 1 )
-animation = "direita"
+animation = "paradob"
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 pause_mode = 1
