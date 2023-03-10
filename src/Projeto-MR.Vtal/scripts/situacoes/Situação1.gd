@@ -91,7 +91,10 @@ func clear(): #encerra a cena
 	$CaixaDialogo/Button.show()
 	
 func _on_passar_pressed(): #volta o personagem para o mapa 
-	Global.controle_false()
+	print(pontuacao)
+	print(Global.pontuacao)
 	Global.atualizar_pontuacao(pontuacao)
-	Global.teste = true
+	if Global.pontuacao == 2:
+		Global.nivel_2 = true
+	Global.controle_false()
 	get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn") # Replace with function body.
