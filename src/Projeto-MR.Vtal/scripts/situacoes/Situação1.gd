@@ -93,5 +93,6 @@ func clear(): #encerra a cena
 func _on_passar_pressed(): #volta o personagem para o mapa 
 	Global.controle_false()
 	Global.atualizar_pontuacao(pontuacao)
-	Global.teste = true
+	if pontuacao == 2:#ao sair da situação se tiver a pontuação para subir de nível, atualiza a variavel global para a cutscene
+		Global.nivel_2 = true
 	get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn") # Replace with function body.

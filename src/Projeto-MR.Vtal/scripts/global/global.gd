@@ -32,15 +32,16 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 	}
 }
 
-var nivel_1= false
-var nivel_2= false
-var nivel_3= false
-var nivel_4= false
-var nivel_5= false
-var controle_nathalia = true
+var nivel_1= false #variavel de controle de nível
+var nivel_2= false#variavel de controle de nível
+var nivel_3= false#variavel de controle de nível
+var nivel_4= false#variavel de controle de nível
+var nivel_5= false#variavel de controle de nível
+var area_1_desbl = false #variavel de controle para areas já desbloqueadas
+var controle_nathalia = true # variavel de controle do dialogo inicial
 var posicaox
 var posicaoy
-var pontuacao = 0 
+var pontuacao = 0 #pontuação do personagem
 var controle_tela = true
 var teste
 func tela():

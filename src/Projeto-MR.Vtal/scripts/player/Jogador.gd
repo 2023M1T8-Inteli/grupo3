@@ -67,9 +67,9 @@ func _physics_process(delta): #Define os controles do jogo
 		
 		if controle_tela == false:
 			pass
-		else:
-			position.x = clamp(position.x, 0, screen_size.x) #Define o limite horizontal da tela
-			position.y = clamp(position.y, 0, screen_size.y) #Define o limite vertical da tela
+#		else:
+#			position.x = clamp(position.x, 0, screen_size.x) #Define o limite horizontal da tela
+#			position.y = clamp(position.y, 0, screen_size.y) #Define o limite vertical da tela
 		#Código comentado para poder instanciar o mapa principal diretamente sem definir a tela. Mas pro funcionamento do jogo, ele deve estar rodando
 func _on_Diamante_body_entered(body):
 	Global.velocity(0)

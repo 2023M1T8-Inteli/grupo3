@@ -107,3 +107,7 @@ scale = Vector2( 0.387, 0.313 )
 frames = SubResource( 8 )
 
 [node name="moldura" type="Sprite" parent="VBoxContainer"]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
