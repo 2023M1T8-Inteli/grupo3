@@ -47,22 +47,10 @@ func _physics_process(delta): #Define os controles do jogo
 				$Animacao.animation = 'cima'
 			elif vel.y == 1:
 				$Animacao.animation = 'baixo'
-			
-		if Input.is_action_just_released("ui_up") or up:
+		else:
 			$Animacao.stop()
-			$Animacao.animation = 'paradoc'
 			
-		if Input.is_action_just_released("ui_down") or down:
-			$Animacao.stop()
-			$Animacao.animation = 'paradob'
-			
-		if Input.is_action_just_released("ui_right") or right:
-			$Animacao.stop()
-			$Animacao.animation = 'paradod'
-			
-		if Input.is_action_just_released("ui_left") or left:
-			$Animacao.stop()
-			$Animacao.animation = 'paradod'
+		
 		
 		if controle_tela == false:
 			pass
