@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://imagens/MiniGame3/dodge_assets (1)/dodge_assets/art/playerGrey_up1.png" type="Texture" id=1]
+[ext_resource path="res://imagens/MiniGame3/dodge_assets (1)/dodge_assets/art/playerGrey_walk2.png" type="Texture" id=2]
+[ext_resource path="res://imagens/MiniGame3/dodge_assets (1)/dodge_assets/art/playerGrey_walk1.png" type="Texture" id=3]
+[ext_resource path="res://imagens/MiniGame3/dodge_assets (1)/dodge_assets/art/playerGrey_up2.png" type="Texture" id=4]
+[ext_resource path="res://JogadorMG3.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "cima",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "direita",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 54.0
+height = 28.0
+
+[node name="JogadorMG3" type="Area2D"]
+script = ExtResource( 5 )
+
+[node name="Animacao" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 1 )
+animation = "direita"
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.75, 0.75 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_JogadorMG3_body_entered"]

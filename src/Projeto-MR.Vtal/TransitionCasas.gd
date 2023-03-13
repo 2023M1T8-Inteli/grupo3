@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready(): #transição para sair da casa 
-	pass # Replace with function body.
+	pass 
 
 func comecar(): #começar animação da cena 
 	$ColorRect/AnimationPlayer.play("animacao")

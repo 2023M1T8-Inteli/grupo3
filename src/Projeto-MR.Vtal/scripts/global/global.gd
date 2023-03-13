@@ -1,6 +1,7 @@
 extends Node
 
-var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do diamante no tutorial
+#dicionario contendo todas as falas de diálogo no jogo
+var falas = {
 	'fabricio': {
 		"nome":"Fabricio",
 		0: 'Olá, tudo bem? Prazer em conhecê-lo, eu sou o Fabrício, e trabalho na V.Tal. Estarei aqui para te auxiliar!',
@@ -33,10 +34,9 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 }
 
 var nivel_1= false #variavel de controle de nível
-var nivel_2= false#variavel de controle de nível
-var nivel_3= false#variavel de controle de nível
-var nivel_4= false#variavel de controle de nível
-var nivel_5= false#variavel de controle de nível
+var nivel_2= false #variavel de controle de nível
+var nivel_4= false #variavel de controle de nível
+var nivel_5= false #variavel de controle de nível
 var area_1_desbl = false #variavel de controle para areas já desbloqueadas
 var controle_nathalia = true # variavel de controle do dialogo inicial
 var posicaox
@@ -44,6 +44,7 @@ var posicaoy
 var pontuacao = 0 #pontuação do personagem
 var controle_tela = true
 var teste
+
 func tela():
 	controle_tela = false
 
@@ -58,7 +59,7 @@ func velocity(x):
 	speed = x 
 
 var speed = 250
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	controle_nathalia = true
 	

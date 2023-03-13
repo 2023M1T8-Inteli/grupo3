@@ -3,7 +3,7 @@ extends Node
 export(float) var scroll_speed = 0.03
 var music_status = true
 #faz com que a variavel seja acessivel em outros scripts, como por exemplo no controle da interface grafica da cena
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	$musica_fundo.play()
 	self.material.set_shader_param( "scroll_speed", scroll_speed) 

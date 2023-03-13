@@ -49,7 +49,6 @@ func _on_Escolha1_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 	clear() 
 	$CaixaDialogo.queue_free()
 	$parabens.visible = true
-#	imagem.texture = load(dialogo.feedback) #código comentado porque fiz essa função de outra forma. Ver com o Ever qual se encaixa melhor
 	$parabens/feedback.text = dialogo.text
 	n += 1
 	
@@ -58,7 +57,6 @@ func _on_Escolha2_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 	pontuacao += 1
 	clear()
 	$CaixaDialogo.queue_free()
-#	imagem.texture = load(dialogo.feedback)
 	$parabens.show()
 	$parabens/feedback.text = dialogo.text
 	n += 1
@@ -69,7 +67,6 @@ func _on_Escolha3_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 	clear()
 	$CaixaDialogo.queue_free()
 	$atencao.show()
-#	imagem.texture = load(dialogo.feedback)
 	$atencao/feedback.text = dialogo.text
 	n += 1
 	
@@ -78,7 +75,6 @@ func _on_Escolha4_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 	pontuacao += -1
 	clear()
 	$CaixaDialogo.queue_free()
-#	imagem.texture = load(dialogo.feedback)
 	$atencao.show()
 	$atencao/feedback.text = dialogo.text
 	n += 1 #controle de ordem de fala de acordo com o dicionário global 
@@ -93,6 +89,6 @@ func clear(): #encerra a cena
 func _on_passar_pressed(): #volta o personagem para o mapa 
 	Global.controle_false()
 	Global.atualizar_pontuacao(pontuacao)
-	if pontuacao == 2:#ao sair da situação se tiver a pontuação para subir de nível, atualiza a variavel global para a cutscene
+	if pontuacao == 2: #ao sair da situação se tiver a pontuação para subir de nível, atualiza a variavel global para a cutscene
 		Global.nivel_2 = true
-	get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn") # Replace with function body.
+	get_tree().change_scene("res://cenas/mapa_principal/mapa_principal.tscn") 

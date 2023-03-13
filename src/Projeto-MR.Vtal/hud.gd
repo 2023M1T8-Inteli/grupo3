@@ -38,7 +38,8 @@ func _process(delta): #atualiza a hud a medida que ganha pontuação
 	if Global.pontuacao == 2: #se subir de nivel, atualiza a moldura 
 		$VBoxContainer/nome_nivel.texture = load("res://imagens/níveis/MolduraDuquePronta.png")
 		$Timer.start()
-func _on_Timer_timeout():#mostra a hud nova quando tiver 4 pontos ou pontos negativos
+		
+func _on_Timer_timeout(): #mostra a hud nova quando tiver 4 pontos ou pontos negativos
 	$VBoxContainer/pont_4.hide()
 	$VBoxContainer/pont_0.show()
 	$VBoxContainer/pont_1.hide()
