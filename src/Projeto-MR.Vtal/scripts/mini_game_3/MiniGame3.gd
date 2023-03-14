@@ -2,7 +2,7 @@ extends Node
 
 export (PackedScene) var Inimigo #instancia a cena do inimigo em uma variável
 var score #pontuação do jogador
-var meta = 100 #pontuação necessária para vencer o jogo
+var meta = 30 #pontuação necessária para vencer o jogo
 
 func _ready():
 	randomize()

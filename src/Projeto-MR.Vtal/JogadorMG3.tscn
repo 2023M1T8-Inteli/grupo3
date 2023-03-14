@@ -4,7 +4,7 @@
 [ext_resource path="res://imagens/MiniGame3/dodge_assets (1)/dodge_assets/art/playerGrey_walk2.png" type="Texture" id=2]
 [ext_resource path="res://imagens/MiniGame3/dodge_assets (1)/dodge_assets/art/playerGrey_walk1.png" type="Texture" id=3]
 [ext_resource path="res://imagens/MiniGame3/dodge_assets (1)/dodge_assets/art/playerGrey_up2.png" type="Texture" id=4]
-[ext_resource path="res://JogadorMG3.gd" type="Script" id=5]
+[ext_resource path="res://scripts/mini_game_3/JogadorMG3.gd" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

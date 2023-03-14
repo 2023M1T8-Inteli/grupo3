@@ -51,11 +51,11 @@ func tela():
 func atualizar_pontuacao(x):
 	pontuacao = x 
 	
-func atualizar_posicao(x,y):
+func atualizar_posicao(x,y): #guarda as posições do jogador ao entrar em uma cena para que, ao retornar, volte na mesma posição
 	posicaox = x
 	posicaoy = y
 	
-func velocity(x):
+func velocity(x): 
 	speed = x 
 
 var speed = 250
@@ -65,4 +65,3 @@ func _ready():
 	
 func controle_false():
 	controle_nathalia = false
-	print(controle_nathalia)

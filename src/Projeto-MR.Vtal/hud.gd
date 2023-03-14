@@ -45,5 +45,3 @@ func _on_Timer_timeout(): #mostra a hud nova quando tiver 4 pontos ou pontos neg
 	$VBoxContainer/pont_1.hide()
 	$VBoxContainer/pont3.hide()
 	$VBoxContainer/pont_2.hide()
-
-

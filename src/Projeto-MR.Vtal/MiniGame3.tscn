@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://JogadorMG3.tscn" type="PackedScene" id=1]
-[ext_resource path="res://MiniGame3.gd" type="Script" id=2]
+[ext_resource path="res://scripts/mini_game_3/MiniGame3.gd" type="Script" id=2]
 [ext_resource path="res://InimigoMG3.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUDMG3.tscn" type="PackedScene" id=4]
 [ext_resource path="res://imagens/MiniGame3/dodge_assets (1)/dodge_assets/art/House In a Forest Loop.ogg" type="AudioStream" id=5]
@@ -30,7 +30,7 @@ one_shot = true
 [node name="pontuacaoTimer" type="Timer" parent="."]
 
 [node name="inimigoTimer" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.6
 
 [node name="posicaoInicial" type="Position2D" parent="."]
 position = Vector2( 512, 300 )
