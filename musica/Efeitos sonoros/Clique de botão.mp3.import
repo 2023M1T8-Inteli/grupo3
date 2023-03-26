@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Clique de botão.mp3-ec1e79c0d67304408da4ebe5df58b4e8.mp3str"
+
+[deps]
+
+source_file="res://musica/Efeitos sonoros/Clique de botão.mp3"
+dest_files=[ "res://.import/Clique de botão.mp3-ec1e79c0d67304408da4ebe5df58b4e8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

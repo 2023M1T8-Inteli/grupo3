@@ -1,0 +1,745 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://fontes/PTSansNarrow-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://imagens/situacoes/situacao_3/baixados-removebg-preview.png" type="Texture" id=2]
+[ext_resource path="res://imagens/situacoes/situacao_3/clube2 (1) (1).png" type="Texture" id=3]
+[ext_resource path="res://imagens/situacoes/parabens.png" type="Texture" id=4]
+[ext_resource path="res://imagens/situacoes/aten.png" type="Texture" id=5]
+[ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=6]
+[ext_resource path="res://imagens/situacoes/exclamação_sec.png" type="Texture" id=7]
+[ext_resource path="res://tres/npc.tres" type="SpriteFrames" id=8]
+[ext_resource path="res://scripts/situacoes/situacao_3.gd" type="Script" id=9]
+[ext_resource path="res://imagens/situacoes/situacao_3/clube.png" type="Texture" id=10]
+[ext_resource path="res://cenas/mapa_principal/excl.tscn" type="PackedScene" id=11]
+[ext_resource path="res://cenas/jogador/jogador.tscn" type="PackedScene" id=12]
+[ext_resource path="res://cenas/hud/hud.tscn" type="PackedScene" id=13]
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 12.0
+height = 54.0
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+	uniform float screen_width = 1920;
+	uniform float screen_height = 1080;
+	uniform vec2 center = vec2(0.5f);
+	uniform vec2 player = vec2(0.5f);
+
+	uniform float progress : hint_range(0,1);
+	uniform float pixel_size = 15.0;
+	uniform float circle_size : hint_range(0,2) = 1.5f;
+	uniform float curtains : hint_range(0,1) = 1.0;
+
+	uniform int type : hint_range(0,4) = 0;
+
+	void fragment() {
+		//Tipo Diamante Pixel
+		if (type == 0) {
+			float xFraction = fract(FRAGCOORD.x / pixel_size);
+			float yFraction = fract(FRAGCOORD.y / pixel_size);
+			
+			float xDistance = abs(xFraction - 0.5);
+			float yDistance = abs(yFraction - 0.5);
+
+			if (xDistance + yDistance + UV.x + UV.y > progress * 4.0) {
+				discard;
+			}
+		}
+		//Tipo Circulo no player
+		else if (type == 1) {
+			float ratio = screen_width / screen_height;
+			if (distance(player, vec2(mix(player.x, UV.x, ratio), UV.y)) < circle_size * (1.0 - progress)) {
+				COLOR.a = 0.0;
+			}
+		}
+		//Tipo Circulo no Centro
+		else if (type == 2) {
+			float ratio = screen_width / screen_height;
+			if (distance(center, vec2(mix(center.x, UV.x, ratio), UV.y)) < circle_size * (1.0 - progress)) {
+				COLOR.a = 0.0;
+			}
+		}
+		//Tipo Corte Vertical
+		else if (type == 3) {
+			if (distance(vec2(0.5, 0.5), vec2(UV.x, UV.x)) < curtains * (1.0 - progress)) {
+				COLOR.a = 0.0;
+			}
+		}
+		//Tipo Corte Horizontal
+		else if (type == 4) {
+			if (distance(vec2(0.5, 0.5), vec2(UV.y, UV.y)) < curtains * (1.0 - progress)) {
+				COLOR.a = 0.0;
+			}
+		}
+	}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/screen_width = 1920.0
+shader_param/screen_height = 1080.0
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/player = Vector2( 0.5, 0.5 )
+shader_param/progress = 0.0
+shader_param/pixel_size = 15.0
+shader_param/circle_size = 1.5
+shader_param/curtains = 1.0
+shader_param/type = 0
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("transition/ColorRect:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D2:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera2D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Personagem/Camera2D:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("NPC:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -197, 387 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("NPC:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("NPC:animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "direita" ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("NPC:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("NPC:flip_h")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "npc_enemy"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("NPC:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -197, 387 ), Vector2( -94, 379 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NPC:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("NPC:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "direita", "direita" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("NPC:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "npc_enemy_backwards"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("NPC:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -94, 379 ), Vector2( -197, 387 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NPC:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("NPC:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("NPC:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "situation_3"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("transition/ColorRect:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D2:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera2D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Personagem/Camera2D:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="DynamicFont" id=22]
+size = 70
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 53
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 65, 8.5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 19
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 35
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 11.5, 739.5 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 662.5, 22.5 )
+
+[sub_resource type="CapsuleShape2D" id=15]
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 7 )
+region = Rect2( 96, 0, 32, 64 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="situation_3" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 391, -124 )
+texture = ExtResource( 10 )
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2( 11, 457 )
+scale = Vector2( 0.279794, 0.771136 )
+zoom = Vector2( 0.5, 0.5 )
+limit_bottom = 595
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 199, 258 )
+scale = Vector2( 0.371769, 0.356362 )
+texture = ExtResource( 2 )
+
+[node name="Personagem" parent="." instance=ExtResource( 12 )]
+position = Vector2( 390, 481 )
+
+[node name="Camera2D" type="Camera2D" parent="Personagem"]
+position = Vector2( 60, 28 )
+current = true
+limit_left = -250
+limit_top = -845
+limit_right = 1030
+limit_bottom = 595
+limit_smoothed = true
+
+[node name="Node2D" parent="." instance=ExtResource( 11 )]
+position = Vector2( -66, 380 )
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+position = Vector2( 66, -380 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2( -66, 381 )
+shape = SubResource( 5 )
+
+[node name="transition" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="transition"]
+material = SubResource( 2 )
+margin_left = -2.0
+margin_top = -9.0
+margin_right = 1030.0
+margin_bottom = 603.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/npc_enemy = SubResource( 10 )
+anims/npc_enemy_backwards = SubResource( 21 )
+anims/situation_3 = SubResource( 4 )
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="parabens" type="Sprite" parent="CanvasLayer3"]
+visible = false
+position = Vector2( 464, 230 )
+scale = Vector2( 0.438477, 0.521291 )
+texture = ExtResource( 4 )
+
+[node name="passar" type="TouchScreenButton" parent="CanvasLayer3/parabens"]
+position = Vector2( 499.456, 494.925 )
+scale = Vector2( 0.219298, 0.191462 )
+normal = ExtResource( 6 )
+
+[node name="feedback" type="Label" parent="CanvasLayer3/parabens"]
+margin_left = -363.0
+margin_top = 8.0
+margin_right = 543.0
+margin_bottom = 564.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.678431, 0.647059, 0.647059, 1 )
+custom_fonts/font = SubResource( 22 )
+text = "teste"
+align = 3
+valign = 1
+autowrap = true
+
+[node name="atencao" type="Sprite" parent="CanvasLayer3"]
+position = Vector2( 539, 195 )
+scale = Vector2( 0.5, 0.593 )
+texture = ExtResource( 5 )
+
+[node name="passar" type="TouchScreenButton" parent="CanvasLayer3/atencao"]
+position = Vector2( 262.564, 501.276 )
+scale = Vector2( 0.219298, 0.191462 )
+normal = ExtResource( 6 )
+
+[node name="feedback" type="Label" parent="CanvasLayer3/atencao"]
+margin_left = -474.0
+margin_top = 139.966
+margin_right = 310.0
+margin_bottom = 586.966
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.678431, 0.647059, 0.647059, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Mesmo que seja importante fechar negócios com um cliente, seguir a ética é sempre a prioridade. Fornecer informações de nossos clientes vai contra o princípio da neutralidade e, por isso, não deve ser feito."
+align = 3
+valign = 1
+autowrap = true
+
+[node name="saida_clube" type="Area2D" parent="."]
+position = Vector2( 414, 714 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="saida_clube"]
+light_mask = 3
+position = Vector2( -25, -122.5 )
+shape = SubResource( 12 )
+
+[node name="start_situation" type="Timer" parent="."]
+one_shot = true
+
+[node name="animation_1" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="start_dialogo" type="Timer" parent="."]
+wait_time = 1.6
+one_shot = true
+
+[node name="finalizar_dialogo" type="Timer" parent="."]
+one_shot = true
+
+[node name="resposta" type="Timer" parent="finalizar_dialogo"]
+one_shot = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="CaixaDialogo" type="ColorRect" parent="CanvasLayer2"]
+visible = false
+margin_top = 424.0
+margin_right = 1024.0
+margin_bottom = 607.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/CaixaDialogo"]
+margin_left = 10.0
+margin_top = 9.0
+margin_right = 949.0
+margin_bottom = 133.0
+rect_scale = Vector2( 1.4, 1.4 )
+
+[node name="Escolha1" type="LinkButton" parent="CanvasLayer2/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.478431, 0.0784314, 0.0784314, 1 )
+margin_right = 939.0
+margin_bottom = 26.0
+focus_mode = 2
+custom_fonts/font = SubResource( 9 )
+text = "a) Entregar os dados, já que não tem nenhum problemas em divulgá-los."
+underline = 1
+
+[node name="Escolha2" type="LinkButton" parent="CanvasLayer2/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_top = 30.0
+margin_right = 939.0
+margin_bottom = 56.0
+focus_mode = 2
+custom_fonts/font = SubResource( 9 )
+text = "b) Oferecer uma alternativa que não envolva fornecer os dados da Rápida Conexão."
+underline = 1
+
+[node name="Escolha3" type="LinkButton" parent="CanvasLayer2/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_top = 60.0
+margin_right = 939.0
+margin_bottom = 86.0
+focus_mode = 2
+custom_fonts/font = SubResource( 9 )
+text = "c) Não fornecer os dados, mesmo que isso signifique perder o contrato."
+underline = 1
+
+[node name="Escolha4" type="LinkButton" parent="CanvasLayer2/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_top = 90.0
+margin_right = 939.0
+margin_bottom = 116.0
+focus_mode = 2
+custom_fonts/font = SubResource( 9 )
+text = "d) Fornecer as informações, já que fechar o contrato com a cliente é a prioridade."
+underline = 1
+
+[node name="conversa" type="Label" parent="CanvasLayer2/CaixaDialogo"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 12.0
+margin_top = 48.0
+margin_right = 1005.0
+margin_bottom = 163.0
+custom_fonts/font = SubResource( 6 )
+text = "tttttttttttttttt"
+align = 3
+autowrap = true
+
+[node name="Button" type="TextureButton" parent="CanvasLayer2/CaixaDialogo"]
+margin_left = 956.0
+margin_top = 121.0
+margin_right = 1033.0
+margin_bottom = 183.0
+texture_normal = ExtResource( 6 )
+expand = true
+
+[node name="nome" type="Label" parent="CanvasLayer2/CaixaDialogo"]
+margin_left = 11.0
+margin_top = 1.0
+margin_right = 92.0
+margin_bottom = 47.0
+custom_colors/font_color = Color( 0.482353, 0.0470588, 0.0470588, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Letícia"
+
+[node name="transição_reverse" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 60, 432, 61, 398, 64, 393, 65, 383, 60, 378, 58, 350, 52, 344, 42, 344, 33, 351, 17, 354, 15, 360, 15, 431 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 583, 254, 583, 338, 649, 338, 708, 310, 777, 311, 835, 342, 902, 342, 901, 279, 901, 232 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -194, 432, -193, 358, -201, 352, -215, 350, -222, 343, -233, 344, -239, 358, -239, 382, -244, 384, -244, 393, -240, 398, -240, 432 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 584, 254, 454, 244, 438, 250, 424, 241, 426, 165, 423, 150, 912, 148, 1023, 147, 1031, 148, 1031, 245, 902, 245 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -141, 480, -153, 494, -152, 499, -128, 497, -127, 491, -43, 491, -43, 497, -28, 499, -29, 488, -39, 477, -49, 486, -75, 484, -86, 476, -99, 479, -108, 483, -123, 488 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 356, 241, 359, 160, 359, 150, -250, 150, -248, 272, -186, 272, -186, 253, 6, 253, 6, 270, 70, 271, 70, 239, 168, 238, 169, 266, 179, 266, 185, 259, 213, 260, 217, 267, 227, 268, 227, 239, 328, 241, 328, 251, 341, 251 )
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 370, 464, 376, 461, 370, 450, 391, 454, 400, 453, 412, 449, 410, 457, 409, 464, 414, 465, 414, 457, 417, 448, 420, 438, 422, 432, 417, 423, 403, 417, 398, 416, 395, 415, 402, 409, 405, 404, 405, 394, 402, 383, 388, 378, 375, 383, 372, 398, 377, 404, 381, 415, 381, 416, 373, 418, 368, 424, 361, 428, 360, 434, 362, 445, 363, 452 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 518, 435, 518, 528, 565, 528, 565, 437 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -262.5, -130.5 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1040, -128 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 396, -869 )
+shape = SubResource( 14 )
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -251, 596, 319, 596, 321, 601, -251, 601 )
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 460, 592, 458, 600, 1028, 600, 1028, 592 )
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -186, -109, -154, -109, -154, -45, -123, -45, -122, 19, 103, 19, 102, -44, 135, -45, 135, -109, 164, -109, 167, -589, 133, -589, 134, -653, 102, -652, 102, -718, -122, -717, -122, -654, -154, -653, -154, -588, -186, -589 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 391, 187 )
+texture = ExtResource( 3 )
+
+[node name="mission_sec" type="Area2D" parent="."]
+position = Vector2( 200, 292 )
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mission_sec"]
+shape = SubResource( 15 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Node2D2" parent="CanvasLayer" instance=ExtResource( 13 )]
+
+[node name="NPC" type="AnimatedSprite" parent="."]
+position = Vector2( -197, 387 )
+scale = Vector2( 2.4, 2.4 )
+frames = ExtResource( 8 )
+animation = "direita"
+
+[node name="exclamacao" type="AnimatedSprite" parent="."]
+position = Vector2( 200, 296 )
+rotation = -3.14159
+frames = SubResource( 20 )
+frame = 2
+playing = true
+
+[connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="CanvasLayer3/parabens/passar" to="." method="_on_passar_pressed"]
+[connection signal="pressed" from="CanvasLayer3/atencao/passar" to="." method="_on_passar_pressed"]
+[connection signal="body_entered" from="saida_clube" to="." method="_on_saida_clube_body_entered"]
+[connection signal="timeout" from="start_situation" to="." method="_on_start_situation_timeout"]
+[connection signal="timeout" from="animation_1" to="." method="_on_animation_1_timeout"]
+[connection signal="timeout" from="start_dialogo" to="." method="_on_start_dialogo_timeout"]
+[connection signal="timeout" from="finalizar_dialogo" to="." method="_on_finalizar_dialogo_timeout"]
+[connection signal="timeout" from="finalizar_dialogo/resposta" to="." method="_on_resposta_timeout"]
+[connection signal="pressed" from="CanvasLayer2/CaixaDialogo/VBoxContainer/Escolha1" to="." method="_on_Escolha1_pressed"]
+[connection signal="pressed" from="CanvasLayer2/CaixaDialogo/VBoxContainer/Escolha2" to="." method="_on_Escolha2_pressed"]
+[connection signal="pressed" from="CanvasLayer2/CaixaDialogo/VBoxContainer/Escolha3" to="." method="_on_Escolha3_pressed"]
+[connection signal="pressed" from="CanvasLayer2/CaixaDialogo/VBoxContainer/Escolha4" to="." method="_on_Escolha4_pressed"]
+[connection signal="pressed" from="CanvasLayer2/CaixaDialogo/Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="transição_reverse" to="." method="_on_transio_reverse_timeout"]
+[connection signal="body_entered" from="mission_sec" to="." method="_on_mission_sec_body_entered"]
