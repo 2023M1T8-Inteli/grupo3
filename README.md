@@ -4,11 +4,11 @@
 <a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
 </p>
 
-# Nome do Projeto
+# Mr.Vtal
 
 ## Pegasus Tech
 
-## Integrantes: <a href="https://www.linkedin.com/in/ever-felliphe-sousa-da-costa-16001617a">Ever Felliphe Sousa da Costa</a>, <a href="https://www.linkedin.com/in/victorbarq/">Luan Ramos de Mello</a>, <a href="https://www.linkedin.com/in/victorbarq/">João Paulo da Silva</a>, <a href="https://www.linkedin.com/in/victorbarq/">Marina Ladeira</a>, <a href="https://www.linkedin.com/in/victorbarq/">Eduarda Cardoso de Souza</a>, <a href="https://www.linkedin.com/in/victorbarq/">Pedro Faria Santos</a>
+## Integrantes: <a href="https://www.linkedin.com/in/ever-felliphe-sousa-da-costa-16001617a">Ever Felliphe Sousa da Costa</a>, <a href="https://www.linkedin.com/in/luan-ramos-de-mello-253b28268">Luan Ramos de Mello</a>, <a href="https://www.linkedin.com/in/victorbarq/">João Paulo da Silva</a>, <a href="https://www.linkedin.com/in/marina-ladeira-867159269">Marina Ladeira</a>, <a href="https://www.linkedin.com/in/eduarda-cardoso-de-souza-8bb802268/">Eduarda Cardoso de Souza</a>, <a href="https://www.linkedin.com/me?trk=p_mwlite_feed_updates-secondary_nav">Pedro Faria Santos</a>
 
 ## Descrição
 
