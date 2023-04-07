@@ -5,7 +5,7 @@ var n = 1
 var limite = len(falasDiamante) 
 
 func _ready(): #Esconde a HUD da tela, parap oder tocar a transição entre as cenas
-	$gamepad.hide()
+	$Personagem/gamepad.hide()
 	$Transition2.hide()
 	$dialogo.hide()
 	$dialogo/diamante2.hide()
@@ -18,7 +18,9 @@ func _ready(): #Esconde a HUD da tela, parap oder tocar a transição entre as c
 func _on_TextureButton_pressed(): 
 	if n == limite: #se o índice do dicionario for 3 ele muda de cena, já que representa o fim do diálogo
 		$dialogo.queue_free()
-		$gamepad.show()
+		if Global.mobile:
+			$Personagem/gamepad.show()
+		else:pass
 	else:  #ao clicar no botão ele atualiza o dialogo (passa para as proximas falas)
 		$dialogo/texto.text = falasDiamante[n]
 		n += 1

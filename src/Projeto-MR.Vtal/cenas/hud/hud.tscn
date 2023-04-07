@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/hud/hud.gd" type="Script" id=1]
 [ext_resource path="res://imagens/niveis/MolduraDefensorPronta.png" type="Texture" id=2]
 [ext_resource path="res://imagens/hud/pixil-frame-0 (5)_scaled_14x_pngcrushed (3).png" type="Texture" id=3]
 [ext_resource path="res://imagens/hud/pixil-frame-0 (5)_scaled_14x_pngcrushed (5) (2).png" type="Texture" id=4]
+[ext_resource path="res://cenas/menu/config.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -76,28 +77,31 @@ position = Vector2( 119, 151 )
 scale = Vector2( 0.375, 0.375 )
 texture = ExtResource( 2 )
 
-[node name="pont_2" type="AnimatedSprite" parent="VBoxContainer"]
-position = Vector2( 123, 57 )
+[node name="Node2D2" type="Node2D" parent="VBoxContainer"]
+position = Vector2( 261, 84 )
+
+[node name="pont_2" type="AnimatedSprite" parent="VBoxContainer/Node2D2"]
+position = Vector2( -137, -27 )
 scale = Vector2( 0.387, 0.387 )
 frames = SubResource( 2 )
 
-[node name="pont_1" type="AnimatedSprite" parent="VBoxContainer"]
-position = Vector2( 124, 128 )
+[node name="pont_1" type="AnimatedSprite" parent="VBoxContainer/Node2D2"]
+position = Vector2( -141, 61 )
 scale = Vector2( 0.387, 0.387 )
 frames = SubResource( 4 )
 
-[node name="pont_0" type="Sprite" parent="VBoxContainer"]
-position = Vector2( 124, 128 )
+[node name="pont_0" type="Sprite" parent="VBoxContainer/Node2D2"]
+position = Vector2( -141, 61 )
 scale = Vector2( 0.387, 0.387 )
 texture = ExtResource( 3 )
 
-[node name="pont3" type="AnimatedSprite" parent="VBoxContainer"]
-position = Vector2( 124, 58 )
+[node name="pont3" type="AnimatedSprite" parent="VBoxContainer/Node2D2"]
+position = Vector2( -140, -24 )
 scale = Vector2( 0.387, 0.387 )
 frames = SubResource( 6 )
 
-[node name="pont_4" type="AnimatedSprite" parent="VBoxContainer"]
-position = Vector2( 124, 10 )
+[node name="pont_4" type="AnimatedSprite" parent="VBoxContainer/Node2D2"]
+position = Vector2( -140, -84 )
 scale = Vector2( 0.387, 0.387 )
 frames = SubResource( 8 )
 
@@ -107,5 +111,10 @@ frames = SubResource( 8 )
 wait_time = 2.0
 one_shot = true
 
-[connection signal="timeout" from="timer_hud" to="." method="_on_timer_hud_timeout"]
+[node name="config" parent="." instance=ExtResource( 5 )]
+layer = 3
+
 [connection signal="timeout" from="timer_hud" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="timer_hud" to="." method="_on_timer_hud_timeout"]
+[connection signal="blur_off" from="config" to="." method="_on_config_blur_off"]
+[connection signal="blur_on" from="config" to="." method="_on_config_blur_on"]

@@ -7,7 +7,6 @@
 [ext_resource path="res://musica/Efeitos sonoros/House In a Forest Loop.ogg" type="AudioStream" id=5]
 [ext_resource path="res://musica/Efeitos sonoros/gameover.wav" type="AudioStream" id=6]
 
-
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 1025, -1, 0, 0, 0, 0, 1025, 600, 0, 0, 0, 0, -1, 598, 0, 0, 0, 0, -2, 0 )
@@ -57,10 +56,12 @@ volume_db = -20.0
 wait_time = 3.0
 one_shot = true
 
+[connection signal="body_entered" from="jogadorMG3" to="jogadorMG3" method="_on_jogadorMG3_body_entered"]
 [connection signal="hit" from="jogadorMG3" to="." method="game_over"]
+[connection signal="hit" from="jogadorMG3" to="HUDMG3" method="exibir_gameover"]
 [connection signal="timeout" from="inicioTimer" to="." method="_on_inicioTimer_timeout"]
-[connection signal="timeout" from="inicioTimer" to="jogadorMG3" method="_on_inicioTimer_timeout"]
 [connection signal="timeout" from="pontuacaoTimer" to="." method="_on_pontuacaoTimer_timeout"]
 [connection signal="timeout" from="inimigoTimer" to="." method="_on_inimigoTimer_timeout"]
+[connection signal="start_game" from="HUDMG3" to="." method="_on_HUDMG3_start_game"]
 [connection signal="start_game" from="HUDMG3" to="." method="novo_jogo"]
 [connection signal="timeout" from="sair" to="." method="_on_sair_timeout"]

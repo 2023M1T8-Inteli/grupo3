@@ -7,6 +7,9 @@ var timer = Timer.new() #tempo de transição
 onready var imagem = $atencao #carrega a imagem atenção 
 
 func _ready(): #
+	$Personagem.control = false
+	Global.objective = false
+	$Personagem/Arrow.hide()
 	Global.current_state = Global.State.Situacao1_finish
 	$CanvasLayer.comecar_reverso()
 	$CanvasLayer.timer() #inicia o tempo e animação reversa acima 
@@ -20,7 +23,7 @@ func _ready(): #
 	$NPC.hide()
 	$atencao.hide()
 	$parabens.hide()
-
+	$Personagem/gamepad.hide()
 func _on_Situao1_body_entered(body): #quando o jogador entra na área definida inicia a cena 
 	$NPC.show()
 	$NPC/AnimationPlayer.play("Situacao1")
@@ -56,6 +59,9 @@ func _on_Button_pressed(): #após a apresentação da pergunta as escolhas apare
 func _on_Escolha1_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	dialogo = dialogo[n][1]
 	pontuacao += 2
+	Global.feedback_final['situ_1'][1] = $CaixaDialogo/VBoxContainer/Escolha1.text
+	Global.feedback_final['situ_1'][2] = dialogo.text
+	Global.feedback_final['situ_1'][3] = pontuacao
 	clear() 
 	$CaixaDialogo.queue_free()
 	$parabens.visible = true
@@ -65,6 +71,9 @@ func _on_Escolha1_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 func _on_Escolha2_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	dialogo = dialogo[n][2]
 	pontuacao += 2
+	Global.feedback_final['situ_1'][1] = $CaixaDialogo/VBoxContainer/Escolha2.text
+	Global.feedback_final['situ_1'][2] = dialogo.text
+	Global.feedback_final['situ_1'][3] = pontuacao
 	clear()
 	$CaixaDialogo.queue_free()
 	$parabens.show()
@@ -74,6 +83,9 @@ func _on_Escolha2_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 func _on_Escolha3_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	dialogo = dialogo[n][3]
 	pontuacao += 0
+	Global.feedback_final['situ_1'][1] = $CaixaDialogo/VBoxContainer/Escolha3.text
+	Global.feedback_final['situ_1'][2] = dialogo.text
+	Global.feedback_final['situ_1'][3] = pontuacao
 	clear()
 	$CaixaDialogo.queue_free()
 	$atencao.show()
@@ -83,6 +95,9 @@ func _on_Escolha3_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 func _on_Escolha4_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	dialogo = dialogo[n][4]
 	pontuacao += 0
+	Global.feedback_final['situ_1'][1] = $CaixaDialogo/VBoxContainer/Escolha4.text
+	Global.feedback_final['situ_1'][2] = dialogo.text
+	Global.feedback_final['situ_1'][3] = pontuacao
 	clear()
 	$CaixaDialogo.queue_free()
 	$atencao.show()

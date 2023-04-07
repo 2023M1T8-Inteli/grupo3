@@ -7,19 +7,30 @@ var nivel_2 = Global.nivel_2#verifica se o player passou de nível para iniciar 
 var current_state = Global.current_state
 var i = Global.call_index
 var j = Global.cutscene_index
+var obj_position
 
 func _ready(): 
+	$hud.show()
+	$Blur/Blur.hide()
+	Global.objective = true
+	$Personagem/Arrow.show()
+	Global.obj_position = $excl.get_position()
 	Global.camera_state = Global.StateCameraClamp.Off
-	$Personagem.position = Vector2(Global.posicaox , Global.posicaoy) 
+	$Personagem.position = Global.pos_map
 	$dialogo.hide() #esconde dialogo e falas durante início da cena 
 	$CanvasLayer.hide()
 	
 	match current_state: #primeira abertura do jogo inicia dialogo com nathalia  
+		Global.State.Explore:
+			$Personagem/Arrow.hide()
+			Global.pontuacao = -1000
 		Global.State.Inicio:
+			
+			Global.obj_position = $excl.get_position()
 			Global.controle_nathalia = false
 			$sec_mission.hide()
 			$hud.hide()
-			$gamepad.show()
+			$Personagem/gamepad.show()
 			$dialogo.hide()
 			$Transition.show()
 			$Transition/Fill/animation.play_backwards("transicao")
@@ -29,12 +40,14 @@ func _ready():
 	#		Global.pontuacao = 0
 	 #quando ele voltar da situação ele esconde a exclamação, atualiza a posição do personagem e apaga o dialogo inicial
 		Global.State.Situacao1:
+			Global.obj_position = $excl.get_position()
 			$sec_mission.hide()
 			$mini_game_1/poste.set_disabled(true)
 			$Transition.show()
 			$Transition/Fill/animation.play_backwards("transicao")
 			
 		Global.State.Situacao1_finish:
+			Global.obj_position = $sec_mission.get_position()
 			if i == 0:
 				Global.call_index += 1
 				$Situacao.queue_free()
@@ -52,15 +65,20 @@ func _ready():
 				$Transition/Fill/animation.play_backwards("transicao")
 
 		Global.State.Situacao2:
+			$Situacao.queue_free()
+			$Sprite.queue_free()
+			Global.obj_position = $seta_2.get_position()
 			$Transition.show()
 			$Transition/Fill/animation.play_backwards("transicao")
 			$mini_game_1.queue_free()
-			$excl.hide()
+			$excl.queue_free()
 			$sec_mission.play()
-			$Quest.start()
+			
+			
 			$Transition.hide()
 
 		Global.State.Situacao2_finish:
+			Global.obj_position = $situation_2/bar.get_position()
 			$Transition.show()
 			$Transition/Fill/animation.play_backwards("transicao")
 			$Sprite.queue_free()
@@ -68,6 +86,16 @@ func _ready():
 			$excl.queue_free()
 			$mini_game_1.queue_free()
 			$sec_mission.queue_free()
+			
+		Global.State.Situacao3:
+			$excl.queue_free()
+			$Situacao.queue_free()
+			$Sprite.queue_free()
+			$Sprite2.queue_free()
+			Global.obj_position = $seta_clube.get_position()
+			
+		Global.State.Situacao3_finish:
+			Global.obj_position = $seta_vtal.get_position()
 			
 	match Global.current_nivel:
 				Global.state_nivel.N2:
@@ -139,8 +167,9 @@ func _on_Situacao_body_entered(body): #inicia animação nathalia e começa o ti
 	$CanvasLayer.show()
 	esconder()
 	$CanvasLayer/TransicaoCasa/ColorRect/AnimationPlayer.play("animacao")
-	Global.posicaox = $Personagem.position.x
-	Global.posicaoy = $Personagem.position.y
+	Global.pos_map = Vector2($Personagem.position.x, $Personagem.position.y)
+#	Global.posicaox = $Personagem.position.x
+#	Global.posicaoy = $Personagem.position.y
 	$Timer3.start()
 
 func _on_passar_pressed(): #carrega dialogo com natalia 
@@ -159,6 +188,8 @@ func _on_passar_pressed(): #carrega dialogo com natalia
 		$bar_desbloq.start()
 		
 	elif n == 10:
+		Global.current_state = Global.State.Situacao3
+		Global.obj_position = $seta_clube.get_position()
 		$Personagem/Camera2D/AnimationPlayer.play("clube")
 		$club.start()
 		$dialogo.hide()
@@ -167,6 +198,7 @@ func _on_passar_pressed(): #carrega dialogo com natalia
 		$Personagem/Camera2D/AnimationPlayer.play("final_1")
 		$final.start()
 		$dialogo.hide()
+		Global.obj_position = $seta_vtal.get_position()
 		
 	elif n == 4:
 		$dialogo.hide()
@@ -181,6 +213,7 @@ func _on_Timer_timeout(): #fim do timer do dialogo e da cena
 
 func _on_Timer2_timeout(): #personagem pode se mover dentro do mapa 
 	Global.velocity(300)
+	$Personagem/Arrow.show()
 
 func _on_transicao_timeout(): #tira a transição da tela 
 	$Transition.queue_free()
@@ -189,7 +222,7 @@ func _on_Area2D_body_entered(body): #personagem entra na casa e carrega a transi
 	get_tree().change_scene("res://cenas/interiores/casa_1_interno.tscn") # Replace with function body.
 
 func esconder(): #esconde a hud 
-	$gamepad.hide()
+	$Personagem/gamepad.hide()
 	$hud.hide()
 
 func _on_Timer3_timeout(): #termina a situação 1 e muda de cena 
@@ -205,7 +238,8 @@ func _on_Timer4_timeout(): #carrega a hud
 
 func _on_nivel_1_timeout():#ao subir de nivel inicia uma cutscene para mostrar a area liberando
 	Global.velocity(0)
-	$Personagem.hide()
+	Global.obj_position = $seta_2.get_position()
+	$Personagem.objetivo_pos = $seta_2.get_position()
 	$Personagem/Camera2D/AnimationPlayer.play("area_desb")
 	$area_desbloqueada.start()
 
@@ -216,6 +250,7 @@ func _on_area_desbloqueada_timeout(): # mostra os cones desaparecendo  e da queu
 	
 func _on_nivel_12_timeout():# volta para a posição do personagem
 	$Personagem/Camera2D/AnimationPlayer.play_backwards("area_desb")
+	$Personagem.objetivo_pos = $situation_2/bar.get_position()
 	$area_reverso.start() 
 	$Personagem.show()
 	$Sprite.queue_free()
@@ -235,6 +270,8 @@ func _on_mini_game_1_body_entered(body):
 	get_tree().change_scene("res://cenas/mini_games/mini_game_1/flappy.tscn")
 
 func _on_situation_2_body_entered(body):
+	Global.posicaox = $Personagem.position.x
+	Global.posicaoy = $Personagem.position.y
 	get_tree().change_scene("res://cenas/situacoes/situacao_2.tscn")
 	
 func _on_bar_desbloq_timeout():
@@ -275,6 +312,27 @@ func _on_vtal_body_entered(body):
 func _on_sumir_2_3_timeout():
 		$Personagem.show()
 		$Sprite2.queue_free()
+		Global.current_state = Global.State.Situacao3
 		Global.current_area = Global.state_areas.AREA_3
-		
 		$sumir_2.start()
+
+func _on_Node2D_blur_on():
+	$Blur/Blur.show()
+
+func _on_Node2D_blur_off():
+	$Blur/Blur.hide()
+
+func _on_casa_1_body_entered(body):
+	get_tree().change_scene("res://cenas/interiores/casa_1.tscn")
+
+func _on_restaurant_body_entered(body):
+	get_tree().change_scene("res://cenas/interiores/restaurante.tscn")
+
+func _on_casa_2_body_entered(body):
+	get_tree().change_scene("res://cenas/interiores/casa_2.tscn")
+
+func _on_casa_3_body_entered(body):
+	get_tree().change_scene("res://cenas/interiores/casa_3.tscn")
+
+func _on_Quest_timeout():
+	$Quest.queue_free()

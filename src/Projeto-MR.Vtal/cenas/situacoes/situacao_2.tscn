@@ -1,9 +1,9 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=1]
-[ext_resource path="res://cenas/jogador/jogador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/situacoes/situacao_2.gd" type="Script" id=3]
-[ext_resource path="res://tres/npc.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://tres/Situacao_2.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://imagens/situacoes/situacao_2/WhatsApp Image 2023-03-12 at 21.14.21.jpeg" type="Texture" id=5]
 [ext_resource path="res://cenas/transicoes/transicao_casas.tscn" type="PackedScene" id=8]
 [ext_resource path="res://imagens/situacoes/aten.png" type="Texture" id=9]
@@ -20,10 +20,10 @@ extents = Vector2( 175.125, 133.75 )
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 553, 10 )
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=22]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -32,10 +32,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 460, 563 ) ]
+"values": [ "direita" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:flip_h")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -44,10 +44,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ Vector2( 466, 555 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:animation")
+tracks/2/path = NodePath(".:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -56,10 +56,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ "direita" ]
+"values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../CollisionPolygon2D:disabled")
+tracks/3/path = NodePath(".:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -71,72 +71,32 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Situacao1"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 466, 556 ), Vector2( 460, 564 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "direita" ]
-}
-
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=23]
 resource_name = "sit_2_ida"
-length = 4.0
+length = 3.5
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 470, 558 ), Vector2( 477, 490 ), Vector2( 779, 505 ), Vector2( 797, 440 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 3, 4 ),
+"times": PoolRealArray( 0, 0.8, 2.5, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ "cima", "direita", "cima", "direita" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 2.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 466, 555 ), Vector2( 486, 483 ), Vector2( 794, 483 ), Vector2( 794, 437 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:flip_h")
@@ -145,7 +105,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1, 4 ),
+"times": PoolRealArray( 0.8, 3.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -157,27 +117,15 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0, 3.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("../CollisionPolygon2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=24]
 resource_name = "sit_2_volta"
-length = 4.0
+length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -185,10 +133,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 3, 4 ),
+"times": PoolRealArray( 0, 0.8, 2.5, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 797, 440 ), Vector2( 779, 505 ), Vector2( 477, 490 ), Vector2( 459, 562 ) ]
+"values": [ Vector2( 794, 437 ), Vector2( 794, 483 ), Vector2( 486, 483 ), Vector2( 466, 555 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:animation")
@@ -197,7 +145,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 3, 4 ),
+"times": PoolRealArray( 0, 0.8, 2.5, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ "baixo", "direita", "baixo", "direita" ]
@@ -209,10 +157,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false, true, false, true ]
+"values": [ true ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath(".:playing")
@@ -221,22 +169,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0, 3.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("../CollisionPolygon2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
 }
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -248,20 +184,8 @@ font_data = ExtResource( 11 )
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 11.5, 32.5 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 19
-font_data = ExtResource( 11 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 30
-font_data = ExtResource( 11 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 35
-font_data = ExtResource( 11 )
-
 [sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 58.25, 31.5 )
+extents = Vector2( 16.5, 21.5 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 22 )
@@ -286,6 +210,18 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="DynamicFont" id=5]
+size = 19
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 35
+font_data = ExtResource( 11 )
 
 [node name="Situacao2" type="Node2D"]
 position = Vector2( 0, -5 )
@@ -348,27 +284,24 @@ rotation = 1.5708
 shape = SubResource( 13 )
 
 [node name="NPC" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
 
 [node name="NPC" type="AnimatedSprite" parent="NPC"]
-position = Vector2( 460, 563 )
-scale = Vector2( 3, 3 )
+position = Vector2( 466, 555 )
+scale = Vector2( 2.60938, 2.60938 )
 frames = ExtResource( 4 )
 animation = "direita"
-frame = 1
-playing = true
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NPC/NPC"]
-anims/RESET = SubResource( 15 )
-anims/Situacao1 = SubResource( 3 )
-anims/sit_2_ida = SubResource( 10 )
-anims/sit_2_volta = SubResource( 14 )
+anims/RESET = SubResource( 22 )
+anims/sit_2_ida = SubResource( 23 )
+anims/sit_2_volta = SubResource( 24 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NPC"]
-position = Vector2( 1, 3 )
-polygon = PoolVector2Array( 447, 541, 449, 552, 457, 559, 454, 563, 456, 567, 457, 570, 454, 573, 459, 578, 469, 579, 474, 575, 474, 570, 477, 565, 477, 560, 474, 558, 483, 550, 483, 540, 471, 528, 459, 527 )
+polygon = PoolVector2Array( 453, 552, 448, 548, 449, 540, 458, 529, 469, 528, 477, 540, 478, 551, 476, 554, 481, 563, 477, 568, 476, 578, 453, 579, 451, 568, 445, 566, 445, 559 )
+
+[node name="Personagem" parent="." instance=ExtResource( 2 )]
+position = Vector2( 171, 281 )
 
 [node name="saida" type="Area2D" parent="."]
 position = Vector2( 171, 474.75 )
@@ -384,10 +317,6 @@ shape = SubResource( 1 )
 position = Vector2( 726, 317 )
 scale = Vector2( 2.81649, 3.00333 )
 texture = ExtResource( 12 )
-
-[node name="Personagem" parent="." instance=ExtResource( 2 )]
-position = Vector2( 169, 296 )
-scale = Vector2( 1.3, 1.3 )
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -464,84 +393,6 @@ one_shot = true
 wait_time = 4.0
 one_shot = true
 
-[node name="CaixaDialogo" type="ColorRect" parent="."]
-margin_top = 424.0
-margin_right = 1024.0
-margin_bottom = 607.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CaixaDialogo"]
-margin_left = 11.0
-margin_top = 9.0
-margin_right = 950.0
-margin_bottom = 133.0
-rect_scale = Vector2( 1.4, 1.4 )
-
-[node name="Escolha1" type="LinkButton" parent="CaixaDialogo/VBoxContainer"]
-modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
-margin_right = 939.0
-margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
-text = "a) Recusar a oferta e informar o Compliance sobre o acontecimento"
-underline = 1
-
-[node name="Escolha2" type="LinkButton" parent="CaixaDialogo/VBoxContainer"]
-modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
-margin_top = 30.0
-margin_right = 939.0
-margin_bottom = 56.0
-focus_mode = 2
-custom_fonts/font = SubResource( 5 )
-text = "b) Recusar a oferta e instalar a fibra da Tim"
-underline = 1
-
-[node name="Escolha3" type="LinkButton" parent="CaixaDialogo/VBoxContainer"]
-modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
-margin_top = 60.0
-margin_right = 939.0
-margin_bottom = 86.0
-focus_mode = 2
-custom_fonts/font = SubResource( 5 )
-text = "c) Estamos trabalhando para conseguir oferecer um pacote de 1 GB para nossos cliente"
-underline = 1
-
-[node name="Escolha4" type="LinkButton" parent="CaixaDialogo/VBoxContainer"]
-modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
-margin_top = 90.0
-margin_right = 939.0
-margin_bottom = 116.0
-focus_mode = 2
-custom_fonts/font = SubResource( 5 )
-text = "d) Aceitar o dinheiro e instalar a fibra"
-underline = 1
-
-[node name="conversa" type="Label" parent="CaixaDialogo"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 9.0
-margin_top = 46.0
-margin_right = 964.0
-margin_bottom = 171.0
-custom_fonts/font = SubResource( 4 )
-text = "tttttttttttttttt"
-align = 3
-autowrap = true
-
-[node name="Button" type="TextureButton" parent="CaixaDialogo"]
-margin_left = 956.0
-margin_top = 121.0
-margin_right = 1033.0
-margin_bottom = 183.0
-texture_normal = ExtResource( 1 )
-expand = true
-
-[node name="nome" type="Label" parent="CaixaDialogo"]
-margin_left = 7.0
-margin_top = 1.0
-margin_right = 98.0
-margin_bottom = 47.0
-custom_colors/font_color = Color( 0.482353, 0, 0, 1 )
-custom_fonts/font = SubResource( 9 )
-text = "Cláudio"
-
 [node name="Transition" parent="." instance=ExtResource( 8 )]
 visible = false
 
@@ -560,25 +411,105 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mini_game_2"]
-position = Vector2( 873, 397 )
+position = Vector2( 873, 388 )
 shape = SubResource( 16 )
 
 [node name="exclamacao" parent="." instance=ExtResource( 20 )]
-position = Vector2( 724, 246 )
+position = Vector2( 724, 383 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="excl_mini_game" type="AnimatedSprite" parent="."]
-position = Vector2( 873, 364 )
+position = Vector2( 873, 366 )
 frames = SubResource( 21 )
-frame = 2
+frame = 5
 playing = true
 flip_v = true
 
 [node name="sit_2_volta" type="Timer" parent="."]
 one_shot = true
 
+[node name="dialogo" type="CanvasLayer" parent="."]
+
+[node name="CaixaDialogo" type="ColorRect" parent="dialogo"]
+visible = false
+margin_top = 419.0
+margin_right = 1024.0
+margin_bottom = 602.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dialogo/CaixaDialogo"]
+margin_left = 11.0
+margin_top = 9.0
+margin_right = 950.0
+margin_bottom = 133.0
+rect_scale = Vector2( 1.4, 1.4 )
+
+[node name="Escolha1" type="LinkButton" parent="dialogo/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_right = 939.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 5 )
+text = "a) Recusar a oferta e informar o Compliance sobre o acontecimento"
+underline = 1
+
+[node name="Escolha2" type="LinkButton" parent="dialogo/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_top = 30.0
+margin_right = 939.0
+margin_bottom = 56.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "b) Recusar a oferta e instalar a fibra da Tim"
+underline = 1
+
+[node name="Escolha3" type="LinkButton" parent="dialogo/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_top = 60.0
+margin_right = 939.0
+margin_bottom = 86.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "c) Estamos trabalhando para conseguir oferecer um pacote de 1 GB para nossos cliente"
+underline = 1
+
+[node name="Escolha4" type="LinkButton" parent="dialogo/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_top = 90.0
+margin_right = 939.0
+margin_bottom = 116.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "d) Aceitar o dinheiro e instalar a fibra"
+underline = 1
+
+[node name="conversa" type="Label" parent="dialogo/CaixaDialogo"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 9.0
+margin_top = 46.0
+margin_right = 964.0
+margin_bottom = 171.0
+custom_fonts/font = SubResource( 4 )
+text = "tttttttttttttttt"
+align = 3
+autowrap = true
+
+[node name="Button" type="TextureButton" parent="dialogo/CaixaDialogo"]
+margin_left = 956.0
+margin_top = 121.0
+margin_right = 1033.0
+margin_bottom = 183.0
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="nome" type="Label" parent="dialogo/CaixaDialogo"]
+margin_left = 7.0
+margin_top = 1.0
+margin_right = 98.0
+margin_bottom = 47.0
+custom_colors/font_color = Color( 0.482353, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Cláudio"
+
 [connection signal="body_entered" from="saida" to="." method="_on_saida_body_entered"]
-[connection signal="body_entered" from="saida" to="Personagem" method="_on_saida_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="atencao/passar" to="." method="_on_passar_pressed"]
 [connection signal="pressed" from="parabens/passar" to="." method="_on_passar_pressed"]
@@ -586,13 +517,12 @@ one_shot = true
 [connection signal="timeout" from="enemy" to="." method="_on_enemy_timeout"]
 [connection signal="timeout" from="npc" to="." method="_on_npc_timeout"]
 [connection signal="timeout" from="resposta" to="." method="_on_resposta_timeout"]
-[connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha1" to="." method="_on_Escolha1_pressed"]
-[connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha2" to="." method="_on_Escolha2_pressed"]
-[connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha3" to="." method="_on_Escolha3_pressed"]
-[connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha4" to="." method="_on_Escolha4_pressed"]
-[connection signal="pressed" from="CaixaDialogo/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="transicaoTimer" to="." method="_on_transicaoTimer_timeout"]
 [connection signal="timeout" from="animacao_player" to="." method="_on_animacao_player_timeout"]
 [connection signal="body_entered" from="mini_game_2" to="." method="_on_mini_game_2_body_entered"]
-[connection signal="body_entered" from="mini_game_2" to="Personagem" method="_on_mini_game_2_body_entered"]
 [connection signal="timeout" from="sit_2_volta" to="." method="_on_sit_2_volta_timeout"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/VBoxContainer/Escolha1" to="." method="_on_Escolha1_pressed"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/VBoxContainer/Escolha2" to="." method="_on_Escolha2_pressed"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/VBoxContainer/Escolha3" to="." method="_on_Escolha3_pressed"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/VBoxContainer/Escolha4" to="." method="_on_Escolha4_pressed"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/Button" to="." method="_on_Button_pressed"]

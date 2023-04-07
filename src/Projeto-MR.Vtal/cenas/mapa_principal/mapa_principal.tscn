@@ -1,13 +1,12 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=53 format=2]
 
-[ext_resource path="res://imagens/joy_stick/pixil-frame-0 (4).png" type="Texture" id=1]
-[ext_resource path="res://cenas/jogador/jogador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://imagens/outros/icon.png" type="Texture" id=1]
 [ext_resource path="res://scripts/mapa_principal/mapa_principal.gd" type="Script" id=3]
 [ext_resource path="res://fontes/PTSansNarrow-Regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://imagens/mapa_principal/sobreposição.png" type="Texture" id=5]
+[ext_resource path="res://imagens/mapa_principal/mapa-vtal-2.0.png" type="Texture" id=5]
 [ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=6]
 [ext_resource path="res://cenas/transicoes/transicao_shaders.tscn" type="PackedScene" id=7]
-[ext_resource path="res://imagens/mapa_principal/mapa-vtal-5.0.png" type="Texture" id=8]
+[ext_resource path="res://imagens/mapa_principal/mapa-vtal-sobrepos-3.png" type="Texture" id=8]
 [ext_resource path="res://cenas/hud/hud.tscn" type="PackedScene" id=9]
 [ext_resource path="res://imagens/mapa_principal/cones_area-2.png" type="Texture" id=10]
 [ext_resource path="res://imagens/mapa_principal/cones_area-3.png" type="Texture" id=11]
@@ -16,6 +15,9 @@
 [ext_resource path="res://fontes/OldSchoolAdventures-42j9.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://cenas/mapa_principal/call_nathalia.tscn" type="PackedScene" id=15]
 [ext_resource path="res://imagens/situacoes/exclamação_sec.png" type="Texture" id=16]
+[ext_resource path="res://imagens/menu/Button_mute-removebg-preview (4).png" type="Texture" id=17]
+[ext_resource path="res://imagens/botoes/config_button-removebg-preview.png" type="Texture" id=18]
+[ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Animation" id=12]
 length = 0.001
@@ -236,6 +238,14 @@ radius = 6.0
 [sub_resource type="RectangleShape2D" id=29]
 extents = Vector2( 30, 10 )
 
+[sub_resource type="RectangleShape2D" id=38]
+extents = Vector2( 13.625, 10 )
+
+[sub_resource type="RectangleShape2D" id=39]
+extents = Vector2( 27, 10 )
+
+[sub_resource type="RectangleShape2D" id=37]
+
 [sub_resource type="RectangleShape2D" id=30]
 extents = Vector2( 62.5, 10 )
 
@@ -374,42 +384,55 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Shader" id=40]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform int blurSize : hint_range(0,20);
+
+void fragment()
+{
+COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, float(blurSize)/10.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=41]
+shader = SubResource( 40 )
+shader_param/blurSize = 17
+
 [node name="Mapa" type="Node2D"]
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 435.0 ]
 }
 
+[node name="seta_vtal" type="Sprite" parent="."]
+position = Vector2( 123, 119 )
+texture = ExtResource( 18 )
+
+[node name="seta_clube" type="Sprite" parent="."]
+position = Vector2( 1019, -171 )
+texture = ExtResource( 17 )
+
+[node name="seta_2" type="Sprite" parent="."]
+position = Vector2( -421, -1000 )
+texture = ExtResource( 1 )
+
 [node name="Mapa" type="Sprite" parent="."]
-position = Vector2( 125, 33 )
-texture = ExtResource( 8 )
+position = Vector2( 125, 32 )
+texture = ExtResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="TransicaoCasa" parent="CanvasLayer" instance=ExtResource( 12 )]
 
 [node name="timer_transition" type="Timer" parent="CanvasLayer/TransicaoCasa"]
 
-[node name="hud" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Node2D" parent="hud" instance=ExtResource( 9 )]
-position = Vector2( 281, 50 )
-
-[node name="smaho" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Node2D" parent="smaho" instance=ExtResource( 15 )]
-position = Vector2( 22, -17 )
-rotation = 0.000576615
-scale = Vector2( 0.949037, 1 )
-
-[node name="Personagem" parent="." instance=ExtResource( 2 )]
-pause_mode = 1
-position = Vector2( 142, 217 )
-rotation = -0.000547229
+[node name="Personagem" parent="." instance=ExtResource( 19 )]
+position = Vector2( 144, 227 )
 
 [node name="Camera2D" type="Camera2D" parent="Personagem"]
+rotation = -0.000547229
 current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Personagem/Camera2D"]
@@ -422,6 +445,21 @@ anims/final_1 = SubResource( 31 )
 anims/mover = SubResource( 13 )
 anims/mover_2 = SubResource( 18 )
 anims/teste-1 = SubResource( 24 )
+
+[node name="hud" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Node2D" parent="hud" instance=ExtResource( 9 )]
+position = Vector2( 281, 50 )
+
+[node name="smaho" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Node2D" parent="smaho" instance=ExtResource( 15 )]
+position = Vector2( 22, -17 )
+rotation = 0.000576615
+scale = Vector2( 0.949037, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 128, 34 )
@@ -438,7 +476,7 @@ polygon = PoolVector2Array( -1184, 1089, -1236, 1090, -1227, 1057, -1185, 1056, 
 
 [node name="Mapa_detalhes" type="Sprite" parent="."]
 position = Vector2( 125, 33 )
-texture = ExtResource( 5 )
+texture = ExtResource( 8 )
 
 [node name="Colisoes" type="StaticBody2D" parent="Mapa_detalhes"]
 position = Vector2( -128, -34 )
@@ -493,7 +531,7 @@ shape = SubResource( 5 )
 
 [node name="barreira" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisoes"]
 position = Vector2( 131, 35 )
-polygon = PoolVector2Array( -31, 111, 21, 111, 21, 113, -31, 113 )
+polygon = PoolVector2Array( -31, 111, 21, 111, 21, 113, 2.46376, 113, -31, 113 )
 
 [node name="Poste11" type="CollisionShape2D" parent="Mapa_detalhes/Colisoes"]
 position = Vector2( -15, 892 )
@@ -586,7 +624,7 @@ rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="Casa" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisoes"]
-polygon = PoolVector2Array( 221, 709, 224, 354, 384, 355, 384, 484, 384, 574, 460, 576, 607, 577, 608, 709 )
+polygon = PoolVector2Array( 221, 709, 224, 354, 384, 355, 384, 484, 384, 574, 460, 576, 607, 577, 608, 709, 576, 706, 577, 656, 546, 657, 544, 705, 385, 706, 383, 665, 353, 663, 353, 706, 289, 706, 288, 660, 258, 659, 258, 704 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisoes"]
 polygon = PoolVector2Array( 383, 1152, 289, 1152, 286, 893, 895, 890, 897, 1151, 451, 1153, 449, 1145, 386, 1145 )
@@ -709,15 +747,15 @@ position = Vector2( 128, 43 )
 polygon = PoolVector2Array( 1247, -488, 1247, -986, 1227, -998, 1208, -992, 1188, -992, 1161, -992, 1154, -986, 1149, -972, 1149, -968, 1142, -960, 1117, -960, 1117, -949, 1115, -937, 1084, -926, 1052, -890, 1021, -856, 811, -651, 808, -528, 844, -409, 1072, -403 )
 
 [node name="restaurante" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisoes"]
-polygon = PoolVector2Array( 733, 397, 678, 392, 674, 363, 638, 364, 639, 332, 607, 330, 608, 72, 1180, 77, 1183, 364, 1089, 364, 1089, 394, 709, 397, 718, 393, 722, 395 )
+polygon = PoolVector2Array( 733, 397, 678, 392, 674, 363, 638, 364, 639, 332, 607, 330, 608, 72, 1180, 77, 1183, 364, 1089, 364, 1089, 385, 960, 386, 959, 317, 895, 322, 896, 386, 709, 397, 718, 393, 722, 395 )
 
 [node name="prédios-3" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisoes"]
 position = Vector2( 128, 43 )
-polygon = PoolVector2Array( -1185, 767, -1059, 767, -1057, 743, -994, 743, -992, 765, -961, 767, -959, 606, -926, 607, -925, 587, -863, 589, -862, 604, -801, 607, -798, 414, -733, 413, -734, 393, -676, 393, -673, 415, -579, 415, -579, 286, -450, 286, -447, 261, -412, 256, -414, 227, -381, 226, -381, 193, -350, 191, -347, 163, -327, 162, -329, 99, -351, 95, -354, 65, -383, 59, -386, 29, -414, 31, -1184, 31, -1184, 387, -1153, 384, -1152, 417, -1184, 416 )
+polygon = PoolVector2Array( -1185, 767, -1059, 767, -992, 765, -961, 767, -959, 606, -926, 607, -862, 604, -801, 607, -798, 414, -733, 413, -673, 415, -579, 415, -579, 286, -450, 286, -447, 261, -412, 256, -414, 227, -381, 226, -381, 193, -350, 191, -347, 163, -327, 162, -329, 99, -351, 95, -354, 65, -383, 59, -386, 29, -414, 31, -1184, 31, -1184, 387, -1153, 384, -1152, 417, -1184, 416 )
 
 [node name="predio1" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisoes"]
 position = Vector2( 128, 43 )
-polygon = PoolVector2Array( -225, 663, -289, 665, -288, 335, -98, 333, -96, 663, -159, 662, -163, 637, -226, 643 )
+polygon = PoolVector2Array( -225, 663, -289, 665, -288, 335, -98, 333, -96, 663, -159, 662 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisoes"]
 position = Vector2( 128, 34 )
@@ -748,23 +786,55 @@ polygon = PoolVector2Array( -721, -1139, -721, -1122, -716, -1106, -714, -1093, 
 
 [node name="mercado2" type="Area2D" parent="Mapa_detalhes/Colisoes"]
 position = Vector2( -863, -156 )
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa_detalhes/Colisoes/mercado2"]
+position = Vector2( 0, 13 )
 shape = SubResource( 29 )
 
 [node name="Mesa2" type="CollisionPolygon2D" parent="Mapa_detalhes/Colisoes"]
 position = Vector2( 95, 96 )
 polygon = PoolVector2Array( -721, -1139, -721, -1122, -716, -1106, -714, -1093, -718, -1087, -711, -1087, -707, -1095, -699, -1095, -694, -1088, -689, -1086, -686, -1093, -683, -1098, -655, -1101, -657, -1088, -648, -1086, -644, -1093, -637, -1093, -632, -1087, -628, -1086, -626, -1113, -621, -1132, -622, -1140, -628, -1140, -636, -1125, -640, -1125, -640, -1140, -656, -1147, -656, -1152, -661, -1156, -660, -1162, -660, -1174, -670, -1180, -674, -1181, -685, -1171, -685, -1160, -683, -1156, -689, -1149, -703, -1139, -704, -1126, -709, -1126, -713, -1137, -717, -1141 )
 
-[node name="clube2" type="Area2D" parent="Mapa_detalhes/Colisoes"]
-position = Vector2( 1024, -170 )
+[node name="casa_1" type="Area2D" parent="."]
+position = Vector2( 365, 698 )
 
-[node name="clube2" type="CollisionShape2D" parent="Mapa_detalhes/Colisoes/clube2"]
+[node name="casa_1" type="CollisionShape2D" parent="casa_1"]
+position = Vector2( -95, 1 )
+shape = SubResource( 38 )
+
+[node name="restaurant" type="Area2D" parent="."]
+position = Vector2( 365, 698 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="restaurant"]
+position = Vector2( 560, -326 )
+shape = SubResource( 39 )
+
+[node name="casa_2" type="Area2D" parent="."]
+position = Vector2( 365, 698 )
+
+[node name="casa_2" type="CollisionShape2D" parent="casa_2"]
+position = Vector2( 192.375, 0 )
+shape = SubResource( 38 )
+
+[node name="casa_3" type="Area2D" parent="."]
+position = Vector2( 365, 698 )
+
+[node name="casa_3" type="CollisionShape2D" parent="casa_3"]
+shape = SubResource( 37 )
+
+[node name="clube2" type="Area2D" parent="."]
+position = Vector2( 1021, -171 )
+
+[node name="clube2" type="CollisionShape2D" parent="clube2"]
 position = Vector2( 0, 44 )
 shape = SubResource( 30 )
 
 [node name="vtal" type="Area2D" parent="."]
 position = Vector2( 123, 118 )
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vtal"]
 position = Vector2( 0, 19 )
@@ -789,30 +859,6 @@ collision_mask = 2
 [node name="Situacao1" type="CollisionShape2D" parent="Situacao"]
 position = Vector2( 31.5, -12.5 )
 shape = SubResource( 8 )
-
-[node name="gamepad" type="CanvasLayer" parent="."]
-
-[node name="gamepad" type="Node2D" parent="gamepad"]
-position = Vector2( 74, 459 )
-
-[node name="up" type="TouchScreenButton" parent="gamepad/gamepad"]
-position = Vector2( -10, 18 )
-normal = ExtResource( 1 )
-
-[node name="down" type="TouchScreenButton" parent="gamepad/gamepad"]
-position = Vector2( 50, 139 )
-rotation = 3.14159
-normal = ExtResource( 1 )
-
-[node name="right" type="TouchScreenButton" parent="gamepad/gamepad"]
-position = Vector2( 83, 46 )
-rotation = 1.5708
-normal = ExtResource( 1 )
-
-[node name="left" type="TouchScreenButton" parent="gamepad/gamepad"]
-position = Vector2( -44, 109 )
-rotation = -1.5708
-normal = ExtResource( 1 )
 
 [node name="dialogo" type="CanvasLayer" parent="."]
 layer = 2
@@ -859,6 +905,7 @@ one_shot = true
 one_shot = true
 
 [node name="Transition" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="Timer3" type="Timer" parent="."]
 one_shot = true
@@ -895,7 +942,7 @@ position = Vector2( 336, 691 )
 rotation = 3.14159
 scale = Vector2( 0.990868, 0.990868 )
 frames = SubResource( 23 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="situation_2" type="Area2D" parent="."]
@@ -903,8 +950,8 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="bar" type="CollisionPolygon2D" parent="situation_2"]
-position = Vector2( -16.3332, -0.000366211 )
-scale = Vector2( 0.972384, 1 )
+position = Vector2( -42, -1 )
+scale = Vector2( 0.914245, 1 )
 polygon = PoolVector2Array( -456, -961, -457, -1011, -371, -1012, -371, -961 )
 
 [node name="mini_game_1" type="Area2D" parent="."]
@@ -947,7 +994,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="sumir_2_3" type="Timer" parent="."]
-wait_time = 4.0
 one_shot = true
 
 [node name="final" type="Timer" parent="."]
@@ -964,41 +1010,52 @@ texture = ExtResource( 11 )
 position = Vector2( -128, -34 )
 polygon = PoolVector2Array( 215, -1316, 193, -1282.69, 193, -287, 364, -286, 379, -286, 391, -270, 385, -255, 414, -252, 422, -235, 417, -223, 440, -221, 455, -205, 451, -190, 463, -190, 450, -160, 450.003, -127.215, 450.005, -96.0334, 450.008, -62.1791, 450.011, -33.6703, 450.014, 1.07468, 450.015, 13.4394, 449.924, 32.2452, 449.771, 63.8822, 449.611, 96.8555, 449.46, 128.034, 449.296, 161.866, 449.158, 190.391, 449, 223, 466.111, 240.111, 480.813, 254.813, 500.188, 274.188, 515.113, 289.113, 531.369, 305.369, 546.962, 320.962, 566, 340, 579.48, 353.48, 595.068, 369.068, 612.889, 386.889, 626.25, 400.25, 641.843, 415.843, 657.431, 431.431, 673.69, 447.69, 687.276, 461.276, 706.653, 480.653, 720.908, 494.908, 737.835, 511.835, 754.316, 528.316, 770.353, 544.353, 787.948, 561.948, 803.093, 577.093, 834.275, 608.274, 866.347, 640.347, 898.865, 672.865, 930.492, 704.491, 961.45, 735.45, 992.855, 766.854, 1025, 799, 1060.12, 834.117, 1090.19, 864.185, 1123.37, 897.371, 1155, 928.998, 1315, 1089, 1537, 1090, 1536, 1062, 1329, 1063, 478, 191, 480, -238, 391, -319, 229, -315, 223, -1312 )
 
+[node name="Blur" type="CanvasLayer" parent="."]
+
+[node name="Blur" type="ColorRect" parent="Blur"]
+visible = false
+material = SubResource( 41 )
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 1041.0
+margin_bottom = 617.0
+
+[connection signal="blur_off" from="hud/Node2D" to="." method="_on_Node2D_blur_off"]
+[connection signal="blur_on" from="hud/Node2D" to="." method="_on_Node2D_blur_on"]
 [connection signal="body_entered" from="Mapa_detalhes/Colisoes/mercado2" to="." method="_on_mercado2_body_entered"]
-[connection signal="body_entered" from="Mapa_detalhes/Colisoes/clube2" to="." method="_on_clube2_body_entered"]
-[connection signal="body_entered" from="Mapa_detalhes/Colisoes/clube2" to="Personagem" method="_on_clube2_body_entered"]
+[connection signal="body_entered" from="Mapa_detalhes/Colisoes/mercado2" to="Personagem" method="_on_mercado2_body_entered"]
+[connection signal="body_entered" from="casa_1" to="." method="_on_casa_1_body_entered"]
+[connection signal="body_entered" from="casa_1" to="Personagem" method="_on_casa_1_body_entered"]
+[connection signal="body_entered" from="restaurant" to="." method="_on_restaurant_body_entered"]
+[connection signal="body_entered" from="restaurant" to="Personagem" method="_on_restaurant_body_entered"]
+[connection signal="body_entered" from="casa_2" to="." method="_on_casa_2_body_entered"]
+[connection signal="body_entered" from="casa_2" to="Personagem" method="_on_casa_2_body_entered"]
+[connection signal="body_entered" from="casa_3" to="." method="_on_casa_3_body_entered"]
+[connection signal="body_entered" from="casa_3" to="Personagem" method="_on_casa_3_body_entered"]
+[connection signal="body_entered" from="clube2" to="." method="_on_clube2_body_entered"]
+[connection signal="body_entered" from="clube2" to="Personagem" method="_on_clube2_body_entered"]
 [connection signal="body_entered" from="vtal" to="." method="_on_vtal_body_entered"]
 [connection signal="body_entered" from="vtal" to="Personagem" method="_on_vtal_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Personagem" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Situacao" to="." method="_on_Situacao_body_entered"]
-[connection signal="body_entered" from="Situacao" to="Personagem" method="_on_Situacao_body_entered"]
 [connection signal="body_exited" from="Situacao" to="." method="_on_Situacao_body_exited"]
-[connection signal="pressed" from="gamepad/gamepad/up" to="Personagem" method="_on_up_pressed"]
-[connection signal="released" from="gamepad/gamepad/up" to="Personagem" method="_on_up_released"]
-[connection signal="pressed" from="gamepad/gamepad/down" to="Personagem" method="_on_down_pressed"]
-[connection signal="released" from="gamepad/gamepad/down" to="Personagem" method="_on_down_released"]
-[connection signal="pressed" from="gamepad/gamepad/right" to="Personagem" method="_on_right_pressed"]
-[connection signal="released" from="gamepad/gamepad/right" to="Personagem" method="_on_right_released"]
-[connection signal="pressed" from="gamepad/gamepad/left" to="Personagem" method="_on_left_pressed"]
-[connection signal="released" from="gamepad/gamepad/left" to="Personagem" method="_on_left_released"]
 [connection signal="pressed" from="dialogo/Dialogo/passar" to="." method="_on_passar_pressed"]
 [connection signal="timeout" from="dialogo/Dialogo/Timer1" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="dialogo/Dialogo/Timer2" to="." method="_on_Timer2_timeout"]
-[connection signal="timeout" from="dialogo/Dialogo/Timer2" to="Personagem" method="_on_Timer2_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
 [connection signal="timeout" from="Timer4" to="." method="_on_Timer4_timeout"]
 [connection signal="timeout" from="nivel_1_2" to="." method="_on_nivel_12_timeout"]
 [connection signal="timeout" from="nivel_1" to="." method="_on_nivel_1_timeout"]
 [connection signal="timeout" from="area_desbloqueada" to="." method="_on_area_desbloqueada_timeout"]
 [connection signal="timeout" from="area_reverso" to="." method="_on_area_reverso_timeout"]
+[connection signal="timeout" from="Quest" to="." method="_on_Quest_timeout"]
 [connection signal="timeout" from="Quest" to="smaho/Node2D" method="_on_Quest_timeout"]
 [connection signal="timeout" from="sit_2" to="." method="_on_sit_2_timeout"]
 [connection signal="body_entered" from="situation_2" to="." method="_on_situation_2_body_entered"]
 [connection signal="body_entered" from="situation_2" to="Personagem" method="_on_situation_2_body_entered"]
-[connection signal="body_entered" from="mini_game_1" to="." method="_on_Area2D2_body_entered"]
 [connection signal="body_entered" from="mini_game_1" to="." method="_on_mini_game_1_body_entered"]
-[connection signal="body_entered" from="mini_game_1" to="Personagem" method="_on_mini_game_1_body_entered"]
+[connection signal="body_entered" from="mini_game_1" to="." method="_on_Area2D2_body_entered"]
 [connection signal="timeout" from="bar_desbloq" to="." method="_on_bar_desbloq_timeout"]
 [connection signal="timeout" from="nivel_2" to="." method="_on_nivel_2_timeout"]
 [connection signal="timeout" from="area_desb_3" to="." method="_on_area_desb_3_timeout"]

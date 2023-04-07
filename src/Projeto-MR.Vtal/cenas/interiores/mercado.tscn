@@ -1,22 +1,255 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://imagens/interiores/mercadopronto.png" type="Texture" id=1]
-[ext_resource path="res://cenas/jogador/jogador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/interiores/mercado.gd" type="Script" id=3]
+[ext_resource path="res://imagens/npcs/npc_negro_1.png" type="Texture" id=4]
+[ext_resource path="res://imagens/npcs/npc_negro.png" type="Texture" id=5]
+[ext_resource path="res://imagens/npcs/npc_asiatico.png" type="Texture" id=6]
+[ext_resource path="res://imagens/npcs/npc_asiatico1.png" type="Texture" id=7]
+[ext_resource path="res://imagens/interiores/fundo.png" type="Texture" id=8]
+[ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=9]
+[ext_resource path="res://fontes/PTSansNarrow-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://cenas/hud/hud.tscn" type="PackedScene" id=11]
+[ext_resource path="res://imagens/outros/Captura de tela 2023-03-08 141234.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 108, 10 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 19
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 35
+font_data = ExtResource( 10 )
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 14.0
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 12.0
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 866, 216 )
 script = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 106, 97 )
+scale = Vector2( 8.69336, 2.5286 )
+texture = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="Personagem" parent="." instance=ExtResource( 2 )]
-position = Vector2( -311, 294 )
+position = Vector2( -390, 338 )
 
 [node name="Camera2D" type="Camera2D" parent="Personagem"]
+position = Vector2( 10, -11.0001 )
 current = true
-limit_left = -673
-limit_top = -384
-limit_right = 672
-limit_bottom = 384
+limit_left = -1
+limit_top = -168
+limit_right = 1538
+limit_bottom = 621
 limit_smoothed = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -358.438, 130.437 )
+scale = Vector2( 2.52734, 2.52734 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="asiatico" type="AnimatedSprite" parent="."]
+position = Vector2( 622, -233 )
+scale = Vector2( 2.29688, 2.29688 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 1, -143 )
+polygon = PoolVector2Array( -522, 239, -495, 241, -435, 244, -410, 244, -386, 243, -379, 242, -371, 242, -363, 239, -362, 214, -367, 203, -410, 201, -418, 207, -440, 208, -462, 195, -526, 194, -535, 203, -533, 239, -526, 247 )
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 3, -477 )
+polygon = PoolVector2Array( -662, 182, -624, 182, -620, 189, -611, 187, -610, 173, -611, 123, -628, 122, -631, 104, -643, 94, -669, 97, -668, 124, -654, 135, -665, 156, -664, 167 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -662, 182, -624, 182, -620, 189, -611, 187, -610, 173, -611, 123, -628, 122, -631, 104, -643, 94, -669, 97, -668, 124, -654, 135, -665, 156, -664, 167 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -673, 380, -669, -384, 670, -379, 671, 382, -280, 385, -279, 412, 718, 413, 706, -404, -690, -421, -702, -129, -707, 413, -501, 415, -502, 379 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -158, 288, 606, 281, 606, 226, 224, 223, 222, 231, 96, 233, 94, 258, -160, 259 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 671, -301, 674, -281, -222, -286, -226, -310, -224, -382, 669, -382 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -188, -120, 576, -113, 578, -188, -193, -191 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -192, 127, -192, 117, 574, 113, 574, 29, -192, 33 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -1, -381 )
+polygon = PoolVector2Array( -520, 240, -499, 239, -441, 238, -409, 240, -379, 238, -366, 239, -369, 251, -363, 239, -362, 214, -367, 203, -410, 201, -418, 207, -440, 208, -462, 195, -526, 194, -535, 203, -533, 239, -526, 247 )
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -4, -512 )
+polygon = PoolVector2Array( -521, 250, -498, 241, -445, 241, -416, 241, -384, 243, -368, 241, -369, 251, -363, 239, -362, 214, -367, 203, -410, 201, -418, 207, -440, 208, -462, 195, -526, 194, -535, 203, -533, 239, -526, 247 )
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -2, -256 )
+polygon = PoolVector2Array( -522, 241, -493, 241, -442, 240, -423, 240, -391, 240, -369, 242, -369, 251, -363, 239, -362, 214, -367, 203, -410, 201, -418, 207, -440, 208, -462, 195, -526, 194, -535, 203, -533, 239, -526, 247 )
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -521, 241, -504, 242, -446, 239, -427, 241, -402, 240, -378, 240, -369, 251, -363, 239, -362, 214, -367, 203, -410, 201, -418, 207, -440, 208, -462, 195, -526, 194, -535, 203, -533, 239, -526, 247 )
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -435, 137, -388, 137, -390, 127, -385, 124, -385, 112, -430, 109, -436, 114 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -391, 394 )
+shape = SubResource( 3 )
+
+[node name="dialogo" type="CanvasLayer" parent="."]
+
+[node name="CaixaDialogo" type="ColorRect" parent="dialogo"]
+visible = false
+margin_top = 419.0
+margin_right = 1024.0
+margin_bottom = 602.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dialogo/CaixaDialogo"]
+visible = false
+margin_left = 11.0
+margin_top = 9.0
+margin_right = 950.0
+margin_bottom = 133.0
+rect_scale = Vector2( 1.4, 1.4 )
+
+[node name="Escolha1" type="LinkButton" parent="dialogo/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_right = 939.0
+margin_bottom = 26.0
+focus_mode = 2
+custom_fonts/font = SubResource( 4 )
+text = "a) Recusar a oferta e informar o Compliance sobre o acontecimento"
+underline = 1
+
+[node name="Escolha2" type="LinkButton" parent="dialogo/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_top = 30.0
+margin_right = 939.0
+margin_bottom = 56.0
+focus_mode = 2
+custom_fonts/font = SubResource( 4 )
+text = "b) Recusar a oferta e instalar a fibra da Tim"
+underline = 1
+
+[node name="Escolha3" type="LinkButton" parent="dialogo/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_top = 60.0
+margin_right = 939.0
+margin_bottom = 86.0
+focus_mode = 2
+custom_fonts/font = SubResource( 4 )
+text = "c) Estamos trabalhando para conseguir oferecer um pacote de 1 GB para nossos cliente"
+underline = 1
+
+[node name="Escolha4" type="LinkButton" parent="dialogo/CaixaDialogo/VBoxContainer"]
+modulate = Color( 0.541176, 0.160784, 0.160784, 1 )
+margin_top = 90.0
+margin_right = 939.0
+margin_bottom = 116.0
+focus_mode = 2
+custom_fonts/font = SubResource( 4 )
+text = "d) Aceitar o dinheiro e instalar a fibra"
+underline = 1
+
+[node name="conversa" type="Label" parent="dialogo/CaixaDialogo"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 9.0
+margin_top = 46.0
+margin_right = 964.0
+margin_bottom = 171.0
+custom_fonts/font = SubResource( 5 )
+text = "tttttttttttttttt"
+align = 3
+autowrap = true
+
+[node name="Button" type="TextureButton" parent="dialogo/CaixaDialogo"]
+margin_left = 956.0
+margin_top = 121.0
+margin_right = 1033.0
+margin_bottom = 183.0
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="nome" type="Label" parent="dialogo/CaixaDialogo"]
+margin_left = 7.0
+margin_top = 1.0
+margin_right = 98.0
+margin_bottom = 47.0
+custom_colors/font_color = Color( 0.482353, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Cláudio"
+
+[node name="NPC_1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC_1"]
+position = Vector2( -361, 130 )
+shape = SubResource( 7 )
+
+[node name="NPC_2" type="Area2D" parent="."]
+position = Vector2( 619, -234 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC_2"]
+shape = SubResource( 8 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( -387.544, 392.799 )
+rotation = 1.5708
+scale = Vector2( 0.381282, 1.74941 )
+texture = ExtResource( 12 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Node2D2" parent="CanvasLayer" instance=ExtResource( 11 )]
+position = Vector2( 256, 69 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/VBoxContainer/Escolha1" to="." method="_on_Escolha1_pressed"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/VBoxContainer/Escolha2" to="." method="_on_Escolha2_pressed"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/VBoxContainer/Escolha3" to="." method="_on_Escolha3_pressed"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/VBoxContainer/Escolha4" to="." method="_on_Escolha4_pressed"]
+[connection signal="pressed" from="dialogo/CaixaDialogo/Button" to="." method="_on_Button_pressed"]
+[connection signal="body_entered" from="NPC_1" to="." method="_on_NPC_1_body_entered"]
+[connection signal="body_entered" from="NPC_2" to="." method="_on_NPC_2_body_entered"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://imagens/interiores/casa_3.png" type="Texture" id=2]
+[ext_resource path="res://cenas/interiores/casa_3.gd" type="Script" id=3]
+[ext_resource path="res://cenas/hud/hud.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 58.75, 13.5 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 515, 310 )
+texture = ExtResource( 2 )
+
+[node name="Personagem" parent="." instance=ExtResource( 1 )]
+position = Vector2( 573, 553 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 564, 404, 559, 406, 563, 415, 559, 420, 555, 413, 550, 395, 548, 307, 568, 295, 590, 293, 612, 310, 612, 391, 605, 405, 604, 415, 595, 416, 596, 408, 591, 408, 580, 410, 569, 410 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 670, 186, 672, 193, 610, 199, 612, 134, 672, 134, 672, 142, 670, 153 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 844, 211, 848, 222, 854, 225, 866, 227, 878, 227, 876, 212, 888, 207, 888, 161, 894, 153, 893, 142, 888, 142, 886, 110, 875, 100, 865, 108, 847, 117, 844, 135, 861, 135, 862, 198, 851, 197 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 781, 515, 788, 514, 885, 514, 894, 517, 894, 509, 896, 493, 896, 464, 889, 456, 879, 454, 784, 453, 775, 459, 772, 471, 772, 495, 781, 504, 777, 511 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 515, 581, 415, 579, 412, 554, 413, 494, 234, 491, 229, 290, 229, 273, 405, 273, 405, 398, 448, 398, 452, 226, 381, 227, 371, 222, 316, 220, 226, 221, 229, 198, 291, 194, 294, 95, 310, 99, 724, 106, 724, 117, 740, 127, 735, 117, 740, 102, 800, 102, 813, 124, 813, 136, 825, 111, 815, 99, 895, 104, 897, 231, 710, 232, 713, 291, 739, 292, 752, 298, 899, 302, 898, 580, 736, 582, 736, 366, 711, 364, 706, 580, 644, 580, 642, 614, 932, 610, 941, 4, 192, 7, 200, 612, 514, 618 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 579, 612 )
+shape = SubResource( 1 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 4 )]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

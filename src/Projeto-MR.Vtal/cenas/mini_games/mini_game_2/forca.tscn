@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_letras/image-removebg-preview (1).png" type="Texture" id=1]
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_letras/image__1_-removebg-preview.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_letras/image__4_-removebg-preview.png" type="Texture" id=4]
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_letras/image__3_-removebg-preview.png" type="Texture" id=5]
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_forca/New Piskel (3).png" type="Texture" id=6]
-[ext_resource path="res://imagens/mini_games/mini_game_2/imagens_forca/pix2.png" type="Texture" id=7]
+[ext_resource path="res://imagens/mini_games/mini_game_1/clique-no-botão-com-o-ponteiro-manual-aqui-da-web-cursor-de-do-site-isolado-vetor-dedo-estoque-161010045-removebg-preview.png" type="Texture" id=7]
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_forca/pix.png" type="Texture" id=8]
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_forca/forca (5).png" type="Texture" id=9]
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_forca/New Piskel (5).png" type="Texture" id=10]
@@ -14,7 +14,6 @@
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_forca/New Piskel.png" type="Texture" id=12]
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_forca/5.png" type="Texture" id=13]
 [ext_resource path="res://imagens/mini_games/mini_game_2/imagens_forca/New Piskel (4).png" type="Texture" id=14]
-[ext_resource path="res://imagens/mini_games/mini_game_2/imagens_forca/confirmar.png" type="Texture" id=15]
 [ext_resource path="res://scripts/mini_games/mini_game_2/forca.gd" type="Script" id=16]
 [ext_resource path="res://fontes/PTSansNarrow-Regular.ttf" type="DynamicFontData" id=17]
 
@@ -26,12 +25,24 @@ font_data = ExtResource( 17 )
 size = 50
 font_data = ExtResource( 17 )
 
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.0782123 )
+colors = PoolColorArray( 0.0784314, 0.0784314, 0.0784314, 0 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = ExtResource( 17 )
+
 [node name="forca" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 16 )
 
 [node name="Barpix" type="Sprite" parent="."]
 position = Vector2( 513.091, 256.187 )
-scale = Vector2( 0.619675, 0.616554 )
+scale = Vector2( 0.62, 0.62 )
 texture = ExtResource( 8 )
 
 [node name="Pix2" type="Sprite" parent="Barpix"]
@@ -42,23 +53,18 @@ scale = Vector2( 1.04852, 0.984543 )
 position = Vector2( 8.33728, 62.9507 )
 scale = Vector2( 1.01397, 0.9521 )
 
-[node name="Pix2" type="Sprite" parent="Barpix/Pix"]
-position = Vector2( 1091.37, 28.9606 )
-scale = Vector2( 1.33857, 1.22204 )
-texture = ExtResource( 7 )
-
 [node name="fim" type="Sprite" parent="."]
 visible = false
 position = Vector2( 493, 272 )
 scale = Vector2( 2.53125, 2.10938 )
 
 [node name="a" type="Sprite" parent="."]
-position = Vector2( 692, 352 )
-scale = Vector2( 0.802632, 0.802632 )
+position = Vector2( 695, 352 )
+scale = Vector2( 0.67434, 0.67434 )
 texture = ExtResource( 4 )
 
 [node name="c" type="Sprite" parent="."]
-position = Vector2( 565, 358 )
+position = Vector2( 565, 352.733 )
 scale = Vector2( 0.712766, 0.712766 )
 texture = ExtResource( 5 )
 
@@ -97,42 +103,19 @@ position = Vector2( 512, 303 )
 texture = ExtResource( 11 )
 
 [node name="E" type="Sprite" parent="."]
-position = Vector2( 177, 348 )
+position = Vector2( 177, 342.733 )
 scale = Vector2( 0.622222, 0.622222 )
 texture = ExtResource( 1 )
 
 [node name="t" type="Sprite" parent="."]
-position = Vector2( 308, 351.719 )
+position = Vector2( 308, 346.452 )
 scale = Vector2( 0.658537, 0.658536 )
 texture = ExtResource( 2 )
 
 [node name="i" type="Sprite" parent="."]
-position = Vector2( 443, 350 )
+position = Vector2( 443, 344.733 )
 scale = Vector2( 0.712766, 0.712766 )
 texture = ExtResource( 3 )
-
-[node name="letra" type="LineEdit" parent="."]
-margin_left = 639.0
-margin_top = 479.0
-margin_right = 707.0
-margin_bottom = 534.0
-
-[node name="Button" type="TextureButton" parent="."]
-margin_left = 738.0
-margin_top = 481.0
-margin_right = 817.0
-margin_bottom = 528.0
-texture_normal = ExtResource( 15 )
-
-[node name="erros" type="Label" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 81.0
-margin_top = 467.0
-margin_right = 616.0
-margin_bottom = 555.0
-align = 1
-valign = 1
 
 [node name="dica" type="Label" parent="."]
 modulate = Color( 0, 0, 0, 1 )
@@ -167,7 +150,381 @@ margin_bottom = 280.0
 custom_fonts/font = SubResource( 2 )
 text = "Você acertou!"
 
-[connection signal="text_entered" from="letra" to="." method="_on_LineEdit_text_entered"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 66.0
+margin_top = 95.0
+margin_right = 99.0
+margin_bottom = 399.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 97.0
+margin_top = 95.0
+margin_right = 226.0
+margin_bottom = 114.0
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 194.0
+margin_top = 113.0
+margin_right = 226.0
+margin_bottom = 132.0
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+margin_left = 134.0
+margin_top = 382.0
+margin_right = 230.0
+margin_bottom = 401.0
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+margin_left = 263.0
+margin_top = 382.0
+margin_right = 359.0
+margin_bottom = 401.0
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+margin_left = 391.0
+margin_top = 382.0
+margin_right = 487.0
+margin_bottom = 401.0
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+margin_left = 518.0
+margin_top = 382.0
+margin_right = 614.0
+margin_bottom = 401.0
+
+[node name="ColorRect8" type="ColorRect" parent="."]
+margin_left = 518.0
+margin_top = 382.0
+margin_right = 614.0
+margin_bottom = 401.0
+
+[node name="ColorRect9" type="ColorRect" parent="."]
+margin_left = 646.0
+margin_top = 381.0
+margin_right = 742.0
+margin_bottom = 400.0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 116, 467 )
+scale = Vector2( 0.381348, 84 )
+normal = SubResource( 4 )
+
+[node name="a2" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 132.0
+margin_top = 475.0
+margin_right = 157.0
+margin_bottom = 510.0
+custom_fonts/font = SubResource( 5 )
+text = "A"
+underline = 1
+
+[node name="e" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 131.0
+margin_top = 516.0
+margin_right = 156.0
+margin_bottom = 551.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "E"
+underline = 1
+
+[node name="f" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 208.0
+margin_top = 475.0
+margin_right = 233.0
+margin_bottom = 510.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "F"
+underline = 1
+
+[node name="d" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 209.0
+margin_top = 517.0
+margin_right = 234.0
+margin_bottom = 552.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "D"
+underline = 1
+
+[node name="b" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 278.0
+margin_top = 474.0
+margin_right = 303.0
+margin_bottom = 509.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "B"
+underline = 1
+
+[node name="c2" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 278.0
+margin_top = 516.0
+margin_right = 303.0
+margin_bottom = 551.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "C"
+underline = 1
+
+[node name="l" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 343.0
+margin_top = 472.0
+margin_right = 368.0
+margin_bottom = 507.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "L"
+underline = 1
+
+[node name="j" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 343.0
+margin_top = 516.0
+margin_right = 368.0
+margin_bottom = 551.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "J"
+underline = 1
+
+[node name="h" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 401.0
+margin_top = 471.0
+margin_right = 426.0
+margin_bottom = 506.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "H"
+underline = 1
+
+[node name="t2" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 401.0
+margin_top = 516.0
+margin_right = 426.0
+margin_bottom = 551.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "T"
+underline = 1
+
+[node name="u" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 460.0
+margin_top = 515.0
+margin_right = 485.0
+margin_bottom = 550.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "U"
+underline = 1
+
+[node name="o" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 461.0
+margin_top = 470.0
+margin_right = 486.0
+margin_bottom = 505.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "O"
+underline = 1
+
+[node name="i2" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 518.0
+margin_top = 470.0
+margin_right = 543.0
+margin_bottom = 505.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "I"
+underline = 1
+
+[node name="k" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 517.0
+margin_top = 516.0
+margin_right = 542.0
+margin_bottom = 551.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "K"
+underline = 1
+
+[node name="z" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 582.0
+margin_top = 469.0
+margin_right = 607.0
+margin_bottom = 504.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "Z"
+underline = 1
+
+[node name="q" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 643.0
+margin_top = 468.0
+margin_right = 668.0
+margin_bottom = 503.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "Q"
+underline = 1
+
+[node name="p" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 645.0
+margin_top = 513.0
+margin_right = 670.0
+margin_bottom = 548.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "P"
+underline = 1
+
+[node name="x" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 702.0
+margin_top = 514.0
+margin_right = 727.0
+margin_bottom = 549.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "X"
+underline = 1
+
+[node name="s" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 757.0
+margin_top = 514.0
+margin_right = 782.0
+margin_bottom = 549.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "S"
+underline = 1
+
+[node name="r" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 816.0
+margin_top = 513.0
+margin_right = 841.0
+margin_bottom = 548.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "R"
+underline = 1
+
+[node name="n" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 869.0
+margin_top = 512.0
+margin_right = 894.0
+margin_bottom = 547.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "N"
+underline = 1
+
+[node name="v" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 816.0
+margin_top = 470.0
+margin_right = 841.0
+margin_bottom = 505.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "V"
+underline = 1
+
+[node name="y" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 869.0
+margin_top = 470.0
+margin_right = 894.0
+margin_bottom = 505.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "Y"
+underline = 1
+
+[node name="w" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 755.0
+margin_top = 469.0
+margin_right = 780.0
+margin_bottom = 504.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "W"
+underline = 1
+
+[node name="m" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 701.0
+margin_top = 468.0
+margin_right = 726.0
+margin_bottom = 503.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "M"
+underline = 1
+
+[node name="g" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 583.0
+margin_top = 514.0
+margin_right = 608.0
+margin_bottom = 549.0
+focus_mode = 2
+custom_fonts/font = SubResource( 5 )
+text = "G"
+underline = 1
+
+[node name="clique_botao" type="Sprite" parent="."]
+position = Vector2( 561, 516 )
+scale = Vector2( 0.261905, 0.261905 )
+texture = ExtResource( 7 )
+
 [connection signal="pressed" from="reiniciar" to="." method="_on_reiniciar_pressed"]
 [connection signal="pressed" from="sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="a2" to="." method="_on_a2_pressed"]
+[connection signal="pressed" from="e" to="." method="_on_e_pressed"]
+[connection signal="pressed" from="f" to="." method="_on_f_pressed"]
+[connection signal="pressed" from="d" to="." method="_on_d_pressed"]
+[connection signal="pressed" from="b" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="c2" to="." method="_on_c2_pressed"]
+[connection signal="pressed" from="l" to="." method="_on_l_pressed"]
+[connection signal="pressed" from="j" to="." method="_on_j_pressed"]
+[connection signal="pressed" from="h" to="." method="_on_h_pressed"]
+[connection signal="pressed" from="t2" to="." method="_on_t2_pressed"]
+[connection signal="pressed" from="u" to="." method="_on_u_pressed"]
+[connection signal="pressed" from="o" to="." method="_on_o_pressed"]
+[connection signal="pressed" from="i2" to="." method="_on_i2_pressed"]
+[connection signal="pressed" from="k" to="." method="_on_k_pressed"]
+[connection signal="pressed" from="z" to="." method="_on_z_pressed"]
+[connection signal="pressed" from="q" to="." method="_on_q_pressed"]
+[connection signal="pressed" from="p" to="." method="_on_p_pressed"]
+[connection signal="pressed" from="x" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="s" to="." method="_on_s_pressed"]
+[connection signal="pressed" from="r" to="." method="_on_r_pressed"]
+[connection signal="pressed" from="n" to="." method="_on_n_pressed"]
+[connection signal="pressed" from="v" to="." method="_on_v_pressed"]
+[connection signal="pressed" from="y" to="." method="_on_y_pressed"]
+[connection signal="pressed" from="w" to="." method="_on_w_pressed"]
+[connection signal="pressed" from="m" to="." method="_on_m_pressed"]
+[connection signal="pressed" from="g" to="." method="_on_g_pressed"]

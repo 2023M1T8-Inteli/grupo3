@@ -1,39 +1,90 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://imagens/mini_games/mini_game_3/playerGrey_up1.png" type="Texture" id=1]
-[ext_resource path="res://imagens/mini_games/mini_game_3/playerGrey_walk2.png" type="Texture" id=2]
-[ext_resource path="res://imagens/mini_games/mini_game_3/playerGrey_walk1.png" type="Texture" id=3]
-[ext_resource path="res://imagens/mini_games/mini_game_3/playerGrey_up2.png" type="Texture" id=4]
+[ext_resource path="res://imagens/spritesheet_player/executivo/Executivo/AndandroTrásD.png" type="Texture" id=1]
+[ext_resource path="res://imagens/spritesheet_player/executivo/Executivo/AndandoTrásE.png" type="Texture" id=2]
+[ext_resource path="res://imagens/spritesheet_player/executivo/Executivo/Parado1.png" type="Texture" id=3]
+[ext_resource path="res://imagens/spritesheet_player/executivo/Executivo/AndandoL2.png" type="Texture" id=4]
 [ext_resource path="res://scripts/mini_games/mini_game_3/JogadorMG3.gd" type="Script" id=5]
-
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "cima",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "direita",
-"speed": 5.0
-} ]
+[ext_resource path="res://imagens/spritesheet_player/executivo/Executivo/andandoE.png" type="Texture" id=6]
+[ext_resource path="res://imagens/spritesheet_player/executivo/Executivo/ParadoL.png" type="Texture" id=7]
+[ext_resource path="res://imagens/spritesheet_player/executivo/Executivo/AndandoD.png" type="Texture" id=8]
+[ext_resource path="res://imagens/spritesheet_player/executivo/Executivo/AndandoL1.png" type="Texture" id=9]
+[ext_resource path="res://imagens/spritesheet_player/executivo/Executivo/ParadoCostas1.png" type="Texture" id=10]
+[ext_resource path="res://imagens/joy_stick/pixil-frame-0 (3).png" type="Texture" id=11]
+[ext_resource path="res://imagens/joy_stick/pixil-frame-0 (4).png" type="Texture" id=12]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 54.0
 height = 28.0
 
-[node name="JogadorMG3" type="Area2D"]
-script = ExtResource( 5 )
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "baixo",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 1 ), ExtResource( 10 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "cima",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "direita",
+"speed": 5.0
+} ]
 
-[node name="Animacao" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 1 )
-animation = "direita"
+[node name="JogadorMG3" type="Area2D"]
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 5 )
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.75, 0.75 )
 shape = SubResource( 2 )
 
-[connection signal="body_entered" from="." to="." method="_on_JogadorMG3_body_entered"]
+[node name="Animacao" type="AnimatedSprite" parent="."]
+position = Vector2( 11, 11 )
+scale = Vector2( 4.84375, 4.84375 )
+frames = SubResource( 3 )
+animation = "direita"
+
+[node name="touchPad" type="CanvasLayer" parent="."]
+scale = Vector2( 1.5, 1.5 )
+transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
+
+[node name="up" type="TouchScreenButton" parent="touchPad"]
+position = Vector2( 64, 249.333 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+
+[node name="down" type="TouchScreenButton" parent="touchPad"]
+position = Vector2( 125, 381.333 )
+rotation = 3.14159
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+
+[node name="left" type="TouchScreenButton" parent="touchPad"]
+position = Vector2( 26, 346.333 )
+rotation = 4.71239
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+
+[node name="right" type="TouchScreenButton" parent="touchPad"]
+position = Vector2( 161, 284.333 )
+rotation = 1.5708
+scale = Vector2( 1, 1 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+
+[connection signal="area_entered" from="." to="." method="_on_JogadorMG3_area_entered"]
+[connection signal="pressed" from="touchPad/up" to="." method="_on_up_pressed"]
+[connection signal="released" from="touchPad/up" to="." method="_on_up_released"]
+[connection signal="pressed" from="touchPad/down" to="." method="_on_down_pressed"]
+[connection signal="released" from="touchPad/down" to="." method="_on_down_released"]
+[connection signal="pressed" from="touchPad/left" to="." method="_on_left_pressed"]
+[connection signal="released" from="touchPad/left" to="." method="_on_left_released"]
+[connection signal="pressed" from="touchPad/right" to="." method="_on_right_pressed"]
+[connection signal="released" from="touchPad/right" to="." method="_on_right_released"]

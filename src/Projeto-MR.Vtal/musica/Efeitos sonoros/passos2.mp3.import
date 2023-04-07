@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/passos2.mp3-25af67ca185ef15335de48189e69dd73.mp3str"
+
+[deps]
+
+source_file="res://musica/Efeitos sonoros/passos2.mp3"
+dest_files=[ "res://.import/passos2.mp3-25af67ca185ef15335de48189e69dd73.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

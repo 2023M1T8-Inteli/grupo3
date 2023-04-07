@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/buzina.mp3-a99ffa25817d13200af5c9b4d24909f7.mp3str"
+
+[deps]
+
+source_file="res://musica/Efeitos sonoros/buzina.mp3"
+dest_files=[ "res://.import/buzina.mp3-a99ffa25817d13200af5c9b4d24909f7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

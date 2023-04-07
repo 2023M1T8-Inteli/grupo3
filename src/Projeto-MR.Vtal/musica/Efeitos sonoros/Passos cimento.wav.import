@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Passos cimento.wav-8d3cf0fc8ef2c11a182b9a29f2d55d3e.sample"
+
+[deps]
+
+source_file="res://musica/Efeitos sonoros/Passos cimento.wav"
+dest_files=[ "res://.import/Passos cimento.wav-8d3cf0fc8ef2c11a182b9a29f2d55d3e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

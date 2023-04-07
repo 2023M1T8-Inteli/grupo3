@@ -3,18 +3,26 @@ extends Node2D
 export (PackedScene) var Barreira
 var status = 0
 var score = 0
-var y = 0.8
+var y = 2.5
 var x = 2
 var meta = 10
+var current_state = State.first_time
+
+enum State {
+	first_time
+	second_time
+}
 
 func _ready():
+	$TouchScreenButton.hide()
+	$clique_botao.hide()
 	$sair.hide()
 	$reiniciar.hide()
 	$game_over.show()
 	$passou.hide()
 
 func iniciar_jogo():
-	$instrucao.hide()
+	$clique_botao.hide()
 	status = 1
 	$game_over.hide()
 	$spawnBarreira.start()
@@ -40,11 +48,10 @@ func _process(delta):
 
 		if $ferramenta.position.y < -20:
 			$ferramenta.position.y = -20
-		if Input.is_action_pressed("ui_down"):
-			$ferramenta.position.y += 2
 
 		if Input.is_action_pressed("ui_up"):
-			$ferramenta.position.y -= 4
+			$ferramenta.position.y -= 8
+
 		if score == meta:
 			$passou.show()
 			status = 0
@@ -53,7 +60,9 @@ func _process(delta):
 			#código que adiciona pontos globais         adicionar
 
 func _on_game_over_pressed():
-	iniciar_jogo()
+	$clique_botao.show()
+	$game_over.hide()
+	$TouchScreenButton.show()
 	
 	
 
@@ -95,3 +104,12 @@ func game_over():
 	status = 0 #muda o status para "parado"
 	$reiniciar.show()
 	$spawnBarreira.stop()
+
+func _on_TouchScreenButton_pressed():
+	match current_state:
+		State.first_time:
+			iniciar_jogo()
+			current_state = State.second_time
+			$ferramenta.position.y -= 50
+		State.second_time:
+			$ferramenta.position.y -= 50

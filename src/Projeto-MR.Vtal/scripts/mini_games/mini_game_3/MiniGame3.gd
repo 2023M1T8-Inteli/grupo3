@@ -2,12 +2,13 @@ extends Node
 
 export (PackedScene) var Inimigo #instancia a cena do inimigo em uma variável
 var score #pontuação do jogador
-var meta = 20 #pontuação necessária para vencer o jogo
+var meta = 10 #pontuação necessária para vencer o jogo
 var change_scene = false
 
 func _ready():
+	$jogadorMG3/touchPad.hide()
 	randomize()
-	
+
 func game_over(): #chamada ao colidir com um inimigo. Para o jogo, e logo em seguida o reinicia
 	$pontuacaoTimer.stop()
 	$inimigoTimer.stop()
@@ -23,11 +24,10 @@ func venceu(): #chamada ao atingir a pontuação necessária, pausa a movimenta�
 	$jogadorMG3.hide()
 	$HUDMG3.exibir_ganhou()
 	$sair.start()
-	Global.pontuacao += 2
-	get_tree().change_scene("res://cenas/situacoes/situacao_3.tscn")
+	Global.pontuacao+=2
+	get_tree().change_scene("res://cenas/situacoes/situation_3.tscn")
 	if change_scene:
 		pass
-		
 func _process(delta): #se chegar na pontuação da meta, executa a função "venceu()"
 	if score == meta:
 		venceu()
@@ -43,6 +43,7 @@ func novo_jogo(): #chamada ao clicar no botão de iniciar. Inicia os timers que 
 
 func _on_inicioTimer_timeout(): #termina após se chamar a função novo_jogo. Inicia o timer do spawn dos inimigos e da pontuação
 	$inimigoTimer.start()
+	$jogadorMG3/touchPad.show()
 	$pontuacaoTimer.start()
 	
 func _on_pontuacaoTimer_timeout(): #soma mais um à pontuação a cada segundo que o jogador sobrevive

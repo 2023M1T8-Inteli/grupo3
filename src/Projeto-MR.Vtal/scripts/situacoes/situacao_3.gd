@@ -10,6 +10,7 @@ var controle
 var i 
 
 func _ready(): 
+	$Personagem/Arrow.hide()
 	$exclamacao.hide()
 	$mission_sec/CollisionShape2D.set_disabled(true)
 	Global.camera_state = Global.StateCameraClamp.Off
@@ -31,6 +32,7 @@ func _ready():
 			$mission_sec.queue_free()
 	match Global.current_state:
 		Global.State.Situacao3_finish:
+			$Personagem.position = Vector2(Global.posicaox, Global.posicaoy)
 			$Node2D.queue_free()
 			$mission_sec.show()
 	
@@ -70,6 +72,9 @@ func _on_Escolha1_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 	clear() 
 	$CanvasLayer3/atencao/feedback.text = dialogo[8][1]["text"]
 #	controle = false
+	Global.feedback_final['situ_3'][1] = $CanvasLayer2/CaixaDialogo/VBoxContainer/Escolha1.text
+	Global.feedback_final['situ_3'][2] = $CanvasLayer3/atencao/feedback.text
+	Global.feedback_final['situ_3'][3] = 0
 	n += 1
 	$CanvasLayer2/CaixaDialogo/conversa.show()
 	$CanvasLayer2/CaixaDialogo/nome.show()
@@ -87,6 +92,9 @@ func _on_Escolha2_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 	
 func _on_Escolha3_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	Global.pontuacao += 2
+	Global.feedback_final['situ_3'][1] = $CanvasLayer2/CaixaDialogo/VBoxContainer/Escolha3.text
+	Global.feedback_final['situ_3'][2] = dialogo[8][3]["text"]
+	Global.feedback_final['situ_3'][3] = 2
 	clear()
 	$CanvasLayer3/parabens/feedback.text = dialogo[8][3]["text"]
 	controle = true
@@ -98,6 +106,9 @@ func _on_Escolha3_pressed(): #detecta a escolha feita pelo jogador e mostra o fe
 	 
 func _on_Escolha4_pressed(): #detecta a escolha feita pelo jogador e mostra o feedback respectivo 
 	Global.pontuacao += 0
+	Global.feedback_final['situ_3'][1] = $CanvasLayer2/CaixaDialogo/VBoxContainer/Escolha4.text
+	Global.feedback_final['situ_3'][2] = dialogo[8][4]["text"]
+	Global.feedback_final['situ_3'][3] = 0
 	clear()
 	$CanvasLayer3/atencao/feedback.text = dialogo[8][4]["text"]
 	controle = false
@@ -126,6 +137,7 @@ func _on_resposta_timeout():
 	n += (10-n)
 	
 func _on_Area2D_body_entered(body):
+	$Personagem/gamepad.hide()
 	$transition.show()
 	$AnimationPlayer.play("situation_3")
 	$start_situation.start()
@@ -151,7 +163,9 @@ func _on_finalizar_dialogo_timeout():
 	$AnimationPlayer.play("npc_enemy_backwards")
 	$"transição_reverse".start()
 
+
 func _on_transio_reverse_timeout():
+	$Personagem/gamepad.show()
 	$transition.show()
 	$AnimationPlayer.play_backwards("situation_3")
 	Global.current_state = Global.State.Situacao3_finish
@@ -163,6 +177,8 @@ func _on_transio_reverse_timeout():
 func _on_mission_sec_body_entered(body):
 	match Global.current_state:
 		Global.State.Situacao3_finish:
+			Global.posicaox = $Personagem.position.x
+			Global.posicaoy = $Personagem.position.y
 			get_tree().change_scene("res://cenas/mini_games/mini_game_3/mini_game_3.tscn")
 
 func _on_mini_game_body_entered(body):

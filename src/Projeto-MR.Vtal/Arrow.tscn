@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://imagens/mapa_principal/seta-removebg-preview (2).png" type="Texture" id=1]
+
+[node name="Arrow" type="Sprite"]
+position = Vector2( 529.567, 317.657 )
+scale = Vector2( 0.158156, 0.158156 )
+texture = ExtResource( 1 )

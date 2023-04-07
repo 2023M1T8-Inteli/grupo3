@@ -13,7 +13,7 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 	},
 	'diamante': {
 		0: "Use as setas no canto inferior esquerdo para se movimentar pelo mapa!",
-		1: "Aperte o botão A para interagir com os personagens no jogo ",
+		1: "Encoste nos personagens para interagir com eles no jogo ",
 	},
 	'situacao1': {
 		"nome":"Robert",
@@ -24,7 +24,7 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 			1: {"text":"Parabéns!! Você escolheu a opção mais ética. É essencial recusar ofertas de suborno, já que fazê-lo se configura como corrupção, que é condenada no nosso código de ética.", "feedback":"res://imagens/parabens.png"},
 			2: {"text":"Parabéns!! Você escolheu uma ótima opção, reconhecendo o suborno corrupto de Robert e questionando a sua atitude. Afinal, a corrupção vai contra nosso código de ética.", "feedback":"res://imagens/parabens.png"},
 			3: {"text":"A família tem grande importância, mas devemos sempre ter um comportamento ético. A opção mais ética seria recusar a proposta de suborno, já que se trata de um caso de corrupção, o que vai contra nosso código de ética.", "feedback":"res://imagens/aten.png"},
-			4: {"text":"Aceitar essa oferta vai totalmente contra nosso código de ética. Afinal, a proposta se trata de um suborno e, portanto, se enquadra como corrupção..", "feedback":"res://imagens/aten.png"}
+			4: {"text":"Aceitar essa oferta vai totalmente contra nosso código de ética. Afinal, a proposta se trata de um suborno e, portanto, se enquadra como corrupção.", "feedback":"res://imagens/aten.png"}
 		}
 	},
 	'situacao2':{
@@ -39,7 +39,6 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 		},
 		4:{
 			1: "Ótima escolha! Você mudou de assunto para não violar o código de ética, já que divulgar informações confidenciais de clientes é contrário aos valores da V.Tal, visto que fere nosso princípio de neutralidade",
-			2: "Ótima escolha! Você se recusou a divulgar informações sigilosas de nossos clientes para a concorrência, já que fazê-lo fere nosso princípio de neutralidade .",
 			3: "Apesar de estar em um momento descontraído, você não pode divulgar informações de cliente para correntes, já que isso viola nosso princípio de neutralidade",
 			4: "Divulgar informações confidenciais de clientes é contrário aos valores da V.Tal, e fere nosso princípio de neutralidade e, portanto, vai contra o código de ética "
 		},
@@ -78,13 +77,58 @@ var falas = {#dicionario contendo o diálogo inicial com o guia fabricio e do di
 		9: "A partir de agora tome mais cuidado com suas ações, pois quanto maior o seu cargo maior o impacto que suas ações causarão.",
 		10: "Vejo que após todos estes desafios enfrentados, você se provou ético e digno de se tornar o Rei da fibra. Por fim, volte para o prédio da V.Tal para uma surpresa!",
 		11: "A partir de agora você conseguirá entrar nele!",
+	
+	},
+	"NPC_1":{
+	'nome':"Jeff",
+	0:"Olá amigo, meu nome é jeff, gostaria de te pedir um favor",
+	1:"caso encontre o atendente do caixa, a chame para mim",
+	2:"Ou avise a gerência, pois a atendente saiu e estou aqui por um bom tempo e preciso chegar em casa logo",
+	3:"Obrigado pela sua atenção e desculpe pelo transtorno",
+	},
+	"NPC_2":{
+	'nome':"Jackie",
+	0:"Oi moço, estava olhando os congelados e achei alguns vencidos",
+	1:"Posso leva-los de graça, ou ter algum desconto?",
+	2:{
+		0:"Não trabalho aqui!",
+		1:"não sou funcionario, mas acredito que não enha nenhum problema leva-los",
+		2:"não sou funcionario, mas posso verificar para você",
+		3:"",
+	},
+	3:"Me desculpe, me enganei",
+	4:"Sem problemas, irei verificar",
+	5:"Muito obrigado pela sua gentileza"
+	},
+
+	
+}
+var feedback_final = {
+	'situ_1':{
+		0:"Um funcionario de outra compania o abordou e ofereceu uma propina para que você instalasse a fibra da empresa deles.",
+		1:"a",
+		2:"a",
+		3:"a",
+	},
+	'situ_2':{
+		0:"Um amigo de longa data o encontra em um bar e despretenciosamente tenta obter informações sigilosas do seu trabalho",
+		1:"bb",
+		2:"bbb",
+		3:"bbbb",
+	},
+	'situ_3':{
+		0:"Um cliente te aborda em um clube de luxo que você foi e pede informações privilegiadas para que ele feche o contrato ",
+		1:"cccc",
+		2:"cccccc",
+		3:"cccccccc",
 	}
 }
 enum state_situations {INIT,SITUATION_1, SITUATION_2,  SITUATION_3}
 enum state_areas {AREA_1, AREA_2,  AREA_3, FINAL}
 enum state_person{FRENTE,TRAS,ESQUERDA,DIREITA,PARADO}
 enum state_nivel{N1,N2,N3,N4,N5}
-
+var mobile
+var objective = false
 enum StateCameraClamp {
 	On
 	Off
@@ -102,10 +146,18 @@ enum State {
 	Situacao3_finish
 	Mini_Game3
 	Final
+	Explore
 }
 
-var moldura  = "res://imagens/niveis/MolduraDefensorPronta.png"
+enum State_mini_game_3 {
+	vivo
+	morto
+}
 
+var current_state_mini_game_3 = State_mini_game_3.vivo
+
+var moldura  = "res://imagens/niveis/MolduraDefensorPronta.png"
+var call_index_state = true
 
 enum State_skin {
 	Defensor
@@ -136,8 +188,11 @@ var posicaoy = 201
 var pontuacao = 0 #pontuação do personagem
 var controle_tela = true
 var teste
+var control_inneramb = false
 var posicao_bar = Vector2(169, 296)
-
+var obj_position
+var pos_map = Vector2(posicaox, posicaoy)
+var pos_interior =Vector2.ZERO
 func tela():
 	controle_tela = false
 

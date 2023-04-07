@@ -80,6 +80,7 @@ text = "Fabrício"
 visible = false
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Transition2" parent="." instance=ExtResource( 5 )]
 visible = false

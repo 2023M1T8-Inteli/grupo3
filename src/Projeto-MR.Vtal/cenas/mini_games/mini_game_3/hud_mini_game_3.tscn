@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fontes/PTSansNarrow-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/mini_games/mini_game_3/HUDMG3.gd" type="Script" id=2]
-[ext_resource path="res://imagens/botoes/start_button-removebg-preview.png" type="Texture" id=3]
+[ext_resource path="res://imagens/mini_games/mini_game_1/sair_mapa.png" type="Texture" id=3]
+[ext_resource path="res://imagens/mini_games/mini_game_1/button_start.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -31,7 +32,7 @@ margin_top = -64.0
 margin_right = 323.5
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
-text = "Desvie dos executivos corruptos e mantenha sua conduta ética intacta!"
+text = "Desvie do suborno dos executivos corruptos e mantenha sua conduta ética intacta!"
 align = 1
 valign = 1
 autowrap = true
@@ -56,13 +57,22 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -147.0
-margin_top = -105.0
-margin_right = 109.0
-margin_bottom = 3.0
+margin_left = -131.0
+margin_top = -132.0
+margin_right = 125.0
+margin_bottom = -24.0
 shortcut = SubResource( 5 )
+texture_normal = ExtResource( 4 )
+expand = true
+
+[node name="sair" type="TextureButton" parent="."]
+margin_left = 351.0
+margin_top = 481.0
+margin_right = 664.0
+margin_bottom = 565.0
 texture_normal = ExtResource( 3 )
 expand = true
 
 [connection signal="timeout" from="messageTimer" to="." method="_on_messageTimer_timeout"]
 [connection signal="pressed" from="inicioButton" to="." method="_on_inicioButton_pressed"]
+[connection signal="pressed" from="sair" to="." method="_on_sair_pressed"]

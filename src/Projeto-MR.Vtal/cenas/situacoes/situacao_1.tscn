@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://imagens/spritesheet_player/arrow_right_icon_133719.png" type="Texture" id=1]
-[ext_resource path="res://cenas/jogador/jogador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/situacoes/situacao_1.gd" type="Script" id=3]
+[ext_resource path="res://musica/Efeitos sonoros/buzina.mp3" type="AudioStream" id=4]
 [ext_resource path="res://imagens/mapa_principal/mapa-vtal-2.0.png" type="Texture" id=5]
 [ext_resource path="res://imagens/spritesheet_player/3ef35179c31986a (4).png" type="Texture" id=6]
 [ext_resource path="res://imagens/spritesheet_player/3ef35179c31986a (2).png" type="Texture" id=7]
@@ -10,6 +11,7 @@
 [ext_resource path="res://imagens/situacoes/aten.png" type="Texture" id=9]
 [ext_resource path="res://imagens/situacoes/parabens.png" type="Texture" id=10]
 [ext_resource path="res://fontes/PTSansNarrow-Regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://musica/Efeitos sonoros/resposta certa.mp3" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17.5, 160 )
@@ -55,6 +57,7 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=5]
 size = 19
+use_filter = true
 font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -71,6 +74,7 @@ font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 50
+use_filter = true
 font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=11]
@@ -95,12 +99,16 @@ position = Vector2( 1189, 331 )
 scale = Vector2( 2.39655, 2.39655 )
 frames = SubResource( 7 )
 animation = "esquerda"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NPC"]
 root_node = NodePath("../..")
 anims/RESET = SubResource( 2 )
 anims/Situacao1 = SubResource( 3 )
+
+[node name="Personagem" parent="." instance=ExtResource( 2 )]
+position = Vector2( 191, 181 )
 
 [node name="CaixaDialogo" type="ColorRect" parent="."]
 margin_top = 424.0
@@ -197,10 +205,6 @@ text = "(de dentro do carro)"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="Personagem" parent="." instance=ExtResource( 2 )]
-position = Vector2( 194, 190 )
-scale = Vector2( 1.2, 1.2 )
-
 [node name="atencao" type="Sprite" parent="."]
 position = Vector2( 539, 195 )
 scale = Vector2( 0.49862, 0.592794 )
@@ -250,9 +254,13 @@ autowrap = true
 [node name="CanvasLayer" parent="." instance=ExtResource( 8 )]
 visible = false
 
+[node name="buzina" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="resposta certa" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+
 [connection signal="body_entered" from="." to="." method="_on_Situao1_body_entered"]
-[connection signal="body_entered" from="." to="Personagem" method="_on_Situao1_body_entered"]
-[connection signal="body_exited" from="." to="Personagem" method="_on_Situao1_body_exited"]
 [connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha1" to="." method="_on_Escolha1_pressed"]
 [connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha2" to="." method="_on_Escolha2_pressed"]
 [connection signal="pressed" from="CaixaDialogo/VBoxContainer/Escolha3" to="." method="_on_Escolha3_pressed"]

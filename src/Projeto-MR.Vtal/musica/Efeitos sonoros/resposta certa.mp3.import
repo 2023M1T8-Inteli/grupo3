@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/resposta certa.mp3-ab140dd733e11cf586619bff28d84645.mp3str"
+
+[deps]
+
+source_file="res://musica/Efeitos sonoros/resposta certa.mp3"
+dest_files=[ "res://.import/resposta certa.mp3-ab140dd733e11cf586619bff28d84645.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
