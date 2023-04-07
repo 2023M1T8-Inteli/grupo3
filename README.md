@@ -27,14 +27,10 @@
 |<br>
 |-->docs<br>
 |-->documentos<br>
-  &emsp;|-->antigos<br>
-  &emsp;|GDD.docx ou Documentação.docx<br>
-|-->executáveis<br>
-  &emsp;|-->windows<br>
-  &emsp;|-->android<br>
-  &emsp;|-->HTML<br>
+  &emsp;|GDD__Pegasus_Solution-Vfinal<br>
 |-->imagens<br>
 |-->src<br>
+  $emsp;|Projeto-MR.Vtal<br> 
 |readme.md<br>
 
 A pasta raiz contem dois arquivos que devem ser alterados:
