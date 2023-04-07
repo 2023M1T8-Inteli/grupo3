@@ -12,16 +12,11 @@
 
 ## Descrição
 
-<br> Este game foi desenvolvido visando solucionar um problema de complience da nossa empresa parceira V.tal, ele consistia num processo de treinamento de ética pouco aderente e excessivamente maçante, e esta falta de aderência muitas vezes gerava infrações por falta da compreensão do código de ética. Deste modo, o jogo desenvolvido pretende trazer uma forma lúdica, imersiva e interativa para o ensino de ética na V.tal fazendo com que os colaboradores adquiram o conhecimento necessario e obtenham uma boa experiência neste processo. Ele consiste em um RPG topdown de mundo aberto, onde o jogador enfrentará situações envolvendo escolhas éticas que, além de testar a conduta ética, ensina o código da empresa por meio de feedbacks para cada escolha . Além das situações éticas, o game possui minigames que proporcionarão uma maior ludicidade e NPC's que darão certa imersividade e interatividade ao jogo. 
-Em relação á narrativa,  o jogador irá estar na pele do Mr.vtal, um jovem talentoso que se mudou para uma nova cidade e foi contratado pela v.tal,e nesta nova empresa tem que se provar ético, por meio das situações, para subir de posição e se tornar o rei da fibra, a mais alta posição da empresa<br>
+<br> Este game foi desenvolvido visando solucionar um problema de complience da nossa empresa parceira V.tal, ele consistia num processo de treinamento de ética pouco aderente e excessivamente maçante, e esta falta de aderência muitas vezes gerava infrações por falta da compreensão do código de ética. Deste modo, o jogo desenvolvido pretende trazer uma forma lúdica, imersiva e interativa para o ensino de ética na V.tal fazendo com que os colaboradores adquiram o conhecimento necessario e obtenham uma boa experiência neste processo. <br>
 Meu projeto é um exemplo de como utilizar o github.
-<br><br>
-<p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
-</p>
-
-
+<br>Este game consiste em um RPG topdown de mundo aberto, onde o jogador enfrentará situações envolvendo escolhas éticas que, além de testar a conduta ética, ensina o código da empresa por meio de feedbacks para cada escolha . Além das situações éticas, o game possui minigames que proporcionarão uma maior ludicidade e NPC's que darão certa imersividade e interatividade ao jogo. 
+Em relação á narrativa,  o jogador irá estar na pele do Mr.vtal, um jovem talentoso que se mudou para uma nova cidade e foi contratado pela v.tal,e nesta nova empresa tem que se provar ético, por meio das situações, para subir de posição e se tornar o rei da fibra, a mais alta posição da empresa<br>
+Meu projeto é um exemplo de como utilizar o github.<br>
 
 <br><br>
 Meu projeto ajuda estudantes inteli a configurarem seus githubs.
