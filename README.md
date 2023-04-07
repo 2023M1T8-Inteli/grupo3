@@ -13,16 +13,13 @@
 ## Descrição
 
 <br> Este game foi desenvolvido visando solucionar um problema de complience da nossa empresa parceira V.tal, ele consistia num processo de treinamento de ética pouco aderente e excessivamente maçante, e esta falta de aderência muitas vezes gerava infrações por falta da compreensão do código de ética. Deste modo, o jogo desenvolvido pretende trazer uma forma lúdica, imersiva e interativa para o ensino de ética na V.tal fazendo com que os colaboradores adquiram o conhecimento necessario e obtenham uma boa experiência neste processo. <br>
-Meu projeto é um exemplo de como utilizar o github.
-<br>Este game consiste em um RPG topdown de mundo aberto, onde o jogador enfrentará situações envolvendo escolhas éticas que, além de testar a conduta ética, ensina o código da empresa por meio de feedbacks para cada escolha . Além das situações éticas, o game possui minigames que proporcionarão uma maior ludicidade e NPC's que darão certa imersividade e interatividade ao jogo. 
-Em relação á narrativa,  o jogador irá estar na pele do Mr.vtal, um jovem talentoso que se mudou para uma nova cidade e foi contratado pela v.tal,e nesta nova empresa tem que se provar ético, por meio das situações, para subir de posição e se tornar o rei da fibra, a mais alta posição da empresa<br>
-Meu projeto é um exemplo de como utilizar o github.<br>
 
-<br><br>
-Meu projeto ajuda estudantes inteli a configurarem seus githubs.
-<br><br>
-May the force be with you!
-<br><br>
+<br>Este game consiste em um RPG topdown de mundo aberto, onde o jogador enfrentará situações envolvendo escolhas éticas que, além de testar a conduta ética, ensina o código da empresa por meio de feedbacks para cada escolha . Além das situações éticas, o game possui minigames que proporcionarão uma maior ludicidade e NPC's que darão certa imersividade e interatividade ao jogo. 
+<br>
+
+
+<br>Em relação á narrativa,  o jogador irá estar na pele do Mr.vtal, um jovem talentoso que se mudou para uma nova cidade e foi contratado pela v.tal,e nesta nova empresa tem que se provar ético, por meio das situações, para subir de posição e se tornar o rei da fibra, a mais alta posição da empresa<br>
+
 
 ## 🛠 Estrutura de pastas
 
