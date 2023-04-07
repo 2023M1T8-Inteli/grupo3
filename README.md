@@ -30,7 +30,7 @@
   &emsp;|GDD__Pegasus_Solution-Vfinal<br>
 |-->imagens<br>
 |-->src<br>
-  $emsp;|Projeto-MR.Vtal<br> 
+  &emsp;|Projeto-MR.Vtal<br> 
 |readme.md<br>
 
 A pasta raiz contem dois arquivos que devem ser alterados:
