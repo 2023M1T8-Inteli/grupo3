@@ -6,7 +6,8 @@
 
 # Mr.Vtal
 
-## Pegasus Tech
+## Pegasus Solutions
+
 
 ## Integrantes: <a href="https://www.linkedin.com/in/ever-felliphe-sousa-da-costa-16001617a">Ever Felliphe Sousa da Costa</a>, <a href="https://www.linkedin.com/in/luan-ramos-de-mello-253b28268">Luan Ramos de Mello</a>, <a href="https://www.linkedin.com/in/victorbarq/">João Paulo da Silva</a>, <a href="https://www.linkedin.com/in/marina-ladeira-867159269">Marina Ladeira</a>, <a href="https://www.linkedin.com/in/eduarda-cardoso-de-souza-8bb802268/">Eduarda Cardoso de Souza</a>, <a href="https://www.linkedin.com/me?trk=p_mwlite_feed_updates-secondary_nav">Pedro Faria Santos</a>
 
