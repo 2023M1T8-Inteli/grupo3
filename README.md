@@ -1,7 +1,7 @@
 # Inteli - Instituto de Tecnologia e Liderança 
 
 <p align="center">
-<a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
+<a href= "https://www.inteli.edu.br/"><img src="https://s3.amazonaws.com/gupy5/production/companies/26702/career/63484/images/2022-04-28_16-56_logo.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
 </p>
 
 # Mr.Vtal
@@ -9,7 +9,13 @@
 ## Pegasus Solutions
 
 
-## Integrantes: <a href="https://www.linkedin.com/in/ever-felliphe-sousa-da-costa-16001617a">Ever Felliphe Sousa da Costa</a>, <a href="https://www.linkedin.com/in/luan-ramos-de-mello-253b28268">Luan Ramos de Mello</a>, <a href="https://www.linkedin.com/in/victorbarq/">João Paulo da Silva</a>, <a href="https://www.linkedin.com/in/marina-ladeira-867159269">Marina Ladeira</a>, <a href="https://www.linkedin.com/in/eduarda-cardoso-de-souza-8bb802268/">Eduarda Cardoso de Souza</a>, <a href="https://www.linkedin.com/me?trk=p_mwlite_feed_updates-secondary_nav">Pedro Faria Santos</a>
+## Integrantes: 
+- <a href="https://www.linkedin.com/in/ever-felliphe-sousa-da-costa-16001617a">Ever Felliphe Sousa da Costa</a>
+- <a href="https://www.linkedin.com/in/luan-ramos-de-mello-253b28268">Luan Ramos de Mello</a>
+- <a href="https://www.linkedin.com/in/victorbarq/">João Paulo da Silva</a>
+- <a href="https://www.linkedin.com/in/marina-ladeira-867159269">Marina Ladeira</a>
+- <a href="https://www.linkedin.com/in/eduarda-cardoso-de-souza-8bb802268/">Eduarda Cardoso de Souza</a>
+- <a href="https://www.linkedin.com/me?trk=p_mwlite_feed_updates-secondary_nav">Pedro Faria Santos</a>
 
 ## Descrição
 
@@ -18,8 +24,9 @@
 <br>Este game consiste em um RPG topdown de mundo aberto, onde o jogador enfrentará situações envolvendo escolhas éticas que, além de testar a conduta ética, ensina o código da empresa por meio de feedbacks para cada escolha . Além das situações éticas, o game possui minigames que proporcionarão uma maior ludicidade e NPC's que darão certa imersividade e interatividade ao jogo. 
 <br>
 
-
 <br>Em relação á narrativa,  o jogador irá estar na pele do Mr.vtal, um jovem talentoso que se mudou para uma nova cidade e foi contratado pela v.tal,e nesta nova empresa tem que se provar ético, por meio das situações, para subir de posição e se tornar o rei da fibra, a mais alta posição da empresa<br>
+
+Acesse o jogo <a href="https://2023m1t8-inteli.github.io/grupo3/">aqui</a>.
 
 
 ## 🛠 Estrutura de pastas
@@ -95,7 +102,7 @@ A cada atualização os detalhes devem ser lançados aqui.
 
 ## 📋 Licença/License
 
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.yggbrasil.com.br/vr">INTELI, VICTOR BRUNO ALEXANDER ROSETTI DE QUIROZ</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">Mr.Vtal</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.inteli.edu.br/">INTELI</a> , <a href="https://www.linkedin.com/in/ever-felliphe-sousa-da-costa-16001617a">Ever Felliphe Sousa da Costa</a> , <a href="https://www.linkedin.com/in/luan-ramos-de-mello-253b28268">Luan Ramos de Mello</a> , <a href="https://www.linkedin.com/in/victorbarq/">João Paulo da Silva</a> , <a href="https://www.linkedin.com/in/marina-ladeira-867159269">Marina Ladeira</a> , <a href="https://www.linkedin.com/in/eduarda-cardoso-de-souza-8bb802268/">Eduarda Cardoso de Souza</a>,  <a href="https://www.linkedin.com/me?trk=p_mwlite_feed_updates-secondary_nav">Pedro Faria Santos</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
 ## 🎓 Referências
 
